@@ -3,179 +3,294 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>4-Month Delivery Timeline</title>
+  <title>Module 9 - Purchase Orders & RFQ</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Poppins', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
-      background-color: #f0f4f8; /* Fallback color */
+      font-family: 'Roboto', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
 
     .slide {
       width: 1280px;
       height: 720px;
-      background: linear-gradient(180deg, #e9f2f9 0%, #fbfdff 100%);
+      background-color: #f0f2f5;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      box-sizing: border-box;
-      padding: 60px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       overflow: hidden;
+      animation: fadeIn 1s ease-in-out;
     }
 
-    .title {
-      font-size: 48px;
-      color: #0d2c54;
-      font-weight: 700;
-      margin: 0 0 80px 0;
-      animation: fadeInDown 1s ease-out;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
 
-    .timeline-wrapper {
-      width: 980px;
-      animation: fadeInUp 1s ease-out 0.3s;
-      animation-fill-mode: backwards;
-    }
-
-    .cards-container {
+    .header {
+      background-color: #0A2342;
+      color: white;
+      padding: 12px 30px;
       display: flex;
-      background-color: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 8px 30px rgba(13, 44, 84, 0.08);
-      overflow: hidden;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-      position: relative;
-      z-index: 10;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
     }
 
-    .card {
-      flex: 1;
-      padding: 30px 20px;
-      text-align: center;
-      border-right: 1px solid #e5e7eb;
-      transition: background-color 0.3s ease;
-    }
-    
-    .card:last-child {
-      border-right: none;
-    }
-
-    .card-month {
-      font-size: 20px;
-      font-weight: 600;
-      color: #0d2c54;
-      margin: 0 0 8px 0;
-    }
-
-    .card-desc {
-      font-size: 16px;
-      color: #4b5563;
-      min-height: 40px;
-      margin: 0 0 24px 0;
-      padding: 0;
-    }
-
-    .card-payment {
-      font-size: 16px;
-      color: #3b82f6;
-      font-weight: 500;
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
       margin: 0;
     }
 
-    .timeline-track-container {
-      position: relative;
-      width: 100%;
-      margin-top: -14px; 
-      height: 28px; 
-    }
-    
-    .timeline-track {
-      position: absolute;
-      top: 50%;
-      left: 12.5%;
-      width: 75%;
-      height: 4px;
-      background-color: #3b82f6;
-      transform: translateY(-50%);
-      z-index: 1;
+    .investment-badge {
+      background-color: #E5B842;
+      color: #0A2342;
+      font-size: 22px;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
 
-    .milestone {
-      position: absolute;
-      top: 50%;
-      width: 24px;
-      height: 24px;
+    .main-content {
+      flex-grow: 1;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .card {
       background-color: #ffffff;
-      border: 4px solid #0d2c54;
-      border-radius: 50%;
-      box-sizing: border-box;
-      z-index: 2;
+      border: 1px solid #dfe6ec;
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.08);
     }
 
-    .m1 { left: 12.5%; transform: translate(-50%, -50%); }
-    .m2 { left: 37.5%; transform: translate(-50%, -50%); }
-    .m3 { left: 62.5%; transform: translate(-50%, -50%); }
-    .m4 { left: 87.5%; transform: translate(-50%, -50%); }
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0A2342;
+      margin: 0 0 12px 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #0A2342;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #333;
+      flex-grow: 1;
+    }
+
+    .card li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+
+    .card li::before {
+      margin-right: 10px;
+      font-weight: bold;
+      line-height: 1.6;
+    }
     
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .card li.check::before {
+      content: '✓';
+      color: #28a745;
     }
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .card li.bullet::before {
+      content: '•';
+      color: #0A2342;
+      font-size: 18px;
     }
+
+    .diagram-title {
+        font-size: 12px;
+        color: #6c757d;
+        text-align: center;
+        margin: auto 0 10px 0;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+
+    .workflow-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding-bottom: 5px; /* Added padding to ensure it doesn't touch the bottom */
+    }
+
+    .workflow-step {
+        background-color: #e9ecef;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        padding: 5px 10px;
+        font-size: 12px;
+        color: #495057;
+    }
+
+    .workflow-arrow {
+        color: #6c757d;
+        font-weight: bold;
+    }
+    
+    .rfq-table-container {
+        margin-top: auto; /* Pushes table to bottom */
+    }
+
+    .rfq-table-title {
+        font-size: 12px;
+        color: #6c757d;
+        text-align: center;
+        margin-bottom: 8px;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+
+    .rfq-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+    }
+
+    .rfq-table th, .rfq-table td {
+        text-align: left;
+        padding: 6px 8px;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    .rfq-table th {
+        background-color: #0A2342;
+        color: white;
+        font-weight: 500;
+    }
+    .rfq-table th:first-child { border-top-left-radius: 4px; }
+    .rfq-table th:last-child { border-top-right-radius: 4px; }
+
+    .rfq-table tr.highlight {
+        background-color: #fffbe6;
+        font-weight: bold;
+        color: #5c3c00;
+        border-left: 3px solid #E5B842;
+    }
+    .rfq-table td {
+      color: #495057;
+    }
+
   </style>
 </head>
 <body>
   <div class="slide">
-    <h1 class="title">4-Month Delivery Timeline</h1>
-    <div class="timeline-wrapper">
-      <div class="cards-container">
-        <div class="card">
-          <p class="card-month">Month 1</p>
-          <p class="card-desc">Foundation & Core</p>
-          <p class="card-payment">25% Payment</p>
-        </div>
-        <div class="card">
-          <p class="card-month">Month 2</p>
-          <p class="card-desc">Business Modules</p>
-          <p class="card-payment">25% Payment</p>
-        </div>
-        <div class="card">
-          <p class="card-month">Month 3</p>
-          <p class="card-desc">AI & Templates</p>
-          <p class="card-payment">25% Payment</p>
-        </div>
-        <div class="card">
-          <p class="card-month">Month 4</p>
-          <p class="card-desc">Polish & Launch</p>
-          <p class="card-payment">25% Payment</p>
+    <div class="header">
+      <h1>Module 9 - Purchase Orders & RFQ</h1>
+      <div class="investment-badge">Investment: $3,000</div>
+    </div>
+    <div class="main-content">
+      <div class="card">
+        <h2 class="card-title">Automated Procurement System</h2>
+        <ul>
+          <li class="check">Automated PO generation when stock levels low</li>
+          <li class="check">Integration with inventory management</li>
+          <li class="check">Purchase approval workflows</li>
+          <li class="check">Vendor management and selection</li>
+          <li class="check">Purchase history tracking</li>
+        </ul>
+        <div class="diagram-title">Procurement Workflow Diagram</div>
+        <div class="workflow-diagram">
+            <div class="workflow-step">Stock Low</div>
+            <span class="workflow-arrow">→</span>
+            <div class="workflow-step">Auto PO</div>
+            <span class="workflow-arrow">→</span>
+            <div class="workflow-step">Approval</div>
+            <span class="workflow-arrow">→</span>
+            <div class="workflow-step">Sent</div>
         </div>
       </div>
-      <div class="timeline-track-container">
-        <div class="timeline-track"></div>
-        <div class="milestone m1"></div>
-        <div class="milestone m2"></div>
-        <div class="milestone m3"></div>
-        <div class="milestone m4"></div>
+
+      <div class="card">
+        <h2 class="card-title">Request For Quotation (RFQ)</h2>
+        <ul>
+          <li class="check">Multi-vendor RFQ distribution</li>
+          <li class="check">Bid comparison and analysis tools</li>
+          <li class="check">Automated vendor selection criteria</li>
+          <li class="check">Response tracking and follow-up</li>
+          <li class="check">Award notifications</li>
+        </ul>
+        <div class="rfq-table-container">
+            <div class="rfq-table-title">RFQ Comparison Table</div>
+            <table class="rfq-table">
+                <thead>
+                    <tr>
+                        <th>Vendor</th>
+                        <th>Price</th>
+                        <th>Delivery</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Vendor A</td>
+                        <td>$1,200</td>
+                        <td>5 Days</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td>Vendor B</td>
+                        <td>$1,150</td>
+                        <td>3 Days</td>
+                    </tr>
+                    <tr>
+                        <td>Vendor C</td>
+                        <td>$1,250</td>
+                        <td>4 Days</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">Budget & Compliance</h2>
+        <ul>
+          <li class="check">Approval hierarchies and limits</li>
+          <li class="check">Budget tracking and spending reports</li>
+          <li class="check">Purchase compliance monitoring</li>
+          <li class="check">Cost center allocation</li>
+          <li class="check">Vendor performance metrics</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">Business Value</h2>
+        <ul>
+          <li class="bullet">Streamlined procurement process</li>
+          <li class="bullet">Better vendor negotiations</li>
+          <li class="bullet">Cost savings through competition</li>
+          <li class="bullet">Improved budget control</li>
+        </ul>
       </div>
     </div>
   </div>

@@ -3,151 +3,230 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Risk Mitigation & Guarantees</title>
+  <title>AI Integration Advantages</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@700;900&display=swap');
 
     body {
       margin: 0;
       padding: 0;
-      width: 1280px;
-      height: 720px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: radial-gradient(circle at top left, #f0f6ff 0%, #ffffff 100%);
-      font-family: 'Poppins', 'Helvetica Neue', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
-      overflow: hidden;
+      font-family: 'Roboto', sans-serif;
+      background-color: #030814;
     }
 
-    .slide-container {
+    .slide {
+      width: 1280px;
+      height: 720px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      background-image: linear-gradient(rgba(4, 9, 30, 0.9), rgba(4, 9, 30, 0.97)), url('images/ai_technology.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #E0E0E0;
+      padding: 50px 60px; /* Increased padding to ensure all content is within the safe area */
+    }
+
+    .header {
+      width: 100%;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 34px; /* Slightly adjusted font size for better fit */
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin: 0;
+      color: #FFFFFF;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
+    }
+    
+    .header h1 span {
+      color: #F5C518; /* Gold accent color */
+    }
+
+    .features-grid {
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 24px; /* Adjusted gap for better spacing */
+      flex-grow: 1;
       justify-content: center;
-      width: 100%;
-      max-width: 950px;
-      padding: 40px;
-      box-sizing: border-box;
     }
 
-    .title-container {
+    .features-row {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      width: 100%;
+    }
+
+    .feature-card {
+      background-color: rgba(13, 37, 63, 0.6);
+      border: 1px solid rgba(0, 191, 255, 0.3);
+      border-radius: 12px;
+      padding: 18px;
       text-align: center;
-      margin-bottom: 48px;
+      width: 250px;
+      height: 165px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 0 15px rgba(0, 191, 255, 0.1);
     }
     
-    .title-icon {
-      width: 48px;
-      height: 48px;
-      color: #0d2a4c;
-      margin-bottom: 8px;
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(0, 191, 255, 0.4);
+      border-color: rgba(0, 191, 255, 0.6);
     }
 
-    h1 {
-      font-size: 48px;
+    .icon-container {
+      margin-bottom: 12px;
+      position: relative;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .icon-outer-ring {
+      width: 36px;
+      height: 36px;
+      border: 1.5px solid rgba(245, 197, 24, 0.7);
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .icon-inner-ring {
+      width: 26px;
+      height: 26px;
+      border: 1px solid rgba(245, 197, 24, 0.5);
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .icon-core {
+      width: 12px;
+      height: 12px;
+      background-color: #F5C518;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #F5C518;
+    }
+
+    .feature-card h3 {
+      font-size: 16px;
       font-weight: 700;
-      color: #0d2a4c;
-      margin: 0;
+      color: #FFFFFF;
+      margin: 0 0 8px 0;
       line-height: 1.2;
     }
 
-    .guarantees-list {
-      list-style: none;
-      padding: 0;
+    .feature-card p {
+      font-size: 12px;
+      color: #A8B2D1;
+      line-height: 1.4;
       margin: 0;
+    }
+
+    .footer {
       width: 100%;
       display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .guarantees-list li {
-      display: flex;
+      justify-content: space-between;
       align-items: center;
-      background-color: #ffffff;
-      border-radius: 12px;
-      padding: 18px 24px;
-      box-shadow: 0 6px 20px rgba(13, 42, 76, 0.08);
-      font-size: 20px;
-      font-weight: 500;
-      color: #0d2a4c;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.5s ease-out forwards;
+      font-family: 'Orbitron', sans-serif;
     }
-    
-    .guarantees-list li:nth-child(1) { animation-delay: 0.2s; }
-    .guarantees-list li:nth-child(2) { animation-delay: 0.3s; }
-    .guarantees-list li:nth-child(3) { animation-delay: 0.4s; }
-    .guarantees-list li:nth-child(4) { animation-delay: 0.5s; }
-    .guarantees-list li:nth-child(5) { animation-delay: 0.6s; }
 
-    .checkmark-icon {
-      flex-shrink: 0;
-      width: 28px;
-      height: 28px;
-      margin-right: 20px;
+    .footer .value {
+      font-size: 22px;
+      font-weight: 900;
+      color: #F5C518;
+      letter-spacing: 1px;
     }
-    
-    .text-highlight {
-      color: #3b82f6;
-      font-weight: 600;
-    }
-    
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+
+    .footer .powered-by {
+      font-size: 14px;
+      font-weight: 700;
+      color: #A8B2D1;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
   </style>
 </head>
 <body>
-  <div class="slide-container">
-    <div class="title-container">
-      <svg class="title-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
-      </svg>
-      <h1>Risk Mitigation & Guarantees</h1>
-    </div>
+  <div class="slide">
+    <header class="header">
+      <h1>7 Powerful AI Features Included <span>($4,500 Value)</span></h1>
+    </header>
 
-    <ul class="guarantees-list">
-      <li>
-        <svg class="checkmark-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="12" r="12" fill="#22c55e"/>
-          <path d="M17.27 8.73a1 1 0 00-1.42 0l-5.14 5.13-2.13-2.12a1 1 0 00-1.42 1.42l2.84 2.83a1 1 0 001.42 0l5.85-5.83a1 1 0 000-1.42z" fill="white"/>
-        </svg>
-        90-Day Bug-Fix Warranty
-      </li>
-      <li>
-        <svg class="checkmark-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="12" r="12" fill="#22c55e"/>
-          <path d="M17.27 8.73a1 1 0 00-1.42 0l-5.14 5.13-2.13-2.12a1 1 0 00-1.42 1.42l2.84 2.83a1 1 0 001.42 0l5.85-5.83a1 1 0 000-1.42z" fill="white"/>
-        </svg>
-        Milestone-Based Payments for Risk Management
-      </li>
-      <li>
-        <svg class="checkmark-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="12" r="12" fill="#22c55e"/>
-          <path d="M17.27 8.73a1 1 0 00-1.42 0l-5.14 5.13-2.13-2.12a1 1 0 00-1.42 1.42l2.84 2.83a1 1 0 001.42 0l5.85-5.83a1 1 0 000-1.42z" fill="white"/>
-        </svg>
-        Regular Progress Updates & Transparent Communication
-      </li>
-      <li>
-        <svg class="checkmark-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="12" r="12" fill="#22c55e"/>
-          <path d="M17.27 8.73a1 1 0 00-1.42 0l-5.14 5.13-2.13-2.12a1 1 0 00-1.42 1.42l2.84 2.83a1 1 0 001.42 0l5.85-5.83a1 1 0 000-1.42z" fill="white"/>
-        </svg>
-        Source Code Escrow for Full Protection
-      </li>
-      <li>
-        <svg class="checkmark-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="12" r="12" fill="#22c55e"/>
-          <path d="M17.27 8.73a1 1 0 00-1.42 0l-5.14 5.13-2.13-2.12a1 1 0 00-1.42 1.42l2.84 2.83a1 1 0 001.42 0l5.85-5.83a1 1 0 000-1.42z" fill="white"/>
-        </svg>
-        Performance Guarantees (&lt;200ms Response Time)
-      </li>
-    </ul>
+    <main class="features-grid">
+      <div class="features-row">
+        <div class="feature-card">
+          <div class="icon-container">
+            <div class="icon-outer-ring"></div><div class="icon-inner-ring"></div><div class="icon-core"></div>
+          </div>
+          <h3>Smart Ticket Assignment</h3>
+          <p>AI assigns tickets to the right person automatically. Skills matching & availability optimization.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon-container">
+            <div class="icon-outer-ring"></div><div class="icon-inner-ring"></div><div class="icon-core"></div>
+          </div>
+          <h3>Equipment Failure Prediction</h3>
+          <p>AI warns before equipment breakdowns occur. Predictive maintenance scheduling.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon-container">
+            <div class="icon-outer-ring"></div><div class="icon-inner-ring"></div><div class="icon-core"></div>
+          </div>
+          <h3>Intelligent Scheduling & Routing</h3>
+          <p>AI optimizes routes and timing for maximum efficiency. Resource allocation optimization.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon-container">
+            <div class="icon-outer-ring"></div><div class="icon-inner-ring"></div><div class="icon-core"></div>
+          </div>
+          <h3>Pro Communication Assistant</h3>
+          <p>AI helps write professional emails and responses. Customer communication enhancement.</p>
+        </div>
+      </div>
+      <div class="features-row">
+        <div class="feature-card">
+          <div class="icon-container">
+            <div class="icon-outer-ring"></div><div class="icon-inner-ring"></div><div class="icon-core"></div>
+          </div>
+          <h3>Knowledge Base Creation</h3>
+          <p>AI turns solutions into reusable knowledge guides. Continuous learning system.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon-container">
+            <div class="icon-outer-ring"></div><div class="icon-inner-ring"></div><div class="icon-core"></div>
+          </div>
+          <h3>Customer Satisfaction Monitoring</h3>
+          <p>AI tracks and analyzes customer happiness metrics. Proactive satisfaction management.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon-container">
+            <div class="icon-outer-ring"></div><div class="icon-inner-ring"></div><div class="icon-core"></div>
+          </div>
+          <h3>Smart Pricing Optimization</h3>
+          <p>AI suggests optimal pricing based on market data. Profit margin optimization.</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="value">AI Integration Value: $4,500</div>
+      <div class="powered-by">All Powered by GPT-5 Technology</div>
+    </footer>
   </div>
 </body>
 </html>

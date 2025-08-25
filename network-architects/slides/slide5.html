@@ -3,181 +3,340 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Competitive Pricing Advantage</title>
+  <title>Module 2 - Organization Management</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-    body {
+    body, html {
       margin: 0;
       padding: 0;
-      width: 1280px;
-      height: 720px;
-      background-color: #020c1b;
-      font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
-      overflow: hidden;
+      width: 100%;
+      height: 100%;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+      background-color: #e0e0e0;
+      font-family: 'Poppins', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
     }
 
     .slide {
       width: 1280px;
       height: 720px;
-      box-sizing: border-box;
-      background: radial-gradient(circle, #0a192f 0%, #020c1b 100%);
-      color: #e6f1ff;
+      background-color: #f8f9fa;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 40px 60px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
 
-    .title {
-      font-size: 44px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #ffffff;
-      margin-bottom: 40px;
-      animation: fadeInDown 0.8s ease-out;
-    }
-
-    .comparison-container {
+    .header {
+      background-color: #0d214c;
+      color: white;
+      padding: 18px 40px;
       display: flex;
-      justify-content: center;
-      gap: 40px;
-      width: 100%;
-      margin-bottom: 30px;
-      animation: fadeInUp 0.8s 0.2s ease-out both;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .header .price {
+      font-size: 32px;
+      font-weight: 700;
+      color: #ffd700;
+    }
+
+    .content {
+      flex-grow: 1;
+      padding: 24px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto 1fr;
+      gap: 24px;
     }
 
     .card {
-      background: rgba(10, 25, 47, 0.7);
-      border: 1px solid rgba(63, 114, 175, 0.4);
-      border-radius: 16px;
-      padding: 25px 35px;
-      width: 360px;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(5px);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-color: #ffffff;
+      border: 1px solid #e9ecef;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card h2 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #495057;
+      margin: 0 0 15px 0;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #dee2e6;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 15px;
+      color: #343a40;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .feature-list li:last-child {
+      margin-bottom: 0;
     }
     
-    .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    .feature-list li::before {
+      content: '✓';
+      color: #28a745;
+      font-weight: bold;
+      font-size: 18px;
+      margin-right: 12px;
     }
 
-    .card-title {
-      font-size: 24px;
+    /* Right column specific layout */
+    .right-column-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      grid-row: 1 / span 3; /* Span all three rows */
+    }
+    
+    .right-column-container .card {
+        flex-grow: 1;
+    }
+
+    /* Organization Chart */
+    .org-chart-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 10px;
+    }
+    .org-node {
+      border: 2px solid #adb5bd;
+      padding: 8px 16px;
+      border-radius: 8px;
+      background-color: #f8f9fa;
+      color: #495057;
+      font-size: 14px;
+      position: relative;
+    }
+    .connector {
+      width: 20px;
+      height: 2px;
+      background-color: #adb5bd;
+    }
+
+    /* User Roles */
+    .user-roles-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding-top: 10px;
+    }
+    .role-btn {
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-size: 14px;
       font-weight: 600;
-      color: #ccd6f6;
-      margin: 0 0 15px 0;
+      border: 2px solid transparent;
+      transition: all 0.2s ease-in-out;
+    }
+    .role-btn.admin {
+      background-color: #e9ecef;
+      color: #0d214c;
+      border-color: #0d214c;
+    }
+    .role-btn.manager {
+      background-color: #0d214c;
+      color: #ffffff;
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(13, 33, 76, 0.3);
+    }
+    .role-btn.tech {
+      background-color: #e9ecef;
+      color: #6c757d;
     }
 
-    .price {
-      font-size: 56px;
-      font-weight: 800;
-      margin: 0 0 10px 0;
-      line-height: 1.1;
+    /* Security Features */
+    .security-features-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      text-align: center;
+      padding-top: 5px;
     }
-
-    .price.advantage {
-      color: #64ffda;
-      text-shadow: 0 0 15px rgba(100, 255, 218, 0.4);
+    .security-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-
-    .price.market {
-      color: #ff79c6;
-      text-shadow: 0 0 15px rgba(255, 121, 198, 0.4);
-    }
-
-    .card-subtitle {
-      font-size: 16px;
-      color: #8892b0;
-      height: 40px;
+    .security-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #e7f5ff;
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-bottom: 10px;
+      border: 2px solid #b3d7ff;
+    }
+    .security-icon svg {
+        width: 24px;
+        height: 24px;
+        stroke: #0056b3;
+        stroke-width: 1.5;
+    }
+    .security-item span {
+      font-size: 13px;
+      color: #495057;
+      max-width: 90px;
     }
 
-    .value-added {
-      background: rgba(23, 42, 69, 0.8);
-      border-radius: 8px;
-      padding: 15px 30px;
-      font-size: 18px;
-      font-weight: 500;
-      width: auto;
-      max-width: 760px;
-      margin-bottom: 40px;
-      border: 1px solid rgba(63, 114, 175, 0.3);
-      animation: fadeInUp 0.8s 0.4s ease-out both;
-    }
-
-    .roi-container {
-      animation: fadeInUp 0.8s 0.6s ease-out both;
-    }
-
-    .roi-text {
-      font-size: 36px;
-      font-weight: 500;
-      color: #ccd6f6;
-    }
-
-    .roi-highlight {
-      font-size: 76px;
-      font-weight: 800;
-      color: #FFD700;
-      text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
-      margin: 0 10px;
-    }
-
-    .roi-subtitle {
-      font-size: 16px;
-      color: #8892b0;
-      margin-top: 5px;
+    /* Business Impact Section */
+    .impact-card {
+      grid-column: 1 / -1; /* Span both columns */
+      background-color: #fffbeb;
+      border: 1px solid #ffeeba;
     }
     
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
+    .impact-card h2 {
+      color: #856404;
+      border-bottom-color: #ffeeba;
     }
     
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    .impact-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 20px;
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+    }
+
+    .impact-list li {
+      font-size: 15px;
+      color: #594500;
+      display: flex;
+      align-items: center;
+    }
+    
+    .impact-list li::before {
+      content: '▶';
+      font-size: 12px;
+      color: #856404;
+      margin-right: 10px;
     }
 
   </style>
 </head>
 <body>
+
   <div class="slide">
-    <h1 class="title">Competitive Pricing Advantage</h1>
-    
-    <div class="comparison-container">
-      <div class="card">
-        <h2 class="card-title">Launch Media Labs</h2>
-        <p class="price advantage">$40,000</p>
-        <p class="card-subtitle">All-inclusive with 3-year maintenance</p>
-      </div>
-      <div class="card">
-        <h2 class="card-title">Typical Market</h2>
-        <p class="price market">$60,000-<br>100,000+</p>
-        <p class="card-subtitle">without maintenance</p>
-      </div>
+    <div class="header">
+      <h1>Module 2 - Organization Management</h1>
+      <span class="price">$3,500</span>
     </div>
-    
-    <div class="value-added">
-      Value Added: Modern architecture + AI + Maintenance = Superior value
-    </div>
-    
-    <div class="roi-container">
-      <p class="roi-text">
-        ROI: <span class="roi-highlight">24X</span> return in 3 years
-      </p>
-      <p class="roi-subtitle">(optimistic scenario)</p>
+
+    <div class="content">
+      <div class="card">
+        <h2>Multiple Companies Support</h2>
+        <ul class="feature-list">
+          <li>Each company's data kept completely separate</li>
+          <li>Custom logos and branding per organization</li>
+          <li>Industry-specific settings and configurations</li>
+          <li>White-label capability</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>User Management System</h2>
+        <ul class="feature-list">
+          <li>Comprehensive user roles (Admin, Manager, Technician)</li>
+          <li>Activity tracking and audit logs</li>
+          <li>Team and department management</li>
+          <li>Permission-based access control</li>
+          <li>User onboarding workflows</li>
+        </ul>
+      </div>
+      
+      <div class="right-column-container">
+        <div class="card">
+            <h2>Organization Chart Visualization</h2>
+            <div class="org-chart-container">
+              <div class="org-node">Org A</div>
+              <div class="connector"></div>
+              <div class="org-node">Org B</div>
+              <div class="connector"></div>
+              <div class="org-node">Org C</div>
+            </div>
+        </div>
+        <div class="card">
+            <h2>User Role Hierarchy</h2>
+            <div class="user-roles-container">
+              <div class="role-btn admin">Admin</div>
+              <div class="role-btn manager">Manager</div>
+              <div class="role-btn tech">Technician</div>
+            </div>
+        </div>
+        <div class="card">
+            <h2>Security Features</h2>
+            <div class="security-features-container">
+              <div class="security-item">
+                <div class="security-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 1.5v21m-8.25-6.75h16.5" />
+                  </svg>
+                </div>
+                <span>Multi-tenant Data Isolation</span>
+              </div>
+              <div class="security-item">
+                <div class="security-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />
+                  </svg>
+                </div>
+                <span>Role-Based Security</span>
+              </div>
+              <div class="security-item">
+                <div class="security-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                  </svg>
+                </div>
+                <span>Encrypted Data Storage</span>
+              </div>
+            </div>
+        </div>
+      </div>
+      
+      <div class="card impact-card">
+        <h2>Business Impact</h2>
+        <ul class="impact-list">
+          <li>Scalable multi-client platform</li>
+          <li>Secure data separation</li>
+          <li>Professional client management</li>
+          <li>Streamlined user administration</li>
+        </ul>
+      </div>
+
     </div>
   </div>
+
 </body>
 </html>

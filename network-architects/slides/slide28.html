@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Terms & Risk Management</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      width: 1280px;
+      height: 720px;
+      background-color: #FFFFFF;
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .slide-container {
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      padding: 40px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .main-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: #0A2342;
+      margin: 0 0 40px 0;
+      text-align: center;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      width: 100%;
+      gap: 60px;
+      flex-grow: 1;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .column-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #0A2342;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #0A2342;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+    }
+
+    /* Left Column: Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 25px;
+    }
+    
+    .timeline::before {
+        content: '';
+        position: absolute;
+        left: 5px;
+        top: 10px;
+        bottom: 10px;
+        width: 2px;
+        background-color: #D4E2F2;
+    }
+
+    .milestone {
+      position: relative;
+      margin-bottom: 18px;
+    }
+
+    .milestone:last-child {
+        margin-bottom: 0;
+    }
+
+    .milestone::before {
+      content: '✓';
+      position: absolute;
+      left: -26px;
+      top: 0px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: #0A2342;
+      color: #FFFFFF;
+      font-weight: bold;
+      font-size: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+      border: 2px solid #FFFFFF;
+      box-sizing: border-box;
+    }
+
+    .milestone h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #0A2342;
+      margin: 0 0 4px 0;
+    }
+    
+    .milestone .payment {
+      font-size: 15px;
+      font-weight: 600;
+      color: #C09A50;
+      margin-bottom: 8px;
+    }
+
+    .milestone ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .milestone li {
+      font-size: 13px;
+      line-height: 1.5;
+      color: #4F4F4F;
+      padding-left: 15px;
+      position: relative;
+    }
+    
+    .milestone li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: #0A2342;
+    }
+
+    /* Right Column: Cards */
+    .risk-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      height: 100%;
+    }
+
+    .risk-card {
+      background-color: #F5F7FA;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .risk-card h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #0A2342;
+      margin: 0 0 10px 0;
+    }
+
+    .risk-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    .risk-card li {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #4F4F4F;
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 5px;
+    }
+
+    .risk-card li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #27AE60;
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <h1 class="main-title">Payment Terms & Risk Management</h1>
+    <div class="content-grid">
+      <div class="column">
+        <h2 class="column-title">Structured Payment Schedule</h2>
+        <div class="timeline">
+          <div class="milestone">
+            <h4>Project Initiation</h4>
+            <p class="payment">25% - $10,000 SGD</p>
+            <ul>
+              <li>Contract signing and project kickoff</li>
+              <li>Requirements gathering completion</li>
+              <li>Architecture design approval</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <h4>Milestone 1 (Month 1)</h4>
+            <p class="payment">25% - $10,000 SGD</p>
+            <ul>
+              <li>Core system foundation complete</li>
+              <li>Multi-tenant architecture operational</li>
+              <li>Basic dashboard and user management</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <h4>Milestone 2 (Month 2)</h4>
+            <p class="payment">25% - $10,000 SGD</p>
+            <ul>
+              <li>Business modules implementation</li>
+              <li>Integration features complete</li>
+              <li>Testing and validation successful</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <h4>Project Completion</h4>
+            <p class="payment">25% - $10,000 SGD</p>
+            <ul>
+              <li>Final delivery and acceptance</li>
+              <li>Documentation handover</li>
+              <li>Training completion</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <h2 class="column-title">Comprehensive Risk Mitigation</h2>
+        <div class="risk-grid">
+          <div class="risk-card">
+            <h4>Financial Risk Protection</h4>
+            <ul>
+              <li>Milestone-based payments reduce exposure</li>
+              <li>Payment only after deliverable approval</li>
+              <li>Source code escrow protection</li>
+              <li>Performance guarantees included</li>
+            </ul>
+          </div>
+          <div class="risk-card">
+            <h4>Quality Assurance</h4>
+            <ul>
+              <li>90-day bug fix warranty included</li>
+              <li>Regular progress updates and demos</li>
+              <li>Client approval at each milestone</li>
+              <li>Change management process defined</li>
+            </ul>
+          </div>
+          <div class="risk-card">
+            <h4>Project Risk Management</h4>
+            <ul>
+              <li>Detailed project plan with buffers</li>
+              <li>Regular communication and reporting</li>
+              <li>Agile development methodology</li>
+              <li>Contingency plans for potential issues</li>
+            </ul>
+          </div>
+          <div class="risk-card">
+            <h4>Legal Protection</h4>
+            <ul>
+              <li>Comprehensive service agreement</li>
+              <li>Intellectual property transfer</li>
+              <li>Confidentiality and data protection</li>
+              <li>Clear scope and deliverable definitions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

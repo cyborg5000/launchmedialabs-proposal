@@ -3,246 +3,280 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Revenue Model Presentation</title>
+  <title>Module 3 - Customer & Supplier Management</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
     body {
       margin: 0;
       padding: 0;
-      background-color: #f0f0f0;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      font-family: 'Poppins', sans-serif;
+      background-color: #f0f2f5;
+      font-family: 'Poppins', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
     }
 
     .slide {
       width: 1280px;
       height: 720px;
-      background: radial-gradient(circle at 80% 20%, #1c2b4a, #0d1424);
+      background-color: #ffffff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 60px 80px;
-      box-sizing: border-box;
-      position: relative;
       overflow: hidden;
-    }
-
-    .title {
-      color: #FFFFFF;
-      font-size: 48px;
-      font-weight: 700;
-      text-align: center;
-      margin: 0 0 60px 0;
-      animation: fadeInDown 1s ease-out;
-    }
-    
-    .title span {
-      color: #FBBF24;
-    }
-
-    .chart-container {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-around;
-      width: 100%;
-      height: 420px;
       position: relative;
     }
 
-    .path-arrow {
-      position: absolute;
-      bottom: -15%;
-      left: -10%;
-      width: 120%;
-      height: 300px;
-      background: linear-gradient(15deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 50%);
-      z-index: 1;
-      transform: translateY(0);
+    .header {
+      background-color: #001f3f; /* Navy Blue */
+      color: white;
+      text-align: center;
+      padding: 18px 0;
+      flex-shrink: 0;
+      z-index: 10;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: 1px;
     }
     
-    .arrow-chevron {
-      position: absolute;
-      width: 120px;
-      height: 120px;
-      opacity: 0.1;
-      z-index: 1;
+    .content-wrapper {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 25px 50px;
     }
 
-    .arrow-chevron::before, .arrow-chevron::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 20px;
-      background-color: #fff;
-      transform: rotate(30deg);
-    }
-    .arrow-chevron::after {
-      transform: rotate(-30deg);
-      top: 35px;
+    .columns-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
     }
 
-    .chevron-1 {
-      bottom: 220px;
-      left: 35%;
-    }
-
-    .chevron-2 {
-      bottom: 120px;
-      left: 55%;
-    }
-
-
-    .bar-wrapper {
+    .column {
+      flex: 1;
       display: flex;
       flex-direction: column;
+      animation: fadeInUp 0.6s ease-out forwards;
+      opacity: 0;
+    }
+    
+    .column:nth-child(1) { animation-delay: 0.2s; }
+    .column:nth-child(2) { animation-delay: 0.4s; }
+    .column:nth-child(3) { animation-delay: 0.6s; }
+
+    .column-header {
+      display: flex;
       align-items: center;
-      text-align: center;
-      width: 20%;
-      z-index: 2;
-      position: relative;
+      border-bottom: 2px solid #001f3f;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
     }
 
-    .bar-label-top {
-      color: #FFFFFF;
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 10px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 1s ease-out forwards;
+    .column-header .icon {
+      width: 36px;
+      height: 36px;
+      margin-right: 15px;
+      fill: #001f3f;
     }
 
-    .bar {
-      width: 100px;
-      background: linear-gradient(to top, #EAB308, #FBBF24);
-      border-radius: 8px 8px 0 0;
-      transform-origin: bottom;
-      animation: grow 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-      box-shadow: 0 0 15px rgba(251, 191, 36, 0.3);
-    }
-
-    .bar-label-bottom {
-      color: #FFFFFF;
-      margin-top: 15px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 1s ease-out forwards;
-    }
-
-    .bar-label-bottom .period {
+    .column-header h2 {
+      color: #001f3f;
       font-size: 20px;
       font-weight: 600;
+      margin: 0;
     }
 
-    .bar-label-bottom .description {
-      font-size: 14px;
-      color: #a0aec0;
+    .column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      color: #333;
+      font-size: 15px;
+    }
+
+    .column li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .column li .checkmark {
+      color: #0056b3;
+      font-weight: bold;
+      margin-right: 10px;
       margin-top: 2px;
     }
     
-    #bar-1 { height: 80px; animation-delay: 0.2s; }
-    #bar-2 { height: 180px; animation-delay: 0.4s; }
-    #bar-3 { height: 300px; animation-delay: 0.6s; }
-    #bar-4 { height: 400px; animation-delay: 0.8s; }
-    
-    .bar-wrapper:nth-of-type(1) .bar-label-top,
-    .bar-wrapper:nth-of-type(1) .bar-label-bottom { animation-delay: 1.2s; }
-    .bar-wrapper:nth-of-type(2) .bar-label-top,
-    .bar-wrapper:nth-of-type(2) .bar-label-bottom { animation-delay: 1.4s; }
-    .bar-wrapper:nth-of-type(3) .bar-label-top,
-    .bar-wrapper:nth-of-type(3) .bar-label-bottom { animation-delay: 1.6s; }
-    .bar-wrapper:nth-of-type(4) .bar-label-top,
-    .bar-wrapper:nth-of-type(4) .bar-label-bottom { animation-delay: 1.8s; }
-
-    .strategy-box {
-      margin-top: auto; /* Pushes to the bottom */
-      border: 1px solid #EAB308;
-      border-radius: 8px;
-      padding: 10px 20px;
-      color: #FFFFFF;
-      font-size: 18px;
-      font-weight: 500;
-      background-color: rgba(234, 179, 8, 0.1);
-      z-index: 2;
-      opacity: 0;
-      animation: fadeInUp 1s ease-out forwards;
-      animation-delay: 2s;
-    }
-    
-    @keyframes grow {
-      from { transform: scaleY(0); }
-      to { transform: scaleY(1); }
+    .diagram-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 0 10px 0;
+        position: relative;
+        flex-grow: 1;
+        min-height: 150px;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .node {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #555;
+        font-weight: 600;
+        font-size: 14px;
+        z-index: 5;
     }
     
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
+    .node .icon {
+        width: 48px;
+        height: 48px;
+        fill: #555;
+        margin-bottom: 5px;
+    }
+    
+    .central-db {
+        background-color: #001f3f;
+        border-radius: 50%;
+        padding: 15px;
+        margin: 0 80px;
+        box-shadow: 0 0 15px rgba(0, 31, 63, 0.3);
+    }
+    
+    .central-db .icon {
+        width: 50px;
+        height: 50px;
+        fill: #fff;
+    }
+
+    .diagram-container::before {
+        content: '';
+        position: absolute;
+        height: 2px;
+        width: 30%;
+        background: #ced4da;
+        left: 15%;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+    }
+
+    .diagram-container::after {
+        content: '';
+        position: absolute;
+        height: 2px;
+        width: 30%;
+        background: #ced4da;
+        right: 15%;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+    }
+
+
+    .footer {
+      text-align: right;
+      padding: 0 50px 25px 50px;
+      flex-shrink: 0;
+    }
+
+    .investment {
+      font-size: 34px;
+      font-weight: 700;
+      color: #001f3f;
+    }
+
+    .investment .price {
+      color: #D4AF37; /* Gold Accent */
+      margin-left: 15px;
     }
     
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
   </style>
 </head>
 <body>
   <div class="slide">
-    <h1 class="title">Revenue Model – Path to <span>$480K Annual</span></h1>
-    
-    <div class="chart-container">
-      <div class="path-arrow"></div>
-      <div class="arrow-chevron chevron-1"></div>
-      <div class="arrow-chevron chevron-2"></div>
-      
-      <div class="bar-wrapper">
-        <div class="bar-label-top">Break-even</div>
-        <div class="bar" id="bar-1"></div>
-        <div class="bar-label-bottom">
-          <div class="period">Month 10</div>
-          <div class="description">100 customers × $40/mo</div>
-        </div>
-      </div>
-      
-      <div class="bar-wrapper">
-        <div class="bar-label-top">$72K - $144K</div>
-        <div class="bar" id="bar-2"></div>
-        <div class="bar-label-bottom">
-          <div class="period">Year 1</div>
-          <div class="description">Revenue</div>
-        </div>
-      </div>
-      
-      <div class="bar-wrapper">
-        <div class="bar-label-top">$240K - $336K</div>
-        <div class="bar" id="bar-3"></div>
-        <div class="bar-label-bottom">
-          <div class="period">Year 2</div>
-          <div class="description">Revenue</div>
-        </div>
-      </div>
-      
-      <div class="bar-wrapper">
-        <div class="bar-label-top">$480,000</div>
-        <div class="bar" id="bar-4"></div>
-        <div class="bar-label-bottom">
-          <div class="period">Year 3</div>
-          <div class="description">Revenue Potential</div>
-        </div>
-      </div>
+    <div class="header">
+      <h1>Module 3 - Customer & Supplier Management</h1>
     </div>
-    
-    <div class="strategy-box">
-      Volume Strategy: 80-90% cheaper than competitors
+
+    <div class="content-wrapper">
+      <div class="columns-container">
+        <div class="column">
+          <div class="column-header">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            <h2>CUSTOMER MANAGEMENT</h2>
+          </div>
+          <ul>
+            <li><span class="checkmark">✓</span>Centralized customer information database</li>
+            <li><span class="checkmark">✓</span>Complete interaction history tracking</li>
+            <li><span class="checkmark">✓</span>Document attachments and file management</li>
+            <li><span class="checkmark">✓</span>Custom fields for business-specific data</li>
+            <li><span class="checkmark">✓</span>Customer communication logs</li>
+            <li><span class="checkmark">✓</span>Service preferences and notes</li>
+          </ul>
+        </div>
+        <div class="column">
+          <div class="column-header">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+            <h2>SUPPLIER MANAGEMENT</h2>
+          </div>
+          <ul>
+            <li><span class="checkmark">✓</span>Performance tracking and ratings</li>
+            <li><span class="checkmark">✓</span>Multi-supplier quote comparisons</li>
+            <li><span class="checkmark">✓</span>Price comparison and analytics</li>
+            <li><span class="checkmark">✓</span>Supplier contact management</li>
+            <li><span class="checkmark">✓</span>Purchase history and patterns</li>
+          </ul>
+        </div>
+        <div class="column">
+          <div class="column-header">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83zM3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM14.06 6.19l.71-.71 2.83 2.83-.71.71-2.83-2.83z"/></svg>
+            <h2>EQUIPMENT TRACKING</h2>
+          </div>
+          <ul>
+            <li><span class="checkmark">✓</span>Comprehensive asset lists</li>
+            <li><span class="checkmark">✓</span>Complete service history</li>
+            <li><span class="checkmark">✓</span>Warranty information tracking</li>
+            <li><span class="checkmark">✓</span>Maintenance schedules</li>
+            <li><span class="checkmark">✓</span>Parts compatibility database</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="diagram-container">
+        <div class="node">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            Customer
+        </div>
+        <div class="node central-db">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 3C7.03 3 3 5.36 3 8.5c0 2.37 2.11 4.43 5 5.21V19c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-5.29c2.89-.78 5-2.84 5-5.21C21 5.36 16.97 3 12 3zm0 2c3.86 0 7 2.01 7 4.5S15.86 14 12 14s-7-2.01-7-4.5S8.14 5 12 5z"/></svg>
+        </div>
+        <div class="node">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+            Supplier
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="footer">
+      <span class="investment">Investment: <span class="price">$3,000</span></span>
     </div>
   </div>
 </body>

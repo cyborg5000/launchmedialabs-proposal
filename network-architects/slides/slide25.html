@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Competitor SaaS Pricing Analysis</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      background-color: #374151;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .slide {
+      width: 1280px;
+      height: 720px;
+      background-color: #F8F9FA;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .slide-header {
+      background-color: #0B2447;
+      color: #FFFFFF;
+      text-align: center;
+      padding: 18px 0;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      flex-shrink: 0;
+    }
+
+    .slide-content {
+      flex: 1;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 28px;
+    }
+    
+    .card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      border: 1px solid #E0E0E0;
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #0B2447;
+      margin: 0 0 15px 0;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #F3F4F6;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 9px 0;
+      font-size: 16px;
+      color: #374151;
+    }
+    
+    .list li:not(:last-child) {
+        border-bottom: 1px solid #F3F4F6;
+    }
+
+    .list .item-name {
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+    }
+
+    .list .icon {
+      font-weight: bold;
+      font-size: 22px;
+      width: 24px;
+      text-align: center;
+      margin-right: 12px;
+    }
+    
+    .icon-cross { color: #DC2626; }
+    .icon-check { color: #16A34A; }
+
+    .list .price {
+      font-weight: 600;
+      color: #1F2937;
+    }
+    
+    .price .note {
+      font-weight: 400;
+      color: #6B7280;
+      font-size: 14px;
+    }
+
+    /* Disruption Card */
+    .card-disruption {
+      background-color: #FFFBEB;
+      border: 2px solid #FBBF24;
+    }
+
+    .card-disruption .highlight-title {
+      font-size: 26px;
+      font-weight: 700;
+      color: #D97706;
+      text-align: center;
+      margin: 0 0 20px 0;
+    }
+
+    .comparison-box {
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+      margin-bottom: 25px;
+      flex-grow: 1;
+    }
+
+    .comparison-item {
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .comparison-item:first-of-type {
+      border-right: 1px dashed #D1D5DB;
+    }
+
+    .comparison-item .company-name {
+      font-size: 15px;
+      color: #4B5563;
+      margin-bottom: 8px;
+    }
+    
+    .comparison-item .price-value {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    
+    .comparison-item .price-st { color: #DC2626; }
+    .comparison-item .price-na { color: #16A34A; }
+    
+    .savings-box {
+      background-color: #16A34A;
+      color: #ffffff;
+      border-radius: 8px;
+      padding: 16px 20px;
+      text-align: center;
+      margin-top: auto;
+    }
+    
+    .savings-box .savings-monthly {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    
+    .savings-box .savings-annual {
+      font-size: 15px;
+      font-weight: 400;
+      opacity: 0.9;
+    }
+
+    /* Strategy Card */
+    .strategy-columns {
+      display: flex;
+      gap: 24px;
+      flex-grow: 1;
+    }
+    
+    .strategy-column { flex: 1; }
+    
+    .strategy-column h4 {
+      font-size: 17px;
+      font-weight: 600;
+      color: #D97706;
+      margin: 0 0 10px 0;
+    }
+    
+    .strategy-column ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+    
+    .strategy-column li {
+      font-size: 15px;
+      color: #4B5563;
+      margin-bottom: 8px;
+      line-height: 1.5;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .strategy-column li::before {
+      content: '✓';
+      color: #D97706;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 1px;
+    }
+
+    /* Footer */
+    .slide-footer {
+      background-color: #0B2447;
+      color: #FACC15;
+      text-align: center;
+      padding: 22px 0;
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <header class="slide-header">COMPETITOR SAAS PRICING ANALYSIS</header>
+
+    <main class="slide-content">
+      <div class="card card-leaders">
+        <h3>Current Market Leaders</h3>
+        <ul class="list">
+          <li>
+            <span class="item-name"><span class="icon icon-cross">&times;</span> ServiceTitan</span>
+            <span class="price">$300-$500/mo per user</span>
+          </li>
+          <li>
+            <span class="item-name"><span class="icon icon-cross">&times;</span> FieldEdge</span>
+            <span class="price">$200-$400/mo per user</span>
+          </li>
+          <li>
+            <span class="item-name"><span class="icon icon-cross">&times;</span> Jobber</span>
+            <span class="price">$150-$300/mo per user</span>
+          </li>
+          <li>
+            <span class="item-name"><span class="icon icon-cross">&times;</span> ServiceM8</span>
+            <span class="price">$100-$250/mo per user</span>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="card card-disruption">
+        <h2 class="highlight-title">80-90% CHEAPER than competitors!</h2>
+        <div class="comparison-box">
+          <div class="comparison-item">
+            <div class="company-name">ServiceTitan (5 users)</div>
+            <div class="price-value price-st">$1,500 - $2,500/mo</div>
+          </div>
+          <div class="comparison-item">
+            <div class="company-name">Network Architects</div>
+            <div class="price-value price-na">$40/mo</div>
+          </div>
+        </div>
+        <div class="savings-box">
+          <div class="savings-monthly">MONTHLY SAVINGS: $1,460 - $2,460</div>
+          <div class="savings-annual">ANNUAL SAVINGS: $17,520 - $29,520</div>
+        </div>
+      </div>
+
+      <div class="card card-pricing">
+        <h3>Network Architects Pricing</h3>
+        <ul class="list">
+          <li>
+            <span class="item-name"><span class="icon icon-check">&#10003;</span> Basic Plan</span>
+            <span class="price">$30/mo <span class="note">(entire org)</span></span>
+          </li>
+          <li>
+            <span class="item-name"><span class="icon icon-check">&#10003;</span> Professional Plan</span>
+            <span class="price">$40/mo <span class="note">(entire org)</span></span>
+          </li>
+          <li>
+            <span class="item-name"><span class="icon icon-check">&#10003;</span> Enterprise Plan</span>
+            <span class="price">$60/mo <span class="note">(entire org)</span></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card card-strategy">
+        <h3>Why The Volume Strategy Works</h3>
+        <div class="strategy-columns">
+          <div class="strategy-column">
+            <h4>Lower Sales Resistance</h4>
+            <ul>
+              <li>Easier budget approval</li>
+              <li>Faster decision-making</li>
+              <li>Higher conversion rates</li>
+            </ul>
+          </div>
+          <div class="strategy-column">
+            <h4>Viral Growth Potential</h4>
+            <ul>
+              <li>Customers refer others</li>
+              <li>Word-of-mouth marketing</li>
+              <li>Industry network effects</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="slide-footer">RESULT: MASSIVE COMPETITIVE MOAT</footer>
+  </div>
+</body>
+</html>

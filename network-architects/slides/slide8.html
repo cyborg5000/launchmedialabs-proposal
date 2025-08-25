@@ -3,230 +3,359 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Complete Feature Coverage</title>
+  <title>Module 5 - Contract Management</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-    body {
+    :root {
+      --navy-dark: #0d2036;
+      --navy-medium: #112a45;
+      --navy-light: #2a415c;
+      --gold: #fde047;
+      --gold-darker: #facc15;
+      --text-light: #e5e7eb;
+      --text-medium: #9ca3af;
+      --green: #4ade80;
+      --red: #f87171;
+      --pink: #ec4899;
+    }
+
+    * {
       margin: 0;
       padding: 0;
-      font-family: 'Roboto', 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-      background-color: #0a192f;
+      box-sizing: border-box;
+    }
+
+    body {
       display: flex;
-      align-items: center;
       justify-content: center;
-      height: 100vh;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #000;
+      font-family: 'Poppins', sans-serif;
     }
 
     .slide {
       width: 1280px;
       height: 720px;
-      background: radial-gradient(circle, #112240 0%, #0a192f 100%);
+      background-color: var(--navy-dark);
+      color: var(--text-light);
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 50px 60px;
-      box-sizing: border-box;
-      color: #ccd6f6;
+      padding: 40px 50px;
+      position: relative;
       overflow: hidden;
     }
 
-    .slide h1 {
-      font-size: 44px;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding: 0 10px;
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+
+    .header h1 {
+      font-size: 38px;
       font-weight: 700;
-      color: #ffffff;
-      margin: 0 0 40px 0;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-      border-bottom: 3px solid #4a69bd;
-      padding-bottom: 10px;
+      color: #fff;
     }
 
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      grid-template-rows: repeat(2, 1fr);
-      gap: 25px;
-      width: 100%;
-      height: 100%;
-      flex-grow: 1;
-    }
-
-    .grid-item {
-      background-color: rgba(17, 34, 64, 0.7);
-      border: 1px solid #233554;
+    .price-tag {
+      background-color: var(--gold-darker);
+      color: #000;
+      padding: 10px 22px;
+      font-size: 22px;
+      font-weight: 700;
       border-radius: 8px;
-      padding: 20px;
-      box-sizing: border-box;
+      box-shadow: 0 4px 10px rgba(250, 204, 21, 0.3);
+    }
+
+    .main-content {
+      flex-grow: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    .panel {
+      background-color: var(--navy-medium);
+      border: 1px solid var(--navy-light);
+      border-radius: 12px;
+      padding: 25px 30px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-      animation: fadeIn 0.5s ease-out forwards;
       opacity: 0;
+      animation: fadeIn 0.5s ease-out forwards;
+      overflow: hidden;
     }
 
-    .grid-item:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
-      border-color: #4a69bd;
-    }
+    .panel:nth-child(1) { animation-delay: 0.1s; }
+    .panel:nth-child(2) { animation-delay: 0.2s; }
+    .panel:nth-child(3) { animation-delay: 0.3s; }
+    .panel:nth-child(4) { animation-delay: 0.4s; }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    /* Animation delays for each item */
-    .grid-item:nth-child(1) { animation-delay: 0.1s; }
-    .grid-item:nth-child(2) { animation-delay: 0.15s; }
-    .grid-item:nth-child(3) { animation-delay: 0.2s; }
-    .grid-item:nth-child(4) { animation-delay: 0.25s; }
-    .grid-item:nth-child(5) { animation-delay: 0.3s; }
-    .grid-item:nth-child(6) { animation-delay: 0.35s; }
-    .grid-item:nth-child(7) { animation-delay: 0.4s; }
-    .grid-item:nth-child(8) { animation-delay: 0.45s; }
-    .grid-item:nth-child(9) { animation-delay: 0.5s; }
-    .grid-item:nth-child(10) { animation-delay: 0.55s; }
-
-    .feature-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background-color: rgba(74, 105, 189, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 15px;
+    .panel-title {
+      color: var(--gold-darker);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
       position: relative;
     }
 
-    .feature-icon::before {
+    .panel-title::after {
       content: '';
-      width: 18px;
-      height: 18px;
-      background-color: #6a89cc;
-      border-radius: 3px;
-      transition: transform 0.3s ease;
-    }
-    
-    .grid-item:hover .feature-icon::before {
-        transform: rotate(45deg) scale(1.1);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--gold-darker);
     }
 
-    .feature-text {
-      font-size: 15px;
-      font-weight: 300;
+    .panel ul {
+      list-style: none;
+      padding-left: 5px;
+    }
+
+    .panel li {
+      font-size: 16px;
+      color: var(--text-light);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: start;
+      gap: 12px;
       line-height: 1.4;
-      color: #a8b2d1;
-      margin: 0;
-      flex-grow: 1; /* Allow text to take up space */
+    }
+    
+    .panel li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* List styles */
+    .checklist li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    .circle-list li::before {
+      content: '';
+      display: block;
+      width: 10px;
+      height: 10px;
+      background-color: var(--gold-darker);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    .triangle-list li::before {
+      content: '▲';
+      color: var(--green);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    
+    /* Compliance & Reporting Panel */
+    .charts-container {
       display: flex;
+      flex-grow: 1;
+      justify-content: space-around;
+      align-items: flex-end;
+      padding-bottom: 10px;
+      gap: 30px;
+    }
+
+    .chart-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 45%;
+    }
+    
+    .chart-title {
+      font-size: 13px;
+      color: var(--text-medium);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    /* Bar Chart */
+    .bar-chart {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 15px;
+      height: 120px;
+      width: 100%;
+    }
+
+    @keyframes growBar {
+      from { transform: scaleY(0); }
+      to { transform: scaleY(1); }
+    }
+
+    .bar {
+      width: 22px;
+      background: linear-gradient(to top, var(--gold-darker), var(--gold));
+      border-radius: 4px 4px 0 0;
+      transform-origin: bottom;
+      animation: growBar 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+
+    .bar:nth-child(1) { height: 40%; animation-delay: 0.5s; }
+    .bar:nth-child(2) { height: 65%; animation-delay: 0.6s; }
+    .bar:nth-child(3) { height: 50%; animation-delay: 0.7s; }
+    .bar:nth-child(4) { height: 85%; animation-delay: 0.8s; }
+    .bar:nth-child(5) { height: 100%; animation-delay: 0.9s; }
+
+    /* Doughnut Chart */
+    .doughnut-chart-container {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      justify-content: center;
       align-items: center;
     }
     
-    .feature-text strong {
-        font-weight: 400;
-        color: #ccd6f6;
+    @keyframes spinChart {
+      from { transform: rotate(-90deg); opacity: 0;}
+      to { transform: rotate(0deg); opacity: 1;}
     }
 
-    .checkmark-wrapper {
-      width: 32px;
-      height: 32px;
+    .doughnut-chart {
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
-      background-color: rgba(46, 204, 113, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 15px; /* Pushes to the bottom */
-      flex-shrink: 0; /* Prevents shrinking */
+      background: conic-gradient(
+        var(--gold-darker) 0% 35%, 
+        var(--red) 35% 55%, 
+        var(--pink) 55% 95%,
+        var(--navy-light) 95% 100%
+      );
+      animation: spinChart 1s ease-out forwards;
+      animation-delay: 0.5s;
     }
 
-    .checkmark {
-      width: 7px;
-      height: 14px;
-      border: solid #2ecc71;
-      border-width: 0 3px 3px 0;
-      transform: rotate(45deg);
+    .doughnut-chart-center {
+      content: '95%';
+      position: absolute;
+      width: 85px;
+      height: 85px;
+      background-color: var(--navy-medium);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-light);
+    }
+    
+    /* Business Impact Panel */
+    .business-impact-content {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .investment-button {
+      margin-top: auto;
+      background-color: #374151;
+      color: white;
+      text-align: center;
+      padding: 12px 0;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      align-self: stretch;
     }
 
   </style>
 </head>
 <body>
-
   <div class="slide">
-    <h1>Complete Feature Coverage</h1>
-    <div class="grid-container">
-      
-      <div class="grid-item">
-        <div class="feature-icon"></div>
-        <p class="feature-text"><strong>1. Smart Dashboard</strong><br>with AI insights</p>
-        <div class="checkmark-wrapper"><div class="checkmark"></div></div>
-      </div>
-      
-      <div class="grid-item">
-        <div class="feature-icon"></div>
-        <p class="feature-text"><strong>2. Multi-company</strong><br>management</p>
-        <div class="checkmark-wrapper"><div class="checkmark"></div></div>
+    <header class="header">
+      <h1>Module 5 - Contract Management</h1>
+      <div class="price-tag">$3,500</div>
+    </header>
+
+    <main class="main-content">
+      <div class="panel">
+        <h2 class="panel-title">Contract Lifecycle Management</h2>
+        <ul class="checklist">
+          <li>SLA tracking and response time monitoring</li>
+          <li>Recurring contract management</li>
+          <li>Automatic renewal reminders</li>
+          <li>Contract value reporting and analytics</li>
+          <li>Compliance monitoring tools</li>
+        </ul>
       </div>
 
-      <div class="grid-item">
-        <div class="feature-icon"></div>
-        <p class="feature-text"><strong>3. Customer/Supplier</strong><br>management</p>
-        <div class="checkmark-wrapper"><div class="checkmark"></div></div>
+      <div class="panel">
+        <h2 class="panel-title">Project Management</h2>
+        <ul class="circle-list">
+          <li>Project milestone tracking</li>
+          <li>Timeline visualization</li>
+          <li>Progress reporting</li>
+          <li>Resource allocation tracking</li>
+          <li>Budget vs actual analysis</li>
+        </ul>
       </div>
 
-      <div class="grid-item">
-        <div class="feature-icon"></div>
-        <p class="feature-text"><strong>4. Quotation system</strong><br>with templates</p>
-        <div class="checkmark-wrapper"><div class="checkmark"></div></div>
+      <div class="panel">
+        <h2 class="panel-title">Compliance & Reporting</h2>
+        <div class="charts-container">
+          <div class="chart-wrapper">
+            <h3 class="chart-title">SLA Performance</h3>
+            <div class="bar-chart">
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+            </div>
+          </div>
+          <div class="chart-wrapper">
+            <h3 class="chart-title">Compliance</h3>
+            <div class="doughnut-chart-container">
+              <div class="doughnut-chart"></div>
+              <div class="doughnut-chart-center">95%</div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="grid-item">
-        <div class="feature-icon"></div>
-        <p class="feature-text"><strong>5. Contract management</strong><br>with SLA</p>
-        <div class="checkmark-wrapper"><div class="checkmark"></div></div>
+      <div class="panel">
+        <div class="business-impact-content">
+            <h2 class="panel-title">Business Impact</h2>
+            <ul class="triangle-list">
+              <li>Better contract visibility</li>
+              <li>Improved SLA compliance</li>
+              <li>Revenue optimization</li>
+              <li>Enhanced risk management</li>
+            </ul>
+            <div class="investment-button">One-Time Investment</div>
+        </div>
       </div>
-
-      <div class="grid-item">
-        <div class="feature-icon"></div>
-        <p class="feature-text"><strong>6. Invoice/Billing</strong><br>+ Xero/QB push</p>
-        <div class="checkmark-wrapper"><div class="checkmark"></div></div>
-      </div>
-
-      <div class="grid-item">
-        <div class="feature-icon"></div>
-        <p class="feature-text"><strong>7. Inventory</strong><br>management</p>
-        <div class="checkmark-wrapper"><div class="checkmark"></div></div>
-      </div>
-
-      <div class="grid-item">
-        <div class="feature-icon"></div>
-        <p class="feature-text"><strong>8. Advanced ticketing</strong><br>+ mobile</p>
-        <div class="checkmark-wrapper"><div class="checkmark"></div></div>
-      </div>
-
-      <div class="grid-item">
-        <div class="feature-icon"></div>
-        <p class="feature-text"><strong>9. Purchase orders</strong><br>+ RFQ</p>
-        <div class="checkmark-wrapper"><div class="checkmark"></div></div>
-      </div>
-
-      <div class="grid-item">
-        <div class="feature-icon"></div>
-        <p class="feature-text"><strong>10. Preventive maintenance</strong><br>+ AI prediction</p>
-        <div class="checkmark-wrapper"><div class="checkmark"></div></div>
-      </div>
-
-    </div>
+    </main>
   </div>
-
 </body>
 </html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feature Comparison - Before vs After</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    :root {
+      --navy-dark: #021024;
+      --navy-header: #052659;
+      --navy-light: #5471a4;
+      --gold-accent: #FFD700;
+      --text-light: #f0f8ff;
+      --text-muted: #a9a9a9;
+      --success-green: #28a745;
+      --danger-red: #dc3545;
+      --bg-cell: rgba(255, 255, 255, 0.05);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .slide {
+      width: 1280px;
+      height: 720px;
+      background: linear-gradient(135deg, var(--navy-dark), var(--navy-header));
+      color: var(--text-light);
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-header {
+      padding: 20px 50px 15px 50px;
+      text-align: center;
+      animation: slideUp 0.6s ease-out;
+    }
+
+    .slide-header h1 {
+      font-size: 32px;
+      margin: 0;
+      color: var(--navy-light);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      border-bottom: 2px solid var(--gold-accent);
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    .content-wrapper {
+      display: flex;
+      flex-grow: 1;
+      padding: 0 40px 10px 40px;
+      gap: 20px;
+    }
+    
+    .comparison-table {
+        flex: 3;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    
+    .table-header {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1fr;
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: var(--navy-light);
+        padding: 10px 0;
+        border-bottom: 1px solid var(--navy-light);
+        animation: slideUp 0.7s ease-out;
+    }
+    
+    .table-header .header-item:nth-child(2) { text-align: center; }
+    .table-header .header-item:nth-child(3) { text-align: center; }
+
+    .table-body {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-top: 10px;
+        overflow-y: auto;
+        padding-right: 10px;
+    }
+    
+    .table-body::-webkit-scrollbar { width: 4px; }
+    .table-body::-webkit-scrollbar-track { background: transparent; }
+    .table-body::-webkit-scrollbar-thumb { background: var(--navy-light); border-radius: 4px; }
+
+    .table-row {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1fr;
+        align-items: center;
+        background: var(--bg-cell);
+        border-radius: 6px;
+        font-size: 13px;
+        padding: 5px 10px;
+        min-height: 48px;
+        border-left: 4px solid transparent;
+        transition: all 0.3s ease;
+        opacity: 0;
+        animation: slideUp 0.5s ease-out forwards;
+    }
+    .table-row:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        border-left-color: var(--gold-accent);
+    }
+    
+    .feature-name { font-weight: 600; color: var(--text-light); }
+    .before-col { color: var(--text-muted); }
+    .after-col { color: var(--text-light); }
+
+    .before-col, .after-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2px;
+    }
+    
+    .icon { font-weight: 600; margin-right: 8px; }
+    .icon-before { color: var(--danger-red); }
+    .icon-after { color: var(--success-green); }
+    
+    .improvement {
+        font-weight: 600;
+        color: var(--gold-accent);
+    }
+    .improvement .icon { color: var(--gold-accent); }
+
+    .sidebar {
+        flex: 1.2;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding-left: 20px;
+        border-left: 1px solid rgba(84, 113, 164, 0.3);
+    }
+
+    .impact-box {
+        background: rgba(2, 16, 36, 0.5);
+        border-radius: 8px;
+        padding: 20px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        animation: slideUp 0.8s ease-out;
+    }
+    
+    .impact-box h2 {
+        font-size: 20px;
+        color: var(--navy-light);
+        margin: 0 0 15px 0;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    .impact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(2, 1fr);
+        gap: 15px;
+        flex-grow: 1;
+    }
+    
+    .impact-item {
+        background: var(--bg-cell);
+        border-radius: 6px;
+        padding: 15px;
+        font-size: 14px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        flex-direction: column;
+        line-height: 1.4;
+        transition: all 0.3s ease;
+        opacity: 0;
+        animation: slideUp 0.5s ease-out forwards;
+    }
+
+    .impact-item:hover {
+        transform: scale(1.05);
+        background: var(--navy-header);
+    }
+
+    .impact-item .icon {
+        font-size: 24px;
+        margin-bottom: 5px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <header class="slide-header">
+      <h1>Complete Platform Transformation</h1>
+    </header>
+
+    <div class="content-wrapper">
+      <div class="comparison-table">
+        <div class="table-header">
+          <div class="header-item">Feature</div>
+          <div class="header-item">Before</div>
+          <div class="header-item">After</div>
+        </div>
+        <div class="table-body">
+            <!-- Row 1 -->
+            <div class="table-row" style="animation-delay: 0.2s;">
+                <div class="feature-name">PERFORMANCE</div>
+                <div class="before-col"><span class="icon icon-before">❌</span>Slow, laggy responses</div>
+                <div class="after-col">
+                    <span><span class="icon icon-after">✓</span>&lt;200ms response time</span>
+                    <span class="improvement"><span class="icon">✓</span>1000% performance increase</span>
+                </div>
+            </div>
+            <!-- Row 2 -->
+            <div class="table-row" style="animation-delay: 0.25s;">
+                <div class="feature-name">MOBILE ACCESSIBILITY</div>
+                <div class="before-col"><span class="icon icon-before">❌</span>No mobile access</div>
+                <div class="after-col">
+                    <span><span class="icon icon-after">✓</span>Full mobile web applications</span>
+                    <span class="improvement"><span class="icon">✓</span>Complete capability (New)</span>
+                </div>
+            </div>
+            <!-- Row 3 -->
+            <div class="table-row" style="animation-delay: 0.3s;">
+                <div class="feature-name">ARTIFICIAL INTELLIGENCE</div>
+                <div class="before-col"><span class="icon icon-before">❌</span>No AI features</div>
+                <div class="after-col">
+                    <span><span class="icon icon-after">✓</span>GPT-5 integrated throughout</span>
+                    <span class="improvement"><span class="icon">✓</span>Revolutionary AI (Game-changer)</span>
+                </div>
+            </div>
+            <!-- Row 4 -->
+            <div class="table-row" style="animation-delay: 0.35s;">
+                <div class="feature-name">REVENUE GENERATION</div>
+                <div class="before-col"><span class="icon icon-before">❌</span>Internal tool, no revenue</div>
+                <div class="after-col">
+                    <span><span class="icon icon-after">✓</span>Multi-tenant SaaS platform</span>
+                    <span class="improvement"><span class="icon">✓</span>New revenue stream</span>
+                </div>
+            </div>
+            <!-- Row 5 -->
+            <div class="table-row" style="animation-delay: 0.4s;">
+                <div class="feature-name">SCALABILITY</div>
+                <div class="before-col"><span class="icon icon-before">❌</span>Limited users</div>
+                <div class="after-col">
+                    <span><span class="icon icon-after">✓</span>Unlimited scalability</span>
+                    <span class="improvement"><span class="icon">✓</span>Cloud-native architecture</span>
+                </div>
+            </div>
+            <!-- Row 6 -->
+            <div class="table-row" style="animation-delay: 0.45s;">
+                <div class="feature-name">USER EXPERIENCE</div>
+                <div class="before-col"><span class="icon icon-before">❌</span>Outdated UI & workflows</div>
+                <div class="after-col">
+                    <span><span class="icon icon-after">✓</span>Modern, intuitive UI/UX</span>
+                    <span class="improvement"><span class="icon">✓</span>100% UX enhancement</span>
+                </div>
+            </div>
+            <!-- Row 7 -->
+            <div class="table-row" style="animation-delay: 0.5s;">
+                <div class="feature-name">INTEGRATIONS</div>
+                <div class="before-col"><span class="icon icon-before">❌</span>Basic to no integrations</div>
+                <div class="after-col">
+                    <span><span class="icon icon-after">✓</span>Comprehensive 3rd-party APIs</span>
+                    <span class="improvement"><span class="icon">✓</span>5x more integration capabilities</span>
+                </div>
+            </div>
+            <!-- Row 8 -->
+            <div class="table-row" style="animation-delay: 0.55s;">
+                <div class="feature-name">AUTOMATION</div>
+                <div class="before-col"><span class="icon icon-before">❌</span>Manual processes</div>
+                <div class="after-col">
+                    <span><span class="icon icon-after">✓</span>Intelligent automation</span>
+                    <span class="improvement"><span class="icon">✓</span>80% process automation</span>
+                </div>
+            </div>
+            <!-- Row 9 -->
+            <div class="table-row" style="animation-delay: 0.6s;">
+                <div class="feature-name">MULTI-TENANCY</div>
+                <div class="before-col"><span class="icon icon-before">❌</span>Single organization use</div>
+                <div class="after-col">
+                    <span><span class="icon icon-after">✓</span>Multiple clients, data separation</span>
+                    <span class="improvement"><span class="icon">✓</span>Commercial SaaS ready (New)</span>
+                </div>
+            </div>
+            <!-- Row 10 -->
+            <div class="table-row" style="animation-delay: 0.65s;">
+                <div class="feature-name">REPORTING</div>
+                <div class="before-col"><span class="icon icon-before">❌</span>Basic or no reporting</div>
+                <div class="after-col">
+                    <span><span class="icon icon-after">✓</span>Advanced analytics & insights</span>
+                    <span class="improvement"><span class="icon">✓</span>Professional business intelligence</span>
+                </div>
+            </div>
+        </div>
+      </div>
+      
+      <div class="sidebar">
+        <div class="impact-box">
+            <h2>Transformation Impact</h2>
+            <div class="impact-grid">
+                <div class="impact-item" style="animation-delay: 0.7s;">
+                    <span class="icon icon-after">✓</span>From Cost Center<br>to Profit Center
+                </div>
+                <div class="impact-item" style="animation-delay: 0.75s;">
+                    <span class="icon icon-after">✓</span>From Internal Tool<br>to Market Solution
+                </div>
+                <div class="impact-item" style="animation-delay: 0.8s;">
+                    <span class="icon icon-after">✓</span>From Limitation<br>to Competitive Advantage
+                </div>
+                <div class="impact-item" style="animation-delay: 0.85s;">
+                    <span class="icon icon-after">✓</span>From Maintenance<br>to Growth Engine
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

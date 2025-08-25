@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Launch Media Labs - Partnership Commitment</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lato:wght@400;700&display=swap');
+
+    :root {
+      --navy-blue: #0A192F;
+      --light-navy: #172a46;
+      --slate: #8892b0;
+      --light-slate: #a8b2d1;
+      --lightest-slate: #ccd6f6;
+      --gold: #C9B474;
+      --white: #e6f1ff;
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Lato', sans-serif;
+      background-color: #000;
+    }
+
+    .slide {
+      width: 1280px;
+      height: 720px;
+      background-color: var(--navy-blue);
+      background-image: linear-gradient(rgba(10, 25, 47, 0.92), rgba(10, 25, 47, 0.92)), url('images/partnership.jpg');
+      background-size: cover;
+      background-position: center;
+      color: var(--light-slate);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 25px;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    .header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--white);
+      margin: 0;
+      letter-spacing: 2px;
+    }
+
+    .header p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      color: var(--gold);
+      margin: 5px 0 0;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .main-content {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr 1fr;
+      gap: 25px;
+      width: 100%;
+      max-width: 1120px;
+      align-items: start;
+    }
+    
+    .column {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .card {
+      background-color: rgba(23, 42, 68, 0.5);
+      border: 1px solid rgba(201, 180, 116, 0.3);
+      border-radius: 8px;
+      padding: 22px;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 4px 25px rgba(0,0,0,0.25);
+      animation: fadeInUp 1s ease-out;
+      animation-fill-mode: both;
+    }
+
+    .card-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(201, 180, 116, 0.2);
+      text-transform: uppercase;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .card ul li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    
+    .card ul li:last-child {
+        margin-bottom: 0;
+    }
+
+    .card ul li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: bold;
+      margin-right: 10px;
+      margin-top: 1px;
+    }
+    
+    .card ul li strong {
+        color: var(--lightest-slate);
+        font-weight: 700;
+        margin-right: 8px;
+        flex-shrink: 0;
+    }
+    
+    .contact-card .list-key { min-width: 90px; }
+    .support-card .list-key { min-width: 125px; }
+    .promise-card .list-key { min-width: 155px; }
+    .details-card .list-key { min-width: 110px; }
+    .action-card .list-key { min-width: 80px; }
+
+    .contact-card .contact-name {
+        font-family: 'Poppins', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--white);
+        margin-bottom: 5px;
+    }
+
+    .contact-card .contact-title {
+        font-size: 14px;
+        color: var(--light-slate);
+        margin-bottom: 15px;
+    }
+
+    .quote-box {
+      text-align: center;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      animation-delay: 0.2s;
+    }
+    
+    .quote-box .emoji {
+        font-size: 36px;
+    }
+
+    .quote-box p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--white);
+      margin: 8px 0;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-slogan {
+      background-color: transparent;
+      border: 1px solid var(--gold);
+      border-radius: 6px;
+      padding: 12px 20px;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--gold);
+      letter-spacing: 1px;
+      animation-delay: 0.6s;
+    }
+
+    .card.primary-contact { animation-delay: 0.1s; }
+    .card.secondary-support { animation-delay: 0.3s; }
+    .card.quote-box { animation-delay: 0.2s; }
+    .card.promise-card { animation-delay: 0.4s; }
+    .card.proposal-details { animation-delay: 0.15s; }
+    .card.next-action { animation-delay: 0.35s; }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="slide">
+  <div class="header">
+    <h1>LAUNCH MEDIA LABS PTE LTD</h1>
+    <p>YOUR STRATEGIC TECHNOLOGY PARTNER</p>
+  </div>
+
+  <div class="main-content">
+    
+    <div class="column">
+      <div class="card primary-contact contact-card">
+        <div class="card-title">Primary Contact</div>
+        <p class="contact-name">Samuel Chan</p>
+        <p class="contact-title">Business Development Director</p>
+        <ul>
+          <li><strong class="list-key">Email:</strong> hello@launchmedialabs.com</li>
+          <li><strong class="list-key">Direct Line:</strong> Available upon request</li>
+          <li><strong class="list-key">Location:</strong> Singapore</li>
+          <li><strong class="list-key">Timezone:</strong> SGT (Same as yours)</li>
+        </ul>
+      </div>
+      <div class="card secondary-support support-card">
+        <div class="card-title">Secondary Support</div>
+        <ul>
+          <li><strong class="list-key">Technical Team Lead:</strong> Available for technical discussions</li>
+          <li><strong class="list-key">Project Manager:</strong> Dedicated to your project success</li>
+          <li><strong class="list-key">Customer Success:</strong> Ongoing relationship management</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="card quote-box">
+        <div class="emoji">💯</div>
+        <p>"WE'RE NOT JUST BUILDING SOFTWARE"</p>
+        <p>"WE'RE BUILDING YOUR FUTURE REVENUE STREAM"</p>
+      </div>
+      <div class="card promise-card">
+        <div class="card-title">Our Promise To You</div>
+        <ul>
+            <li><strong class="list-key">Technical Excellence:</strong> Modern, scalable, AI-powered solution</li>
+            <li><strong class="list-key">Business Success:</strong> Your revenue growth is our metric</li>
+            <li><strong class="list-key">Transparent Partnership:</strong> Open communication & honest pricing</li>
+            <li><strong class="list-key">Local Expertise:</strong> Singapore market knowledge</li>
+            <li><strong class="list-key">Long-term Relationship:</strong> 3+ years of committed partnership</li>
+        </ul>
+      </div>
+      <div class="footer-slogan fadeInUp">
+        YOUR SUCCESS = OUR SUCCESS
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="card proposal-details details-card">
+        <div class="card-title">Proposal Details</div>
+        <ul>
+          <li><strong class="list-key">Proposal Valid:</strong> 30 days from August 24, 2025</li>
+          <li><strong class="list-key">Pricing:</strong> All amounts in SGD (Net)</li>
+          <li><strong class="list-key">Terms:</strong> As outlined in comprehensive proposal</li>
+          <li><strong class="list-key">Commitment:</strong> Full project delivery guarantee</li>
+        </ul>
+      </div>
+      <div class="card next-action action-card">
+        <div class="card-title">Next Action</div>
+        <ul>
+          <li><strong class="list-key">Schedule:</strong> 30-min strategy call within 48 hours</li>
+          <li><strong class="list-key">Review:</strong> Final questions and clarifications</li>
+          <li><strong class="list-key">Decision:</strong> Move forward with transformation</li>
+          <li><strong class="list-key">Timeline:</strong> Project start September 1, 2025</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

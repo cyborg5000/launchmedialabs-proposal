@@ -3,188 +3,241 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ownership & Control Benefits</title>
+  <title>Module 7 - Inventory Management</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
-    body, html {
+    body {
       margin: 0;
       padding: 0;
-      width: 100%;
-      height: 100%;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f0f2f5;
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #eef2f7;
-      font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+      height: 100vh;
+      color: #333;
     }
 
     .slide {
       width: 1280px;
       height: 720px;
-      background: linear-gradient(135deg, #f5f7fa 0%, #e0e8f0 100%);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      background-color: #f9faff;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 60px;
-      box-sizing: border-box;
-      animation: fadeIn 1s ease-in-out;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.98); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .title {
-      font-size: 48px;
-      font-weight: 700;
-      color: #0d2c4f;
-      margin-bottom: 60px;
-      position: relative;
-    }
-
-    .title::after {
-      content: '';
-      position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 5px;
-      background-color: #007aff;
-      border-radius: 3px;
-    }
-
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 35px 50px;
-      width: 100%;
-      max-width: 1100px;
-    }
-
-    .benefit-item {
+    .header {
+      background-color: #0d2144;
+      color: white;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      background-color: #ffffff;
-      padding: 20px 25px;
+      padding: 0 40px;
+      height: 85px;
+      flex-shrink: 0;
+    }
+
+    .header h1 {
+      font-size: 36px;
+      font-weight: 500;
+      margin: 0;
+    }
+
+    .investment {
+      background-color: #C7A446;
+      color: #0d2144;
+      font-size: 20px;
+      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: 8px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 25px;
+      padding: 30px 40px;
+      flex-grow: 1;
+    }
+
+    .card {
+      background-color: white;
+      border: 1px solid #dbe9f5;
       border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(13, 44, 79, 0.07);
+      padding: 20px 25px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
-    .benefit-item:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 25px rgba(13, 44, 79, 0.12);
+    
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
     }
 
-    .benefit-icon {
-      flex-shrink: 0;
-      width: 48px;
-      height: 48px;
-      margin-right: 20px;
-      color: #007aff;
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0d2144;
+      margin: 0 0 15px 0;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e0e6f1;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    .card li {
+      font-size: 17px;
+      line-height: 1.6;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      align-items: flex-start;
+      margin-bottom: 8px;
+      color: #495057;
     }
     
-    .benefit-icon svg {
-      width: 100%;
-      height: 100%;
+    .card li:last-child {
+        margin-bottom: 0;
     }
 
-    .benefit-text {
-      font-size: 19px;
-      font-weight: 600;
-      color: #2c3e50;
-      line-height: 1.4;
-    }
-    
-    .benefit-text .detail {
-      display: block;
-      font-size: 15px;
-      font-weight: 400;
-      color: #5a6e82;
+    .card ul.check-list li::before {
+      content: '✓';
+      color: #28a745;
+      font-weight: 700;
+      margin-right: 12px;
       margin-top: 2px;
     }
-
-    .benefit-checkmark {
-        width: 24px;
-        height: 24px;
-        margin-right: 15px;
-        color: #28a745;
+    
+    .card ul.dash-list li::before {
+      content: '–';
+      color: #017BFF;
+      font-weight: 700;
+      margin-right: 12px;
+      margin-top: 2px;
     }
     
-    .benefit-content {
-      display: flex;
-      flex-direction: column;
+    .card-footer {
+        margin-top: auto;
+        padding-top: 15px;
+        border-top: 1px solid #f0f2f5;
+        min-height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        align-self: center;
+    }
+    
+    .icon-container {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        font-size: 28px;
+    }
+
+    .icon-container .arrow {
+        color: #888;
+    }
+
+    .icon-box {
+        color: #a5673f;
+    }
+    .icon-chart {
+        color: #2ca02c;
+    }
+    
+    .flow-diagram {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .flow-box {
+        width: 30px;
+        height: 30px;
+        background-color: #017BFF;
+        border-radius: 4px;
+    }
+    .flow-line {
+        width: 25px;
+        height: 2px;
+        background-color: #b0c4de;
     }
 
   </style>
 </head>
 <body>
   <div class="slide">
-    <h1 class="title">Ownership & Control Benefits</h1>
-    <div class="benefits-grid">
-
-      <div class="benefit-item">
-        <div class="benefit-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.565 21.795 24 17.3 24 12c0-6.627-5.373-12-12-12z" fill-rule="evenodd" clip-rule="evenodd"></path></g></svg>
-        </div>
-        <div class="benefit-content">
-          <div class="benefit-text">100% GitHub repository ownership</div>
-        </div>
-      </div>
-
-      <div class="benefit-item">
-        <div class="benefit-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 8L3 12L7 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M17 8L21 12L17 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14 4L10 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-        </div>
-        <div class="benefit-content">
-          <div class="benefit-text">Full source code access</div>
-        </div>
-      </div>
-      
-      <div class="benefit-item">
-        <div class="benefit-icon">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5-10-5-10 5zM12 14.5l10-5-10-5-10 5 10 5z" fill="currentColor" opacity="0.4"></path><path d="M2 12l10 5 10-5-10-5-10 5z" fill="currentColor"></path></svg>
-        </div>
-        <div class="benefit-content">
-          <div class="benefit-text">Your Vercel account<span class="detail">You control costs and deployment</span></div>
+    <div class="header">
+      <h1>Module 7 - Inventory Management</h1>
+      <div class="investment">Investment: $4,500</div>
+    </div>
+    <div class="content-grid">
+      <div class="card">
+        <h3 class="card-title">Comprehensive Inventory Control</h3>
+        <ul class="check-list">
+          <li>Multi-location stock tracking</li>
+          <li>Real-time stock level monitoring</li>
+          <li>Automatic low-stock alerts and notifications</li>
+          <li>Barcode scanning support</li>
+          <li>Stock movement tracking</li>
+        </ul>
+        <div class="card-footer">
+            <div class="flow-diagram">
+                <div class="flow-box"></div>
+                <div class="flow-line"></div>
+                <div class="flow-box"></div>
+                <div class="flow-line"></div>
+                <div class="flow-box"></div>
+            </div>
         </div>
       </div>
-
-      <div class="benefit-item">
-        <div class="benefit-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6V18M4 6C4 4.89543 4.89543 4 6 4H18C19.1046 4 20 4.89543 20 6V18C20 19.1046 19.1046 20 18 20H6C4.89543 20 4 19.1046 4 18M4 6H20M4 18H20M4 12H20M12 4V20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-        </div>
-        <div class="benefit-content">
-          <div class="benefit-text">Your Supabase account<span class="detail">Transparent pricing, direct control</span></div>
-        </div>
-      </div>
-
-      <div class="benefit-item">
-        <div class="benefit-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 10H16V12H14V10Z" fill="currentColor"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M9.5 10C9.22386 10 9 10.2239 9 10.5V11.5C9 11.7761 9.22386 12 9.5 12H12V14H9.5C8.11929 14 7 12.8807 7 11.5V10.5C7 9.11929 8.11929 8 9.5 8H12V5C12 3.89543 12.8954 3 14 3H18C19.1046 3 20 3.89543 20 5V19C20 20.1046 19.1046 21 18 21H14C12.8954 21 12 20.1046 12 19V16H9.5C8.11929 16 7 14.8807 7 13.5V12.5H4C3.44772 12.5 3 12.0523 3 11.5V10.5C3 9.94772 3.44772 9.5 4 9.5H7V8.5C7 7.11929 8.11929 6 9.5 6H12V5H10C9.44772 5 9 5.44772 9 6V7C9 7.55228 8.55228 8 8 8C7.44772 8 7 7.55228 7 7V6C7 4.34315 8.34315 3 10 3H12V1C12 0.447715 12.4477 0 13 0C13.5523 0 14 0.447715 14 1V3H18C20.2091 3 22 4.79086 22 7V17C22 19.2091 20.2091 21 18 21H14C11.7909 21 10 19.2091 10 17V16H9.5C7.01472 16 5 13.9853 5 11.5C5 9.01472 7.01472 7 9.5 7H10V8H9.5C8.67157 8 8 8.67157 8 9.5V10.5H12V14H9.5C8.67157 14 8 13.3284 8 12.5V11.5H12V10H9.5Z" fill="currentColor"></path></svg>
-        </div>
-        <div class="benefit-content">
-          <div class="benefit-text">No vendor lock-in with us</div>
-        </div>
-      </div>
-
-      <div class="benefit-item">
-        <div class="benefit-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M16.604 2.865C16.9936 3.25143 17.026 3.88289 16.6695 4.3039L15.311 5.76011L12.4832 2.9323L13.8417 1.47609C14.2384 1.05011 14.8711 1.02237 15.2971 1.41908L16.604 2.865Z" fill="currentColor"></path> <path d="M11.0694 4.34612L4.02063 11.3949C3.62391 11.7916 3.42557 12.3323 3.46881 12.886L3.81881 17.436C3.87158 18.0933 4.39653 18.6183 5.05381 18.671L9.60381 19.021C10.1575 19.0643 10.6982 18.8659 11.0949 18.4692L18.1437 11.4204L11.0694 4.34612Z" fill="currentColor"></path> <path d="M21.5 19.5H2.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path> </g></svg>
-        </div>
-        <div class="benefit-content">
-          <div class="benefit-text">Modify anytime after handover</div>
+      <div class="card">
+        <h3 class="card-title">Parts & Supplier Management</h3>
+        <ul class="check-list">
+          <li>Parts compatibility database</li>
+          <li>Supplier catalog connections</li>
+          <li>Automated reorder points</li>
+          <li>Purchase order generation</li>
+          <li>Vendor performance tracking</li>
+        </ul>
+        <div class="card-footer">
+            <div class="icon-container">
+                <span class="icon-box" title="Purchase Order">&#128229;</span>
+                <span class="arrow" title="Connection">&harr;</span>
+                <span class="icon-chart" title="Performance Tracking">&#128200;</span>
+            </div>
         </div>
       </div>
-
+      <div class="card">
+        <h3 class="card-title">Cost Analysis & Reporting</h3>
+        <ul class="check-list">
+          <li>Cost tracking and analysis</li>
+          <li>Inventory valuation reports</li>
+          <li>Usage analytics and trends</li>
+          <li>ABC analysis for optimal stocking</li>
+          <li>Waste reduction insights</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 class="card-title">Business Impact</h3>
+        <ul class="dash-list">
+          <li>Reduced stockouts and overstock</li>
+          <li>Optimized inventory investment</li>
+          <li>Better supplier relationships</li>
+          <li>Improved operational efficiency</li>
+        </ul>
+      </div>
     </div>
   </div>
 </body>

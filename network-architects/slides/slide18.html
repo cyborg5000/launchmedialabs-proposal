@@ -3,256 +3,363 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Next Steps Presentation</title>
+  <title>Financial Breakdown</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
     body {
       margin: 0;
       padding: 0;
-      background-color: #0c0c0c;
+      font-family: 'Inter', sans-serif;
+      background-color: #f0f2f5;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      font-family: 'Poppins', sans-serif;
     }
 
     .slide {
       width: 1280px;
       height: 720px;
-      background: radial-gradient(circle, #0a2e5e 0%, #001a35 100%);
+      background-color: #F7F9FC;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      flex-direction: column;
       overflow: hidden;
-      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
 
-    .content-wrapper {
+    .header {
+      background-color: #1F3A59;
+      color: white;
       text-align: center;
-      width: 80%;
-      max-width: 900px;
-      color: #ffffff;
-      animation: fadeInContent 1s ease-out forwards;
+      padding: 20px 0;
     }
 
-    @keyframes fadeInContent {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h1 {
-      font-size: 72px;
-      font-weight: 700;
-      margin: 0 0 10px 0;
-      text-shadow: 0 0 15px rgba(135, 206, 250, 0.7);
-    }
-
-    h2 {
-      font-size: 28px;
-      font-weight: 400;
-      margin: 0 0 50px 0;
-      color: #a0c8e0;
+    .header h1 {
+      margin: 0;
+      font-size: 32px;
+      font-weight: 600;
       letter-spacing: 1px;
     }
 
-    .timeline-container {
-      position: relative;
-      display: inline-block; /* To wrap around the content */
-    }
-
-    .timeline-line {
-      position: absolute;
-      left: calc(100% - 55px);
-      top: 25px;
-      bottom: 25px;
-      width: 4px;
-      background: linear-gradient(to bottom, rgba(0, 170, 255, 0.1), rgba(0, 170, 255, 0.6), rgba(0, 170, 255, 0.1));
-      border-radius: 2px;
-      z-index: 1;
-    }
-
-    .timeline-item {
+    .content {
+      flex-grow: 1;
+      padding: 30px 40px;
       display: flex;
-      justify-content: flex-end; /* Aligns box to the left of the icon area */
-      align-items: center;
-      margin-bottom: 20px;
-      position: relative;
-      width: 100%;
-      opacity: 0;
-      animation: fadeInItem 0.6s ease-out forwards;
+      flex-direction: column;
     }
 
-    .timeline-item:last-child {
+    .main-section {
+      display: flex;
+      gap: 30px;
+      flex-grow: 1;
+    }
+
+    .costs-container {
+      flex: 3;
+    }
+    
+    .costs-container h2 {
+      font-size: 20px;
+      color: #1F3A59;
+      margin: 0 0 10px 0;
+      padding-bottom: 5px;
+      border-bottom: 2px solid #DDE3EA;
+      font-weight: 700;
+    }
+
+    .costs-grid {
+      display: flex;
+      gap: 20px;
+    }
+
+    .cost-card {
+      flex: 1;
+      background-color: white;
+      border: 1px solid #EAEFF5;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .cost-card h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      margin: 0 0 15px 0;
+    }
+
+    .cost-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .cost-card li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      font-size: 14px;
+      color: #555;
+      border-bottom: 1px solid #F0F2F5;
+    }
+
+    .cost-card li:last-child {
+      border-bottom: none;
+    }
+
+    .cost-card .item-name {
+      flex-basis: 70%;
+      line-height: 1.4;
+    }
+    
+    .cost-card .item-price {
+      font-weight: 600;
+      color: #1F3A59;
+    }
+
+    .sidebar {
+      flex: 1.5;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sidebar-card {
+      background-color: white;
+      border: 1px solid #EAEFF5;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .sidebar-card h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      margin: 0 0 15px 0;
+    }
+
+    .chart-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .pie-chart {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: conic-gradient(
+        #1F3A59 0% 36.4%, 
+        #4A6B8A 36.4% 78.4%, 
+        #8BA3BF 78.4% 100%
+      );
+    }
+
+    .legend ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .legend li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .legend li:last-child {
       margin-bottom: 0;
     }
-    
-    .timeline-item:nth-child(1) { animation-delay: 0.2s; }
-    .timeline-item:nth-child(2) { animation-delay: 0.4s; }
-    .timeline-item:nth-child(3) { animation-delay: 0.6s; }
-    .timeline-item:nth-child(4) { animation-delay: 0.8s; }
-    .timeline-item:nth-child(5) { animation-delay: 1.0s; }
 
-    @keyframes fadeInItem {
-        from { opacity: 0; transform: translateX(-20px); }
-        to { opacity: 1; transform: translateX(0); }
-    }
-
-    .timeline-box {
-      background-color: rgba(0, 48, 87, 0.6);
-      border: 2px solid #00aaff;
-      border-radius: 12px;
-      padding: 15px 25px;
-      width: 380px;
-      text-align: left;
-      margin-right: 70px;
-      box-shadow: 0 0 20px rgba(0, 170, 255, 0.3);
-      transition: all 0.3s ease;
-    }
-
-    .timeline-box:hover {
-        transform: scale(1.02);
-        box-shadow: 0 0 30px rgba(0, 170, 255, 0.5);
-    }
-    
-    .timeline-date {
-      font-size: 18px;
-      font-weight: 600;
-      color: #87CEFA;
-    }
-
-    .timeline-description {
-      font-size: 22px;
-      font-weight: 400;
-      color: #ffffff;
-    }
-
-    .timeline-icon {
-      width: 50px;
-      height: 50px;
-      background-color: #003057;
-      border: 3px solid #00aaff;
+    .legend-dot {
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: absolute;
-      right: 0;
-      z-index: 2;
-      box-shadow: 0 0 15px rgba(0, 170, 255, 0.7);
+      margin-right: 10px;
     }
 
-    .timeline-icon svg {
-      width: 24px;
-      height: 24px;
-      stroke: #87CEFA;
-      stroke-width: 2;
-      fill: none;
+    .maintenance-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        color: #1F3A59;
+        margin-bottom: 10px;
     }
     
-    /* Special styling for the last item */
-    .timeline-item.special .timeline-box {
-        background-color: rgba(104, 128, 44, 0.6);
-        border-color: #d4c76a;
-        box-shadow: 0 0 20px rgba(212, 199, 106, 0.4);
+    .maintenance-value {
+        background-color: #FFFBEB;
+        border: 1px solid #F2D479;
+        color: #B48400;
+        padding: 10px;
+        border-radius: 6px;
+        text-align: center;
+        margin-bottom: 15px;
+        font-weight: 600;
     }
 
-    .timeline-item.special .timeline-box:hover {
-        box-shadow: 0 0 30px rgba(212, 199, 106, 0.6);
+    .maintenance-value .check {
+        color: #28a745;
+        font-weight: bold;
     }
 
-    .timeline-item.special .timeline-date {
-        color: #f0e68c;
+    .maintenance-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
     }
 
-    .timeline-item.special .timeline-icon {
-        background-color: #49581a;
-        border-color: #d4c76a;
-        box-shadow: 0 0 20px rgba(212, 199, 106, 0.7);
+    .maintenance-list li {
+        color: #555;
+        font-size: 14px;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: flex-start;
     }
 
-    .timeline-item.special .timeline-icon svg {
-        stroke: #f0e68c;
-        stroke-width: 2.5;
+    .maintenance-list li .check-icon {
+        color: #28a745;
+        margin-right: 8px;
+        font-weight: bold;
+        line-height: 1.4;
+    }
+
+    .summary-section {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 2px solid #DDE3EA;
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .subtotal-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #EAF1F8;
+      padding: 10px 20px;
+      border-radius: 6px;
+    }
+
+    .subtotal-row h4 {
+      margin: 0;
+      font-size: 18px;
+      color: #1F3A59;
+      font-weight: 700;
+    }
+
+    .subtotal-row .price {
+      margin: 0;
+      font-size: 24px;
+      color: #1F3A59;
+      font-weight: 700;
+    }
+    
+    .total-row {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-top: 15px;
+    }
+
+    .total-row h4 {
+        margin: 0 15px 0 0;
+        font-size: 20px;
+        color: #333;
+        font-weight: 600;
+    }
+    
+    .total-row .price {
+        margin: 0;
+        font-size: 28px;
+        color: #B48400;
+        font-weight: 700;
     }
 
   </style>
 </head>
 <body>
   <div class="slide">
-    <div class="content-wrapper">
-      <h1>Next Steps</h1>
-      <h2>Let's Get Started</h2>
-      <div class="timeline-container">
-        <div class="timeline-line"></div>
-        <div class="timeline-item">
-          <div class="timeline-box">
-            <div class="timeline-date">This Week</div>
-            <div class="timeline-description">Contract Signing</div>
-          </div>
-          <div class="timeline-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-box">
-            <div class="timeline-date">September 1, 2025</div>
-            <div class="timeline-description">Project Kickoff</div>
-          </div>
-          <div class="timeline-icon">
-             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-box">
-            <div class="timeline-date">End of September</div>
-            <div class="timeline-description">First Milestone</div>
-          </div>
-          <div class="timeline-icon">
-             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
+    <header class="header">
+      <h1>Financial Breakdown</h1>
+    </header>
+    <div class="content">
+      <div class="main-section">
+        <div class="costs-container">
+          <h2>ITEMIZED DEVELOPMENT COSTS</h2>
+          <div class="costs-grid">
+            <div class="cost-card">
+              <h3>Core Modules</h3>
+              <ul>
+                <li><span class="item-name">Smart Dashboard</span> <span class="item-price">$2,500</span></li>
+                <li><span class="item-name">User/Multi-tenant Management</span> <span class="item-price">$3,500</span></li>
+                <li><span class="item-name">Customer/Supplier Management</span> <span class="item-price">$3,000</span></li>
+                <li><span class="item-name">Quotation System</span> <span class="item-price">$3,500</span></li>
+                <li><span class="item-name">Contract Management</span> <span class="item-price">$3,500</span></li>
+              </ul>
+            </div>
+            <div class="cost-card">
+              <h3>Advanced Features</h3>
+              <ul>
+                <li><span class="item-name">Invoice/Billing + Integrations</span> <span class="item-price">$4,500</span></li>
+                <li><span class="item-name">Inventory Management</span> <span class="item-price">$4,500</span></li>
+                <li><span class="item-name">Advanced Ticketing System</span> <span class="item-price">$4,000</span></li>
+                <li><span class="item-name">Purchase Orders & RFQ</span> <span class="item-price">$3,000</span></li>
+                <li><span class="item-name">Preventive Maintenance</span> <span class="item-price">$2,500</span></li>
+              </ul>
+            </div>
+            <div class="cost-card">
+              <h3>Premium Add-ons</h3>
+              <ul>
+                <li><span class="item-name">AI Integration (GPT-5)</span> <span class="item-price">$4,500</span></li>
+                <li><span class="item-name">Industry Templates</span> <span class="item-price">$4,000</span></li>
+                <li><span class="item-name">Testing & Deployment</span> <span class="item-price">$1,000</span></li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-box">
-            <div class="timeline-date">December 2025</div>
-            <div class="timeline-description">Go-Live</div>
+        <div class="sidebar">
+          <div class="sidebar-card">
+            <h3>Development Value Distribution</h3>
+            <div class="chart-container">
+              <div class="pie-chart"></div>
+              <div class="legend">
+                <ul>
+                  <li><span class="legend-dot" style="background-color: #1F3A59;"></span> Core ($16k)</li>
+                  <li><span class="legend-dot" style="background-color: #4A6B8A;"></span> Advanced ($18.5k)</li>
+                  <li><span class="legend-dot" style="background-color: #8BA3BF;"></span> Premium ($9.5k)</li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <div class="timeline-icon">
-             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
+          <div class="sidebar-card maintenance-card">
+            <h3>3-YEAR MAINTENANCE INCLUDED</h3>
+            <div class="maintenance-value">
+              <span class="check">✓</span> $12,000 VALUE INCLUDED FREE
+            </div>
+            <ul class="maintenance-list">
+              <li><span class="check-icon">✓</span> Monthly updates and security patches</li>
+              <li><span class="check-icon">✓</span> Performance optimization</li>
+              <li><span class="check-icon">✓</span> 40 hours/year technical support</li>
+              <li><span class="check-icon">✓</span> Bug fixes and minor enhancements</li>
+            </ul>
           </div>
         </div>
-        <div class="timeline-item special">
-          <div class="timeline-box">
-            <div class="timeline-date">January 2026</div>
-            <div class="timeline-description">Your SaaS Revenue</div>
-          </div>
-          <div class="timeline-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="12" y1="1" x2="12" y2="23"></line>
-                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-            </svg>
-          </div>
+      </div>
+      <div class="summary-section">
+        <div class="subtotal-row">
+          <h4>SUBTOTAL DEVELOPMENT</h4>
+          <p class="price">$28,000</p>
+        </div>
+        <div class="total-row">
+            <h4>TOTAL PROJECT VALUE</h4>
+            <p class="price">$40,000 SGD</p>
         </div>
       </div>
     </div>

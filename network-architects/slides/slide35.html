@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Investment Analysis</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        :root {
+            --bg-dark: #0d1424;
+            --card-bg: #132440;
+            --accent-gold: #FFC300;
+            --text-light: #E0E0E0;
+            --text-white: #FFFFFF;
+            --text-grey: #a0aec0;
+            --green-check: #28a745;
+            --red-cross: #dc3545;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Noto Sans SC', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .ppt-slide {
+            width: 1280px;
+            height: 720px;
+            background-color: var(--bg-dark);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: 30px 40px;
+            overflow: hidden;
+        }
+
+        .ppt-slide::before {
+            content: '';
+            position: absolute;
+            top: -5%;
+            right: -15%;
+            width: 50%;
+            height: 100%;
+            background-image: url('images/revenue_growth.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.1;
+            transform: rotate(15deg);
+            z-index: 0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-white);
+            letter-spacing: 1px;
+        }
+
+        .header h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--accent-gold);
+            margin-top: 5px;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 24px;
+            z-index: 1;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 18px 22px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #2a3a5a;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-white);
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #2a3a5a;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 5px;
+        }
+
+        .card ul li {
+            font-size: 13px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            line-height: 1.5;
+        }
+
+        .card ul li::before {
+            content: '✓';
+            color: var(--green-check);
+            font-weight: 900;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        /* Investment Breakdown */
+        .investment-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .pie-chart-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .pie-chart {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: conic-gradient(#007bff 0% 70%, var(--accent-gold) 70% 100%);
+            margin-bottom: 10px;
+        }
+        .legend {
+            font-size: 11px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+        .legend-color {
+            width: 10px;
+            height: 10px;
+            margin-right: 6px;
+        }
+        .investment-details ul li {
+            font-size: 13px;
+        }
+        .investment-details ul li ul {
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+        .investment-details ul li ul li::before{
+             content: '-';
+             color: var(--text-grey);
+        }
+        .free-tag {
+            color: var(--accent-gold);
+            font-weight: 600;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+
+        /* Break-Even Analysis */
+        .break-even-item {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+        .break-even-item::before {
+            content: '✓';
+            color: var(--accent-gold);
+            font-weight: 900;
+            margin-right: 10px;
+        }
+        .break-even-label {
+            color: var(--text-white);
+            font-weight: 600;
+            width: 140px;
+        }
+        .break-even-value {
+             color: var(--text-light);
+        }
+        .timeline-container {
+            margin-top: 10px;
+        }
+        .timeline-track {
+            width: 100%;
+            height: 6px;
+            background-color: #2a3a5a;
+            border-radius: 3px;
+            position: relative;
+        }
+        .timeline-progress {
+            width: 30%; /* Represents 10 months out of ~36 */
+            height: 100%;
+            background-color: var(--accent-gold);
+            border-radius: 3px;
+            position: relative;
+        }
+        .timeline-thumb {
+            width: 16px;
+            height: 16px;
+            background-color: var(--text-white);
+            border: 2px solid var(--accent-gold);
+            border-radius: 50%;
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .timeline-label {
+            position: absolute;
+            right: -25px;
+            top: -25px;
+            font-size: 12px;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        /* Competitive Value Comparison */
+        .competitive-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            height: 100%;
+        }
+        .comparison-section h4 {
+            font-size: 14px;
+            color: var(--text-white);
+            margin-bottom: 10px;
+        }
+        .comparison-item {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        .comparison-item .icon {
+            width: 20px;
+            font-weight: 700;
+        }
+        .icon.cross { color: var(--red-cross); }
+        .icon.check { color: var(--green-check); }
+        .our-rate { color: var(--accent-gold); font-weight: 700; font-size: 18px; }
+        .savings { color: var(--accent-gold); font-weight: 600; }
+
+        /* Return on Investment */
+        .roi-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            text-align: center;
+        }
+        .roi-box {
+            background-color: #1a2b4b;
+            padding: 15px 10px;
+            border-radius: 8px;
+            border: 1px solid #2a3a5a;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .roi-box.realistic {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 15px rgba(255, 195, 0, 0.3);
+        }
+        .roi-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+        .roi-multiplier {
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin: 8px 0;
+        }
+        .roi-details {
+            font-size: 12px;
+            line-height: 1.4;
+            color: var(--text-grey);
+        }
+    </style>
+</head>
+<body>
+    <div class="ppt-slide">
+        <header class="header">
+            <h1>COMPREHENSIVE INVESTMENT ANALYSIS</h1>
+            <h2>TOTAL INVESTMENT: $40,000 SGD</h2>
+        </header>
+
+        <main class="main-content">
+            <div class="column left-column">
+                <div class="card">
+                    <h3 class="card-title">INVESTMENT BREAKDOWN</h3>
+                    <div class="investment-content">
+                        <div class="pie-chart-container">
+                            <div class="pie-chart"></div>
+                            <div class="legend">
+                                <div class="legend-item"><span class="legend-color" style="background-color: #007bff;"></span>Core Dev: $28,000</div>
+                                <div class="legend-item"><span class="legend-color" style="background-color: var(--accent-gold);"></span>3-Yr Maint: $12,000</div>
+                            </div>
+                        </div>
+                        <div class="investment-details">
+                            <ul>
+                                <li><strong>Core Development:</strong> $28,000
+                                    <ul>
+                                        <li>All 10 system modules & AI integration</li>
+                                        <li>Industry templates, testing & deployment</li>
+                                    </ul>
+                                </li>
+                                <li><strong>3-Year Maintenance:</strong> $12,000<span class="free-tag">(INCLUDED FREE)</span>
+                                     <ul>
+                                        <li>Updates, patches & 40hr/yr support</li>
+                                        <li>Performance optimization & bug fixes</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">BREAK-EVEN ANALYSIS</h3>
+                    <div class="break-even-item">
+                        <span class="break-even-label">Required Customers:</span>
+                        <span class="break-even-value">100 at $40/month</span>
+                    </div>
+                     <div class="break-even-item">
+                        <span class="break-even-label">Monthly Revenue:</span>
+                        <span class="break-even-value">$4,000 at break-even</span>
+                    </div>
+                     <div class="break-even-item">
+                        <span class="break-even-label">Infrastructure Costs:</span>
+                        <span class="break-even-value">$0-45/month (you control)</span>
+                    </div>
+                    <div class="timeline-container">
+                        <div class="timeline-track">
+                            <div class="timeline-progress">
+                                <div class="timeline-thumb"></div>
+                                <div class="timeline-label">10 Months</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">VALUE PROPOSITION</h3>
+                    <ul>
+                        <li>Lowest cost, highest value solution</li>
+                        <li>Fastest path to market</li>
+                        <li>Complete ownership and control</li>
+                        <li>Predictable costs and timeline</li>
+                        <li>Exceptional ROI potential</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="column right-column">
+                <div class="card" style="flex-grow: 1;">
+                    <h3 class="card-title">COMPETITIVE VALUE COMPARISON</h3>
+                    <div class="competitive-content">
+                        <div class="comparison-section">
+                            <h4>Market Rate Analysis</h4>
+                            <div class="comparison-item">
+                                <span class="icon cross">❌</span> Typical: $60k - 100k+
+                            </div>
+                            <div class="comparison-item">
+                                <span class="icon check">✓</span> Our Rate: <span class="our-rate">$40,000</span>
+                            </div>
+                             <div class="comparison-item">
+                                <span class="icon check">✓</span> <span class="savings">Your Savings: $20k - $60k+</span>
+                            </div>
+                        </div>
+                        <div class="comparison-section">
+                            <h4>What You Get for LESS</h4>
+                             <ul>
+                                <li>Superior modern technology stack</li>
+                                <li>Advanced AI integration included</li>
+                                <li>3-year maintenance included</li>
+                                <li>Complete code ownership</li>
+                                <li>Professional Singapore support</li>
+                                <li>Comprehensive documentation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="flex-grow: 1.5;">
+                    <h3 class="card-title">RETURN ON INVESTMENT (YEAR 3 PROJECTIONS)</h3>
+                    <div class="roi-container">
+                        <div class="roi-box">
+                            <div class="roi-title">Conservative (0.5%)</div>
+                            <div class="roi-multiplier">9x</div>
+                            <div class="roi-details">
+                                $360,000 Revenue<br/>
+                                $320,000+ Profit
+                            </div>
+                        </div>
+                        <div class="roi-box realistic">
+                            <div class="roi-title">Realistic (1%)</div>
+                            <div class="roi-multiplier">14x</div>
+                            <div class="roi-details">
+                                $560,000 Revenue<br/>
+                                $520,000+ Profit
+                            </div>
+                        </div>
+                        <div class="roi-box">
+                            <div class="roi-title">Optimistic (2%)</div>
+                            <div class="roi-multiplier">24x</div>
+                            <div class="roi-details">
+                                $960,000 Revenue<br/>
+                                $920,000+ Profit
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

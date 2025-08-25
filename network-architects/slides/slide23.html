@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Growth Scenarios & Projections</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Lato:wght@400;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      width: 1280px;
+      height: 720px;
+      background-color: #1A243D;
+      font-family: 'Lato', sans-serif;
+      color: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 500px;
+      height: 500px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M50 0 L100 50 L75 50 L75 100 L25 100 L25 50 L0 50 Z' fill='%232E4A58' fill-opacity='0.2'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: contain;
+      opacity: 0.5;
+      z-index: 1;
+    }
+
+    .slide-container {
+      width: 1100px;
+      height: 680px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      z-index: 2;
+    }
+
+    .main-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 38px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-align: center;
+      margin-bottom: 10px;
+      color: #FFFFFF;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .main-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background-color: #E8C872;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 30px;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .card {
+      background-color: rgba(43, 60, 88, 0.5);
+      border-radius: 12px;
+      padding: 25px;
+      border: 1px solid #2D3E5F;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .card-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #E8C872;
+      color: #FFFFFF;
+      letter-spacing: 1px;
+    }
+
+    .analysis-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .analysis-list li {
+      display: flex;
+      align-items: flex-start;
+      font-size: 17px;
+      line-height: 1.6;
+      margin-bottom: 18px;
+      color: #C0C8E0;
+    }
+    
+    .analysis-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .checkmark {
+      color: #E8C872;
+      font-weight: bold;
+      margin-right: 12px;
+      font-size: 20px;
+      line-height: 1.4;
+    }
+
+    .highlight {
+      color: #E8C872;
+      font-weight: 700;
+    }
+    
+    .projections-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      text-align: center;
+    }
+
+    .year-column {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .year-header {
+      background-color: #384964;
+      border-radius: 6px;
+      padding: 8px 0;
+      font-family: 'Oswald', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: #E8C872;
+    }
+    
+    .projection-item {
+      padding: 10px;
+      background-color: rgba(26, 36, 61, 0.6);
+      border-radius: 6px;
+      border-top: 1px solid #2D3E5F;
+    }
+    
+    .scenario-type {
+      font-size: 14px;
+      color: #A0AACB;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .scenario-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: #E8C872;
+      margin: 4px 0;
+    }
+    
+    .scenario-customers {
+      font-size: 13px;
+      color: #A0AACB;
+    }
+
+    .roi-section {
+      width: 100%;
+      margin-top: 25px;
+      text-align: center;
+    }
+    
+    .roi-title {
+        font-family: 'Oswald', sans-serif;
+        font-size: 22px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+        color: #FFFFFF;
+    }
+    
+    .roi-grid {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .roi-item {
+        background-color: rgba(43, 60, 88, 0.5);
+        border-radius: 8px;
+        padding: 12px 20px;
+        flex: 1;
+        border: 1px solid #2D3E5F;
+        font-size: 15px;
+        line-height: 1.5;
+        color: #C0C8E0;
+    }
+
+    .roi-item strong {
+        display: block;
+        font-size: 22px;
+        color: #E8C872;
+        margin-bottom: 4px;
+        font-weight: 700;
+    }
+    
+    .roi-item .market-share {
+      font-weight: bold;
+      color: #FFFFFF;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <h1 class="main-title">GROWTH SCENARIOS & PROJECTIONS</h1>
+
+    <div class="content-grid">
+      <div class="card">
+        <h2 class="card-title">BREAK-EVEN ANALYSIS</h2>
+        <ul class="analysis-list">
+          <li><span class="checkmark">✓</span><div><strong>Month 10 Target:</strong> 100 customers × $40 = <span class="highlight">$4,000 MRR</span></div></li>
+          <li><span class="checkmark">✓</span><div><strong>Status:</strong> <span class="highlight">BREAK-EVEN ACHIEVED</span> as recurring revenue covers costs.</div></li>
+          <li><span class="checkmark">✓</span><div><strong>Infrastructure Costs:</strong> Minimal at <span class="highlight">$45/month</span>.</div></li>
+          <li><span class="checkmark">✓</span><div><strong>Net Profit (Post Break-Even):</strong> <span class="highlight">$3,955/month</span> from Month 10 onwards.</div></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2 class="card-title">YEAR-BY-YEAR PROJECTIONS</h2>
+        <div class="projections-container">
+          <div class="year-column">
+            <div class="year-header">Year 1</div>
+            <div class="projection-item">
+              <div class="scenario-type">CONSERVATIVE</div>
+              <div class="scenario-value">$72,000</div>
+              <div class="scenario-customers">150 customers</div>
+            </div>
+            <div class="projection-item">
+              <div class="scenario-type">REALISTIC</div>
+              <div class="scenario-value">$120,000</div>
+              <div class="scenario-customers">250 customers</div>
+            </div>
+            <div class="projection-item">
+              <div class="scenario-type">OPTIMISTIC</div>
+              <div class="scenario-value">$144,000</div>
+              <div class="scenario-customers">300 customers</div>
+            </div>
+          </div>
+          <div class="year-column">
+            <div class="year-header">Year 2</div>
+            <div class="projection-item">
+              <div class="scenario-type">CONSERVATIVE</div>
+              <div class="scenario-value">$120,000</div>
+              <div class="scenario-customers">250 customers</div>
+            </div>
+            <div class="projection-item">
+              <div class="scenario-type">REALISTIC</div>
+              <div class="scenario-value">$240,000</div>
+              <div class="scenario-customers">500 customers</div>
+            </div>
+            <div class="projection-item">
+              <div class="scenario-type">OPTIMISTIC</div>
+              <div class="scenario-value">$336,000</div>
+              <div class="scenario-customers">700 customers</div>
+            </div>
+          </div>
+          <div class="year-column">
+            <div class="year-header">Year 3</div>
+            <div class="projection-item">
+              <div class="scenario-type">CONSERVATIVE</div>
+              <div class="scenario-value">$168,000</div>
+              <div class="scenario-customers">350 customers</div>
+            </div>
+            <div class="projection-item">
+              <div class="scenario-type">REALISTIC</div>
+              <div class="scenario-value">$360,000</div>
+              <div class="scenario-customers">750 customers</div>
+            </div>
+            <div class="projection-item">
+              <div class="scenario-type">OPTIMISTIC</div>
+              <div class="scenario-value">$480,000</div>
+              <div class="scenario-customers">1,000 customers</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="roi-section">
+      <h3 class="roi-title">ROI ANALYSIS (3-YEAR)</h3>
+      <div class="roi-grid">
+        <div class="roi-item">
+            <strong>9x Return</strong>
+            <span class="market-share">Conservative</span> (0.5% market)
+            <div>$360,000 / $40,000</div>
+        </div>
+        <div class="roi-item">
+            <strong>14x Return</strong>
+            <span class="market-share">Realistic</span> (1% market)
+            <div>$560,000 / $40,000</div>
+        </div>
+        <div class="roi-item">
+            <strong>24x Return</strong>
+            <span class="market-share">Optimistic</span> (2% market)
+            <div>$960,000 / $40,000</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3-Year Comprehensive Support Package</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f0f2f5;
+    }
+
+    .slide {
+      width: 1280px;
+      height: 720px;
+      background-color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      padding: 40px;
+      box-sizing: border-box;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .header h1 {
+      font-size: 36px;
+      color: #0B2447;
+      margin: 0 0 5px 0;
+      font-weight: 700;
+    }
+
+    .header h2 {
+      font-size: 24px;
+      color: #C0A062;
+      margin: 0;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .main-content {
+      display: grid;
+      grid-template-columns: 1.6fr 1.2fr 1.2fr;
+      gap: 25px;
+      flex-grow: 1;
+      height: calc(100% - 110px);
+    }
+
+    .card {
+      background-color: #F8F9FA;
+      border: 1px solid #E9ECEF;
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0B2447;
+      margin: 0 0 10px 0;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #C0A062;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .column-2 {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .column-2 .card {
+      flex-grow: 1;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .service-list > li {
+      margin-bottom: 12px;
+    }
+    
+    .service-list strong {
+      font-size: 14px;
+      color: #0B2447;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    .service-list strong .check {
+      color: #C0A062;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+
+    .service-list ul {
+      padding-left: 20px;
+      margin-top: 5px;
+    }
+
+    .service-list ul li {
+      font-size: 13px;
+      color: #495057;
+      line-height: 1.5;
+      position: relative;
+      padding-left: 15px;
+    }
+    
+    .service-list ul li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #6C757D;
+    }
+
+    .options-list li, .pricing-list li {
+      font-size: 14px;
+      color: #495057;
+      line-height: 1.6;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .options-list .check, .pricing-list .check {
+      color: #C0A062;
+      margin-right: 8px;
+      font-weight: bold;
+      line-height: 1.6;
+    }
+    
+    .optional-price {
+      font-size: 15px;
+      color: #0B2447;
+      margin-bottom: 15px;
+    }
+    
+    .optional-price strong {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .pricing-list li {
+      justify-content: space-between;
+      border-bottom: 1px solid #E9ECEF;
+      padding: 6px 0;
+    }
+
+    .pricing-list li:last-child {
+      border-bottom: none;
+    }
+    
+    .pricing-list span:last-child {
+      font-weight: 600;
+      color: #0B2447;
+    }
+
+    .breakdown-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      color: #495057;
+      padding: 8px 0;
+      border-bottom: 1px solid #E9ECEF;
+    }
+
+    .breakdown-item span:last-child {
+      text-align: right;
+      font-weight: 600;
+      color: #0B2447;
+    }
+
+    .total-value-box {
+      margin-top: auto;
+      background-color: #E9F1FA;
+      border-radius: 6px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .total-value-box p {
+      margin: 0;
+      font-size: 14px;
+      color: #0B2447;
+      font-weight: 600;
+    }
+
+    .total-value-box .amount {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0B2447;
+      margin: 5px 0;
+    }
+    
+    .included-free {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #C0A062;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <div class="header">
+      <h1>3-YEAR COMPREHENSIVE SUPPORT PACKAGE</h1>
+      <h2>$12,000 VALUE — INCLUDED FREE</h2>
+    </div>
+    <div class="main-content">
+      <div class="card">
+        <h3>Ongoing Maintenance Services</h3>
+        <ul class="service-list">
+          <li><strong><span class="check">✓</span>Monthly Updates & Patches</strong>
+            <ul>
+              <li>Security updates and patches</li>
+              <li>Performance optimizations</li>
+              <li>Bug fixes and minor enhancements</li>
+              <li>Framework and library updates</li>
+            </ul>
+          </li>
+          <li><strong><span class="check">✓</span>Technical Support</strong>
+            <ul>
+              <li>40 hours/year dedicated support</li>
+              <li>Email and chat support channels</li>
+              <li>Priority response (24-48 hours)</li>
+              <li>System health monitoring</li>
+            </ul>
+          </li>
+          <li><strong><span class="check">✓</span>Cloud Infrastructure Guidance</strong>
+            <ul>
+              <li>Supabase optimization recommendations</li>
+              <li>Vercel performance tuning</li>
+              <li>Cost optimization strategies</li>
+              <li>Scaling guidance and planning</li>
+            </ul>
+          </li>
+          <li><strong><span class="check">✓</span>Performance Monitoring</strong>
+            <ul>
+              <li>Monthly performance reports</li>
+              <li>Uptime monitoring and alerts</li>
+              <li>Database optimization</li>
+              <li>Load testing and capacity planning</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="column-2">
+        <div class="card">
+          <h3>Post-3-Year Options</h3>
+          <p class="optional-price">After 3 Years: Optional <strong>$300/month</strong></p>
+          <ul class="options-list">
+            <li><span class="check">✓</span>Continue all maintenance services</li>
+            <li><span class="check">✓</span>Same level of support and updates</li>
+            <li><span class="check">✓</span>No long-term commitment required</li>
+            <li><span class="check">✓</span>Month-to-month flexibility</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Future Development Pricing</h3>
+          <p style="font-size: 14px; color: #495057; margin: -5px 0 10px;">Transparent Enhancement Costs:</p>
+          <ul class="pricing-list">
+            <li><span><span class="check">✓</span>Small features:</span> <span>$1,500 - $2,500</span></li>
+            <li><span><span class="check">✓</span>Medium features:</span> <span>$2,500 - $5,000</span></li>
+            <li><span><span class="check">✓</span>Large features:</span> <span>$5,000 - $10,000</span></li>
+            <li><span><span class="check">✓</span>1-2 week turnaround time</span> <span></span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Included Value Breakdown</h3>
+        <div class="breakdown-list">
+          <div class="breakdown-item">
+            <span>Monthly maintenance:</span>
+            <span>$300/mo × 36 mos = $10,800</span>
+          </div>
+          <div class="breakdown-item">
+            <span>Annual support hours:</span>
+            <span>40 hrs × 3 yrs × $100/hr = $12,000</span>
+          </div>
+          <div class="breakdown-item">
+            <span>Performance monitoring:</span>
+            <span>$50/mo × 36 mos = $1,800</span>
+          </div>
+        </div>
+        <div class="total-value-box">
+          <p>Total Value</p>
+          <p class="amount">$24,600+</p>
+          <p class="included-free">Included Free: $12,000 value</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

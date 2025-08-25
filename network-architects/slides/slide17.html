@@ -2,202 +2,259 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Investment Summary</title>
+  <meta name="viewport" content="width=1280, initial-scale=1.0">
+  <title>Mobile-Responsive Web Applications</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
     body {
       margin: 0;
       padding: 0;
       width: 1280px;
       height: 720px;
-      background-color: #0D1117;
-      font-family: 'Poppins', sans-serif;
-      color: #F0F2F5;
+      background-color: #f8f9fa;
+      font-family: 'Roboto', 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
+      box-sizing: border-box;
       overflow: hidden;
     }
 
     .slide-container {
       width: 100%;
       height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 40px;
       box-sizing: border-box;
-      padding: 60px 80px; /* Increased padding to avoid cramped look */
+    }
+
+    .header {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      animation: fadeIn 1s ease-in-out;
+      justify-content: center;
+      color: #0d2c4f;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 30px;
+      flex-shrink: 0;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .header svg {
+      margin-right: 15px;
+      width: 32px;
+      height: 32px;
+      fill: #0d2c4f;
     }
 
-    h1 {
-      font-size: 44px;
-      font-weight: 600;
-      color: #FFFFFF;
-      width: 100%;
-      text-align: center;
-      margin: 0 0 40px 0;
+    .main-content {
+      display: flex;
+      flex-grow: 1;
+      gap: 30px;
+      height: calc(100% - 75px);
     }
 
-    .content-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      width: 100%;
-      height: 480px; /* Set a fixed height to ensure consistency */
-    }
-
-    .left-column {
+    .column {
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      flex-basis: 33.33%;
+      gap: 30px;
     }
 
     .card {
-      background-color: #161B22;
-      border-radius: 16px;
-      border: 1px solid #30363D;
-      padding: 32px;
-      box-sizing: border-box;
+      background-color: #ffffff;
+      border: 1px solid #e9ecef;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+      padding: 24px;
       display: flex;
       flex-direction: column;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+    }
+    
+    .card.full-height {
+        flex-grow: 1;
     }
 
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    .card-label {
+    .card-title {
       font-size: 16px;
-      font-weight: 400;
-      color: #8B949E;
+      font-weight: 700;
+      color: #0d2c4f;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin: 0 0 10px 0;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #e9ecef;
+    }
+
+    .card-subtitle {
+      font-size: 14px;
+      font-weight: 700;
+      color: #343a40;
+      margin: 15px 0 10px 0;
+    }
+
+    .feature-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 14px;
+      color: #495057;
+      line-height: 1.7;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
       margin-bottom: 8px;
     }
-
-    .card.investment {
-      flex-grow: 1;
-    }
-
-    .investment .price {
-      font-size: 80px;
-      font-weight: 700;
-      color: #FFFFFF;
-      line-height: 1.1;
-    }
     
-    .investment .price span.currency {
-        font-size: 40px;
-        font-weight: 600;
-        color: #8B949E;
-        margin-left: 12px;
+    .feature-list li:last-child {
+        margin-bottom: 0;
     }
 
-    .investment .includes {
-      font-size: 15px;
-      color: #8B949E;
-      margin-top: 12px;
+    .feature-list .icon {
+      margin-right: 10px;
+      font-weight: bold;
+      line-height: 1.7;
     }
 
-    .card.break-even {
-      flex-grow: 1;
-      justify-content: space-between; /* Pushes content to top and bottom */
+    .icon-check {
+      color: #cda434;
     }
 
-    .break-even-main .value {
-        font-size: 48px;
-        font-weight: 600;
-        color: #FFFFFF;
-        line-height: 1.2;
-    }
-    
-    .break-even-main .context {
-        font-size: 18px;
-        color: #8B949E;
+    .icon-cross {
+      color: #b0b0b0;
     }
 
-    .infrastructure-cost {
-      font-size: 14px;
-      color: #8B949E;
-      text-align: right;
-      border-top: 1px solid #30363D;
-      padding-top: 16px;
-      margin-top: 16px;
+    .responsive-visual {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 0;
+        height: 110px;
     }
 
-    .card.roi {
-      grid-column: 2 / 3;
-      grid-row: 1 / 2;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+    .feature-comparison {
+        display: flex;
+        justify-content: space-around;
+        padding-top: 10px;
     }
 
-    .roi .value {
-      font-size: 140px;
-      font-weight: 700;
-      line-height: 1.1;
-      color: #FFC93E;
-      text-shadow: 0 0 15px rgba(255, 201, 62, 0.4);
-    }
-    
-    .roi .value span.dash {
-        margin: 0 -15px;
+    .comparison-column h5 {
+        font-size: 14px;
+        color: #343a40;
+        margin: 0 0 10px 0;
+        text-align: center;
     }
 
-    .roi .description {
-      font-size: 20px;
-      font-weight: 500;
-      color: #8B949E;
-      margin-top: 20px;
-      letter-spacing: 1px;
+    .comparison-column ul {
+        font-size: 13px;
+        line-height: 1.6;
     }
-
+    .comparison-column li {
+        margin-bottom: 5px;
+    }
   </style>
 </head>
 <body>
   <div class="slide-container">
-    <h1>Investment Summary</h1>
-    <div class="content-grid">
-      <div class="left-column">
-        
-        <div class="card investment">
-          <div class="card-label">Total Investment</div>
-          <div class="price">$40,000<span class="currency">SGD</span></div>
-          <div class="includes">Includes: Complete development + 3-year maintenance</div>
+    <div class="header">
+      <svg viewBox="0 0 24 24"><path d="M17,1H7A2,2 0 0,0 5,3V21A2,2 0 0,0 7,23H17A2,2 0 0,0 19,21V3A2,2 0 0,0 17,1M17,19H7V5H17V19Z" /></svg>
+      Mobile-Responsive Web Applications
+    </div>
+    <div class="main-content">
+      <div class="column">
+        <div class="card full-height">
+          <h4 class="card-title">Technician Mobile Web App</h4>
+          <h5 class="card-subtitle">Core Features</h5>
+          <ul class="feature-list">
+            <li><span class="icon icon-check">✓</span>Mobile browser-based (no app store required)</li>
+            <li><span class="icon icon-check">✓</span>Offline capability for field work</li>
+            <li><span class="icon icon-check">✓</span>Photo and video capture for documentation</li>
+            <li><span class="icon icon-check">✓</span>GPS tracking and location services</li>
+            <li><span class="icon icon-check">✓</span>Digital signature capture</li>
+            <li><span class="icon icon-check">✓</span>Real-time job updates</li>
+          </ul>
+          <h5 class="card-subtitle">Field Operations</h5>
+          <ul class="feature-list">
+            <li><span class="icon icon-check">✓</span>Interactive digital forms and checklists</li>
+            <li><span class="icon icon-check">✓</span>Parts lookup and inventory checking</li>
+            <li><span class="icon icon-check">✓</span>Time tracking and labor recording</li>
+            <li><span class="icon icon-check">✓</span>Customer communication tools</li>
+            <li><span class="icon icon-check">✓</span>Route optimization</li>
+          </ul>
         </div>
-
-        <div class="card break-even">
-            <div>
-              <div class="card-label">Break-even Point</div>
-              <div class="break-even-main">
-                <span class="value">10 months</span>
-                <span class="context">(100 customers)</span>
-              </div>
-            </div>
-            <div class="infrastructure-cost">
-              Monthly Infrastructure Cost: $0 - $45 (you pay directly to provider)
-            </div>
+      </div>
+      <div class="column">
+        <div class="card">
+          <h4 class="card-title">Customer Portal</h4>
+          <h5 class="card-subtitle">User Experience</h5>
+          <ul class="feature-list">
+            <li><span class="icon icon-check">✓</span>Fully responsive design (all devices)</li>
+            <li><span class="icon icon-check">✓</span>Self-service ticket submission</li>
+            <li><span class="icon icon-check">✓</span>Appointment booking and scheduling</li>
+            <li><span class="icon icon-check">✓</span>Invoice payment processing</li>
+            <li><span class="icon icon-check">✓</span>Service history access</li>
+            <li><span class="icon icon-check">✓</span>Real-time status updates</li>
+          </ul>
         </div>
-
+        <div class="card">
+          <h4 class="card-title">Important Note</h4>
+          <ul class="feature-list" style="padding-top: 10px;">
+            <li><span class="icon icon-cross">✗</span>Native mobile apps NOT included</li>
+            <li><span class="icon icon-check">✓</span>All web-based with excellent mobile experience</li>
+            <li><span class="icon icon-check">✓</span>Works on all devices through browser</li>
+            <li><span class="icon icon-check">✓</span>No app store approval required</li>
+          </ul>
+        </div>
       </div>
-
-      <div class="card roi">
-        <div class="value">9x<span class="dash">-</span>24x</div>
-        <div class="description">3-Year ROI Return</div>
+      <div class="column">
+        <div class="card">
+          <h4 class="card-title">Responsive on All Devices</h4>
+          <div class="responsive-visual">
+            <svg width="250" height="110" viewBox="0 0 250 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g stroke="#495057" stroke-width="2">
+                <!-- Desktop -->
+                <rect x="1" y="1" width="150" height="90" rx="4"/>
+                <path d="M51 101h50v4H51zM76 91v10"/>
+                <!-- Tablet -->
+                <g transform="translate(130, 15)">
+                  <rect x="1" y="1" width="54" height="74" rx="4"/>
+                  <circle cx="28" cy="69" r="1.5" fill="#495057"/>
+                </g>
+                <!-- Phone -->
+                <g transform="translate(195, 25)">
+                  <rect x="1" y="1" width="38" height="68" rx="4"/>
+                  <path d="M12 5h16" stroke-linecap="round"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="card full-height">
+          <h4 class="card-title">Feature Comparison</h4>
+          <div class="feature-comparison">
+            <div class="comparison-column">
+              <h5>Web App</h5>
+              <ul class="feature-list">
+                <li><span class="icon icon-check">✓</span>Instant Updates</li>
+                <li><span class="icon icon-check">✓</span>Browser Access</li>
+                <li><span class="icon icon-check">✓</span>Single Codebase</li>
+              </ul>
+            </div>
+            <div class="comparison-column">
+              <h5>Native App</h5>
+              <ul class="feature-list">
+                <li><span class="icon icon-cross">✗</span>App Store Approval</li>
+                <li><span class="icon icon-cross">✗</span>Device Installation</li>
+                <li><span class="icon icon-cross">✗</span>Platform Specific</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-
     </div>
   </div>
 </body>

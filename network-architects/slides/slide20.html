@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Architecture Flow</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+      background-color: #000;
+    }
+
+    .slide-container {
+      width: 1280px;
+      height: 720px;
+      overflow: hidden;
+      position: relative;
+      color: #e0e6f1;
+      background: radial-gradient(ellipse at center, #1a2a45 0%, #0d1117 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 40px 60px;
+      box-sizing: border-box;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 1px;
+      margin: 0;
+    }
+
+    .title {
+      font-size: 42px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 5px 0 15px 0;
+      letter-spacing: 2px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background-color: #00c6d4;
+      border-radius: 2px;
+    }
+    
+    .request-flow-section {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 20px 30px;
+      margin-bottom: 35px;
+    }
+    
+    .request-flow-section h3 {
+        margin: 0 0 15px 0;
+        font-size: 16px;
+        font-weight: 500;
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    .flow-diagram {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .flow-item {
+        background-color: #1a2a45;
+        border: 1px solid #3a4a65;
+        color: #c0c8d8;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-size: 15px;
+        font-weight: 400;
+        text-align: center;
+        flex-shrink: 0;
+    }
+
+    .flow-arrow {
+        font-size: 24px;
+        color: #5a6a85;
+        margin: 0 10px;
+    }
+    
+    .main-content {
+      flex-grow: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 30px 40px;
+    }
+
+    .info-card {
+      background-color: transparent;
+      padding: 15px 10px;
+      border-top: 3px solid #00c6d4;
+      border-radius: 4px; /* Slight radius for effect on the top border */
+    }
+
+    .info-card h4 {
+      margin: 0 0 18px 0;
+      font-size: 20px;
+      font-weight: 500;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+    }
+
+    .info-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .info-card li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #b0bac9;
+    }
+    
+    .info-card li:last-child {
+        margin-bottom: 0;
+    }
+
+    .checkmark {
+      color: #00c6d4;
+      margin-right: 12px;
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 1.4;
+    }
+    
+    .feature-text strong {
+        color: #e0e6f1;
+        font-weight: 500;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <div class="header">
+      <p class="subtitle">Cloud Tech Stack</p>
+      <h1 class="title">SYSTEM ARCHITECTURE FLOW</h1>
+    </div>
+
+    <div class="request-flow-section">
+      <h3>REQUEST FLOW</h3>
+      <div class="flow-diagram">
+        <div class="flow-item">Load Balancer</div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-item">API Gateway</div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-item">Tenant Resolution</div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-item">Application Services</div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-item">Supabase Database</div>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="info-card">
+        <h4>SECURITY LAYERS</h4>
+        <ul>
+          <li><span class="checkmark">&#10003;</span><span class="feature-text"><strong>Authentication:</strong> JWT tokens with OAuth 2.0</span></li>
+          <li><span class="checkmark">&#10003;</span><span class="feature-text"><strong>Authorization:</strong> Role-based access control</span></li>
+          <li><span class="checkmark">&#10003;</span><span class="feature-text"><strong>Data Encryption:</strong> End-to-end encryption</span></li>
+          <li><span class="checkmark">&#10003;</span><span class="feature-text"><strong>GDPR Compliance:</strong> Built-in privacy protection</span></li>
+          <li><span class="checkmark">&#10003;</span><span class="feature-text"><strong>Row Level Security:</strong> Database-level tenant isolation</span></li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>SCALABILITY FEATURES</h4>
+        <ul>
+          <li><span class="checkmark">&#10003;</span><span class="feature-text"><strong>Concurrent Users:</strong> 10,000+ per tenant</span></li>
+          <li><span class="checkmark">&#10003;</span><span class="feature-text"><strong>Data Capacity:</strong> 1TB+ per tenant</span></li>
+          <li><span class="checkmark">&#10003;</span><span class="feature-text"><strong>Auto-scaling:</strong> Dynamic resource allocation</span></li>
+          <li><span class="checkmark">&#10003;</span><span class="feature-text"><strong>Load Balancing:</strong> Distributed request handling</span></li>
+          <li><span class="checkmark">&#10003;</span><span class="feature-text"><strong>CDN Integration:</strong> Global performance optimization</span></li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>TENANT ISOLATION</h4>
+        <ul>
+          <li><span class="checkmark">&#10003;</span><span class="feature-text">Complete data separation</span></li>
+          <li><span class="checkmark">&#10003;</span><span class="feature-text">Independent customization</span></li>
+          <li><span class="checkmark">&#10003;</span><span class="feature-text">Separate backup strategies</span></li>
+          <li><span class="checkmark">&#10003;</span><span class="feature-text">Individual performance metrics</span></li>
+          <li><span class="checkmark">&#10003;</span><span class="feature-text">Custom domain support</span></li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>MONITORING & ANALYTICS</h4>
+        <ul>
+          <li><span class="checkmark">&#10003;</span><span class="feature-text">Real-time performance monitoring</span></li>
+          <li><span class="checkmark">&#10003;</span><span class="feature-text">Usage analytics per tenant</span></li>
+          <li><span class="checkmark">&#10003;</span><span class="feature-text">Security audit logs</span></li>
+          <li><span class="checkmark">&#10003;</span><span class="feature-text">Automated alerting system</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

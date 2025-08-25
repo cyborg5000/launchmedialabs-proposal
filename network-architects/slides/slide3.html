@@ -3,201 +3,175 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Why Launch Media Labs is Your Best Choice</title>
+  <title>The Transformation Opportunity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;600&display=swap');
-
-    body {
+    * {
       margin: 0;
       padding: 0;
-      background-color: #f0f0f0;
+      box-sizing: border-box;
+    }
+    body {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      background-color: #1a1a1a;
+      font-family: 'Poppins', 'Helvetica Neue', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
     }
-
     .slide {
       width: 1280px;
       height: 720px;
-      background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 50%, #003366 100%);
-      color: #e0e1dd;
+      background-color: #0d1b2a;
+      color: #e0e0e0;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 60px;
-      box-sizing: border-box;
+      padding: 50px 80px;
       position: relative;
-      overflow: hidden;
     }
-    
-    .slide::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-        background-size: 25px 25px;
-        opacity: 0.5;
-        animation: pan-background 60s linear infinite;
-    }
-
-    @keyframes pan-background {
-        from {
-            transform: translate(0, 0);
-        }
-        to {
-            transform: translate(100px, 100px);
-        }
-    }
-
-    .title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 64px;
-      font-weight: 900;
-      color: #ffffff;
+    .main-title {
+      font-size: 48px;
+      font-weight: 700;
+      color: #FFC300;
       text-align: center;
-      margin-bottom: 20px;
-      position: relative;
-      text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
-      animation: slideInDown 1s ease-out forwards;
-    }
-    
-    .title::after {
-        content: '';
-        position: absolute;
-        bottom: -15px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100px;
-        height: 4px;
-        background-color: #FFD700;
-        border-radius: 2px;
-        box-shadow: 0 0 10px #FFD700;
-    }
-
-    .subtitle {
-      font-family: 'Poppins', sans-serif;
-      font-size: 24px;
-      font-weight: 400;
-      color: #b0c4de;
-      margin-bottom: 60px;
-      text-align: center;
-      animation: fadeIn 1s ease-out 0.5s forwards;
-      opacity: 0;
-    }
-
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 35px 50px;
       width: 100%;
-      max-width: 1100px;
+      margin-bottom: 45px;
     }
-
-    .benefit-item {
+    .comparison-section {
       display: flex;
-      align-items: flex-start;
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out forwards;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      width: 100%;
     }
-
-    .benefit-item:nth-child(1) { animation-delay: 1.0s; }
-    .benefit-item:nth-child(2) { animation-delay: 1.2s; }
-    .benefit-item:nth-child(3) { animation-delay: 1.4s; }
-    .benefit-item:nth-child(4) { animation-delay: 1.6s; }
-    .benefit-item:nth-child(5) { animation-delay: 1.8s; }
-    .benefit-item:nth-child(6) { animation-delay: 2.0s; }
-
-    .checkmark {
-      font-size: 36px;
-      font-weight: bold;
-      color: #FFD700;
-      margin-right: 20px;
-      line-height: 1;
-      text-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
+    .box {
+      border: 1px solid #FFC300;
+      border-radius: 8px;
+      padding: 25px 35px;
+      background-color: #1b263b;
+      flex: 1;
+      max-width: 460px;
+      min-height: 280px;
     }
-
-    .benefit-text {
-      font-size: 20px;
-      line-height: 1.5;
-      font-weight: 400;
-    }
-
-    .highlight {
+    .box-title {
+      font-size: 24px;
       font-weight: 600;
-      color: #FFD700;
+      color: #FFC300;
+      border-bottom: 1px solid #FFC300;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
     }
-    
-    .strong {
-        font-weight: 600;
-        color: #ffffff;
+    .box ul {
+      list-style: none;
+      padding-left: 22px;
     }
-    
-    @keyframes slideInDown {
-        from {
-            opacity: 0;
-            transform: translateY(-50px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .box li {
+      font-size: 18px;
+      line-height: 1.6;
+      position: relative;
+      margin-bottom: 12px;
     }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
+    .box li::before {
+      content: '•';
+      color: #FFC300;
+      position: absolute;
+      left: -22px;
+      top: 0;
+      font-weight: bold;
+      font-size: 20px;
     }
-    
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .arrow {
+      font-size: 72px;
+      color: #FFC300;
+      font-weight: 400;
+      padding: 0 10px;
+    }
+    .market-section {
+      width: 100%;
+      text-align: center;
+      margin-top: 60px;
+    }
+    .market-title {
+      font-size: 18px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: #e0e0e0;
+      margin-bottom: 25px;
+    }
+    .stats-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      width: 100%;
+      padding: 0 50px;
+    }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-basis: 33.33%;
+    }
+    .stat-number {
+      font-size: 48px;
+      font-weight: 700;
+      color: #FFC300;
+      line-height: 1.1;
+    }
+    .stat-label {
+      font-size: 18px;
+      color: #e0e0e0;
+      margin-top: 8px;
     }
   </style>
 </head>
 <body>
   <div class="slide">
-    <h1 class="title">Your Unfair Advantage</h1>
-    <p class="subtitle">Why <span class="highlight">Launch Media Labs</span> is Your Best Choice</p>
-    <div class="benefits-grid">
-      <div class="benefit-item">
-        <span class="checkmark">✓</span>
-        <p class="benefit-text"><strong class="strong">Modern Tech Stack Expertise:</strong> Built on <span class="highlight">Next.js, Supabase, and AI</span> for scalable, future-proof solutions.</p>
+    <h1 class="main-title">The Transformation Opportunity</h1>
+
+    <div class="comparison-section">
+      <div class="box from-box">
+        <h2 class="box-title">FROM: Current State</h2>
+        <ul>
+          <li>Single-use internal maintenance tool</li>
+          <li>Slow performance & limited functionality</li>
+          <li>Zero revenue generation</li>
+          <li>Basic user interface</li>
+        </ul>
       </div>
-      <div class="benefit-item">
-        <span class="checkmark">✓</span>
-        <p class="benefit-text"><strong class="strong">Singapore Market Understanding:</strong> Seamless <span class="highlight">Xero/QuickBooks</span> integration tailored for local business needs.</p>
+
+      <div class="arrow">→</div>
+
+      <div class="box to-box">
+        <h2 class="box-title">TO: Future Vision</h2>
+        <ul>
+          <li>Multi-tenant SaaS platform</li>
+          <li>Serving IT, Automotive, HVAC & Field Service</li>
+          <li>Revenue Model: $30-60/month subscriptions</li>
+          <li>Modern, fast, AI-powered platform</li>
+        </ul>
       </div>
-      <div class="benefit-item">
-        <span class="checkmark">✓</span>
-        <p class="benefit-text"><strong class="strong">Full Code Ownership:</strong> Complete <span class="highlight">GitHub repository transfer</span> upon project completion. Your asset, your control.</p>
-      </div>
-      <div class="benefit-item">
-        <span class="checkmark">✓</span>
-        <p class="benefit-text"><strong class="strong">AI Integration Included:</strong> Leverage <span class="highlight">the power of GPT models</span> with no extra licensing fees or hidden costs.</p>
-      </div>
-      <div class="benefit-item">
-        <span class="checkmark">✓</span>
-        <p class="benefit-text"><strong class="strong">3-Year Maintenance Included:</strong> Peace of mind with extensive support, a <span class="highlight">$12,000 value</span>, included.</p>
-      </div>
-      <div class="benefit-item">
-        <span class="checkmark">✓</span>
-        <p class="benefit-text"><strong class="strong">Volume-Based Pricing Expert:</strong> Strategic pricing models designed to <span class="highlight">maximize your profitability</span> and market share.</p>
+    </div>
+
+    <div class="market-section">
+      <h3 class="market-title">Market Opportunity</h3>
+      <div class="stats-container">
+        <div class="stat-item">
+          <div class="stat-number">50,000+</div>
+          <div class="stat-label">Singapore SMEs</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">10,000+</div>
+          <div class="stat-label">Target Businesses</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">Untapped</div>
+          <div class="stat-label">Revenue Potential</div>
+        </div>
       </div>
     </div>
   </div>

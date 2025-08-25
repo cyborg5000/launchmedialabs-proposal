@@ -3,158 +3,346 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3-Year Support Included</title>
+  <title>Module 10 - Preventive Maintenance</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=Noto+Sans+SC:wght@400;700&display=swap');
 
     body {
       margin: 0;
       padding: 0;
-      width: 1280px;
-      height: 720px;
-      font-family: 'Poppins', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-      background-color: #002147;
+      font-family: 'Roboto', 'Noto Sans SC', sans-serif;
+      background-color: #000;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
+      height: 100vh;
+      color: #e0e0e0;
     }
 
     .slide {
       width: 1280px;
       height: 720px;
+      position: relative;
+      overflow: hidden;
+      background-color: #0a192f;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      background: radial-gradient(ellipse at center, #0d47a1 0%, #002147 100%);
-      color: #ffffff;
-      text-align: center;
-      padding: 40px;
-      box-sizing: border-box;
+      flex-direction: column;
     }
 
-    .content-wrapper {
+    .slide::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('images/ai_technology.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.1;
+      z-index: 1;
+    }
+
+    .slide > * {
+      position: relative;
+      z-index: 2;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .header {
+      padding: 30px 40px 20px 40px;
+      text-align: left;
+      border-bottom: 1px solid rgba(0, 78, 152, 0.5);
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .header h1 {
+      font-size: 42px;
+      font-weight: 900;
+      color: #ffffff;
+      margin: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .header h1 .price {
+      font-size: 36px;
+      font-weight: 700;
+      color: #FFD700;
+      background: linear-gradient(145deg, #FFD700, #F0B400);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .main-content {
+      flex-grow: 1;
+      display: grid;
+      grid-template-columns: 3fr 3fr 2fr;
+      gap: 25px;
+      padding: 25px 40px;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .card {
+      background: rgba(13, 37, 63, 0.5);
+      border: 1px solid rgba(0, 119, 255, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      opacity: 0;
+      animation: slideUp 0.6s ease-out forwards;
+    }
+    
+    .column:nth-child(1) .card { animation-delay: 0.2s; }
+    .column:nth-child(2) .card { animation-delay: 0.4s; }
+    .column:nth-child(3) .card { animation-delay: 0.6s; }
+
+
+    .card h3 {
+      color: #007bff;
+      font-size: 18px;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #002d62;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .card ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-grow: 1;
+    }
+
+    .card li {
+      margin-bottom: 12px;
+      font-size: 15px;
+      line-height: 1.5;
+      display: flex;
+      align-items: flex-start;
+      color: #cdd6f4;
+    }
+
+    .card li::before {
+      content: '✓';
+      color: #28a745;
+      margin-right: 10px;
+      font-weight: bold;
+      margin-top: 2px;
+    }
+    
+    .card li strong {
+      color: #89b4fa;
+      font-weight: 700;
+    }
+
+    .visual-card {
+        padding: 15px;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    #calendar-container {
+        width: 100%;
+        background-color: rgba(0,0,0,0.2);
+        border-radius: 8px;
+        padding: 10px;
+    }
+    
+    #calendar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 5px 5px 5px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #89b4fa;
+    }
+    
+    #calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 4px;
+        font-size: 10px;
+        text-align: center;
+    }
+    
+    #calendar-grid div {
+        padding: 3px 0;
+        border-radius: 3px;
+    }
+    .day-name { font-weight: bold; color: #6c757d; }
+    .day-num { background-color: rgba(255,255,255,0.05); }
+    .day-num.other-month { opacity: 0.3; }
+    .day-num.scheduled { background-color: #007bff; color: white; }
+    .day-num.alert { background-color: #ffc107; color: black; }
+    
+    #cost-comparison {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-end;
+        gap: 20px;
+        height: 100px;
+        padding: 0 10px;
+    }
+    
+    .cost-bar {
+        width: 40%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        color: #bac2de;
+    }
+    
+    .bar {
         width: 100%;
-        max-width: 800px;
-        animation: fadeIn 1.2s ease-out;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .title {
-      font-size: 44px;
-      font-weight: 300;
-      color: #E0E0E0;
-      margin: 0;
-    }
-
-    .value {
-      font-size: 72px;
-      font-weight: 700;
-      color: #FFD700;
-      text-shadow: 0 0 8px #FFD700, 0 0 16px rgba(255, 215, 0, 0.7);
-      margin: 10px 0 50px 0;
-    }
-
-    .features-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      width: 100%;
-      max-width: 650px;
-      text-align: left;
-    }
-
-    .feature-item {
-      display: flex;
-      align-items: center;
-      font-size: 24px;
-      font-weight: 400;
-      color: #B0C4DE;
-      padding: 16px 25px;
-      margin-bottom: 15px;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      border: 1px solid transparent;
+        border-radius: 4px 4px 0 0;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
     }
     
-    .feature-item.active {
-      background-color: rgba(23, 107, 219, 0.5);
-      color: #FFFFFF;
-      font-weight: 600;
-      border-color: rgba(66, 165, 245, 0.7);
+    .bar-reactive { height: 90%; background: linear-gradient(to top, #dc3545, #ff6b81); animation: growBar 1s ease-out; }
+    .bar-preventive { height: 35%; background: linear-gradient(to top, #28a745, #52c41a); animation: growBar 1s 0.2s ease-out; }
+    
+    .cost-bar span { font-size: 13px; margin-top: 5px; font-weight: bold; }
+    
+    @keyframes growBar { from { height: 0; } }
+
+    #ai-chart svg {
+        width: 100%;
+        height: 100%;
     }
     
-    .feature-item:not(.active):hover {
-        background-color: rgba(255, 255, 255, 0.05);
+    #ai-chart .grid-line { stroke: rgba(255, 255, 255, 0.1); stroke-width: 1; }
+    #ai-chart .line { fill: none; stroke: #00aeff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    #ai-chart .point { fill: #00aeff; stroke: #0a192f; stroke-width: 2; }
+    #ai-chart .area { fill: url(#area-gradient); opacity: 0.4; }
+    
+    .line {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: drawLine 2s ease-out forwards;
     }
-
-    .feature-item svg {
-      width: 28px;
-      height: 28px;
-      margin-right: 20px;
-      flex-shrink: 0;
-      fill: currentColor;
+    
+    @keyframes drawLine {
+        to { stroke-dashoffset: 0; }
     }
-
-    .footer-text {
-      font-size: 18px;
-      font-style: italic;
-      color: rgba(224, 224, 224, 0.7);
-      margin-top: 40px;
-      padding-top: 25px;
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
-      width: 80%;
-    }
-
   </style>
 </head>
 <body>
-
   <div class="slide">
-    <div class="content-wrapper">
-      <h1 class="title">3-Year Support Included</h1>
-      <h2 class="value">($12,000 Value)</h2>
+    <header class="header">
+      <h1>
+        <span>Module 10 - Preventive Maintenance</span>
+        <span class="price">Investment: $2,500</span>
+      </h1>
+    </header>
+
+    <main class="main-content">
+      <div class="column">
+        <div class="card" id="scheduled-maintenance">
+          <h3>SCHEDULED MAINTENANCE SYSTEM</h3>
+          <ul>
+            <li>Calendar-based maintenance scheduling</li>
+            <li>Resource allocation and planning</li>
+            <li>Automated reminders and notifications</li>
+            <li>Maintenance checklists and procedures</li>
+            <li>Parts and labor requirement planning</li>
+          </ul>
+        </div>
+        <div class="card" id="compliance-reporting">
+          <h3>COMPLIANCE & REPORTING</h3>
+          <ul>
+            <li>Maintenance compliance tracking</li>
+            <li>Equipment history documentation</li>
+            <li>Performance metrics and KPIs</li>
+            <li>Regulatory compliance reporting</li>
+          </ul>
+        </div>
+      </div>
       
-      <ul class="features-list">
-        <li class="feature-item active">
-          <svg viewBox="0 0 24 24"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"></path></svg>
-          <span>Monthly updates and patches</span>
-        </li>
-        <li class="feature-item">
-          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"></path></svg>
-          <span>Security monitoring</span>
-        </li>
-        <li class="feature-item">
-          <svg viewBox="0 0 24 24"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.09-4-4L2 17.08l1.5 1.41z"></path></svg>
-          <span>Performance optimization</span>
-        </li>
-        <li class="feature-item">
-          <svg viewBox="0 0 24 24"><path d="M12 1a9 9 0 00-9 9v7c0 1.66 1.34 3 3 3h3v-8H5v-2c0-3.87 3.13-7 7-7s7 3.13 7 7v2h-4v8h4v1h-7v2h6c1.66 0 3-1.34 3-3V10a9 9 0 00-9-9z"></path></svg>
-          <span>40 hours/year technical support</span>
-        </li>
-        <li class="feature-item">
-          <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6.3l-1.4 1.4-4.2-4.2L2 5l4.2 4.2-1.4 1.4L9 15l4.2-4.2 1.4 1.4L10.3 21l1.4 1.4 4.2-4.2-1.4-1.4L19 12.5l4.3-4.3-1.6-1.6z"></path></svg>
-          <span>Bug fixes and minor enhancements</span>
-        </li>
-      </ul>
+      <div class="column">
+        <div class="card" id="ai-features">
+          <h3>AI PREDICTIVE FEATURES</h3>
+          <ul>
+            <li><strong>Equipment Failure Prediction:</strong> AI analyzes patterns to predict failures</li>
+            <li><strong>Optimal Scheduling:</strong> AI optimizes maintenance timing</li>
+            <li><strong>Cost Savings Analysis:</strong> AI identifies cost reduction opportunities</li>
+            <li><strong>Performance Trending:</strong> AI tracks equipment performance over time</li>
+            <li><strong>Maintenance Optimization:</strong> AI suggests best maintenance intervals</li>
+          </ul>
+        </div>
+        <div class="card" id="business-value">
+          <h3>BUSINESS VALUE</h3>
+          <ul>
+            <li>Reduced unplanned downtime</li>
+            <li>Lower maintenance costs</li>
+            <li>Extended equipment life</li>
+            <li>Predictive insights for strategic planning</li>
+          </ul>
+        </div>
+      </div>
 
-      <p class="footer-text">This alone makes the deal exceptional value.</p>
-    </div>
+      <div class="column">
+        <div class="card visual-card">
+            <h3>Maintenance Calendar</h3>
+            <div id="calendar-container">
+                <div id="calendar-header"><span>◀</span><span>October 2024</span><span>▶</span></div>
+                <div id="calendar-grid">
+                    <div class="day-name">Su</div><div class="day-name">Mo</div><div class="day-name">Tu</div><div class="day-name">We</div><div class="day-name">Th</div><div class="day-name">Fr</div><div class="day-name">Sa</div>
+                    <div class="day-num other-month">29</div><div class="day-num other-month">30</div><div class="day-num">1</div><div class="day-num">2</div><div class="day-num scheduled">3</div><div class="day-num">4</div><div class="day-num">5</div>
+                    <div class="day-num">6</div><div class="day-num">7</div><div class="day-num">8</div><div class="day-num">9</div><div class="day-num">10</div><div class="day-num">11</div><div class="day-num scheduled">12</div>
+                    <div class="day-num">13</div><div class="day-num">14</div><div class="day-num alert">15</div><div class="day-num">16</div><div class="day-num">17</div><div class="day-num">18</div><div class="day-num">19</div>
+                    <div class="day-num">20</div><div class="day-num">21</div><div class="day-num scheduled">22</div><div class="day-num">23</div><div class="day-num">24</div><div class="day-num">25</div><div class="day-num">26</div>
+                    <div class="day-num">27</div><div class="day-num">28</div><div class="day-num">29</div><div class="day-num">30</div><div class="day-num">31</div><div class="day-num other-month">1</div><div class="day-num other-month">2</div>
+                </div>
+            </div>
+        </div>
+        <div class="card visual-card">
+            <h3>Preventive vs Reactive Cost</h3>
+            <div id="cost-comparison">
+                <div class="cost-bar"><div class="bar bar-reactive"></div><span>Reactive</span></div>
+                <div class="cost-bar"><div class="bar bar-preventive"></div><span>Preventive</span></div>
+            </div>
+        </div>
+        <div class="card visual-card" id="ai-chart">
+            <h3>Equipment Lifecycle Graph</h3>
+            <svg viewBox="0 0 200 100">
+                <defs>
+                    <linearGradient id="area-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00aeff;stop-opacity:0.5"/>
+                        <stop offset="100%" style="stop-color:#00aeff;stop-opacity:0"/>
+                    </linearGradient>
+                </defs>
+                <polyline class="area" points="0,70 40,60 80,40 120,30 160,50 200,65 200,100 0,100 0,70"></polyline>
+                <polyline class="line" points="0,70 40,60 80,40 120,30 160,50 200,65"></polyline>
+                <circle class="point" cx="120" cy="30" r="4"></circle>
+                <circle class="point" cx="80" cy="40" r="4"></circle>
+            </svg>
+        </div>
+      </div>
+    </main>
   </div>
-
 </body>
 </html>

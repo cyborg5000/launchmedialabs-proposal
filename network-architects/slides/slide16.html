@@ -3,212 +3,327 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Launch Media Labs Advantage</title>
+  <title>Multi-Tenant SaaS Features</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
     body {
       margin: 0;
       padding: 0;
-      width: 100vw;
-      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #1a1a1a;
+      min-height: 100vh;
+      background-color: #333;
       font-family: 'Poppins', sans-serif;
     }
 
-    .slide {
+    .slide-container {
       width: 1280px;
       height: 720px;
-      background: radial-gradient(circle, #001f3f, #001021);
-      color: #f0f0f0;
+      background-color: #f0f2f5;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 40px;
-      box-sizing: border-box;
-      position: relative;
       overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
     
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
     }
     
-    @keyframes slideUp {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    .slide h1 {
-      font-size: 56px;
-      font-weight: 700;
-      color: #D4AF37;
-      margin: 0 0 50px 0;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      animation: fadeIn 1s ease-out;
+    .header {
+      background-color: #0a2540;
+      background-image: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.08), transparent 50%),
+                        radial-gradient(circle at 80% 90%, rgba(255, 255, 255, 0.08), transparent 50%);
+      color: #ffffff;
+      padding: 20px 50px;
       text-align: center;
+      flex-shrink: 0;
+      border-bottom: 4px solid #d4af37;
+      animation: fadeIn 0.5s ease-out;
     }
 
-    .advantages-container {
+    .header h1 {
+      margin: 0;
+      font-size: 36px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+    }
+
+    .content-grid {
+      flex-grow: 1;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-      width: 100%;
-      max-width: 1100px;
-      padding: 0 20px;
-      box-sizing: border-box;
-      animation: fadeIn 1s ease-out 0.3s backwards;
+      grid-template-rows: repeat(2, 1fr);
+      gap: 25px;
+      padding: 25px 50px;
     }
-    
-    .advantage-card {
-      background: rgba(10, 39, 69, 0.5);
-      border: 1px solid rgba(212, 175, 55, 0.4);
+
+    .card {
+      background: #ffffff;
       border-radius: 12px;
-      padding: 25px 20px;
-      text-align: center;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      animation: slideUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) backwards;
+      opacity: 0;
+      animation: fadeIn 0.5s ease-out forwards;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     
-    .advantage-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
-      border-color: #D4AF37;
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     }
 
-    .advantage-card:nth-child(1) { animation-delay: 0.4s; }
-    .advantage-card:nth-child(2) { animation-delay: 0.5s; }
-    .advantage-card:nth-child(3) { animation-delay: 0.6s; }
-    .advantage-card:nth-child(4) { animation-delay: 0.7s; grid-column: 1 / 2; }
-    .advantage-card:nth-child(5) { animation-delay: 0.8s; grid-column: 3 / 4; }
+    .card:nth-child(1) { animation-delay: 0.2s; }
+    .card:nth-child(2) { animation-delay: 0.3s; }
+    .card:nth-child(3) { animation-delay: 0.4s; }
+    .card:nth-child(4) { animation-delay: 0.5s; }
+    .card:nth-child(5) { animation-delay: 0.6s; }
+    .card:nth-child(6) { animation-delay: 0.7s; }
 
-    /* Centering the last row of cards */
-    .advantage-card:nth-child(4) {
-        grid-column-start: 1;
-        grid-column-end: 2;
-        margin-left: auto;
-        width: 100%;
-    }
-    .advantage-card:nth-child(5) {
-        grid-column-start: 3;
-        grid-column-end: 4;
-        margin-right: auto;
-        width: 100%;
-    }
-    /* A helper to center the last row */
-    .advantages-container::after {
-        content: '';
-        grid-column: 2 / 3;
-    }
-
-    .card-icon {
-        width: 40px;
-        height: 40px;
-        background-color: #D4AF37;
-        border-radius: 50%;
-        margin-bottom: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
-    }
-
-    .card-icon::before {
-      content: '';
-      display: block;
-      width: 10px;
-      height: 20px;
-      border: solid #001021;
-      border-width: 0 4px 4px 0;
-      transform: rotate(45deg) translate(-2px, -2px);
-    }
-    
-    .advantage-card h3 {
-      margin: 0;
+    .card h3 {
       font-size: 18px;
       font-weight: 600;
-      line-height: 1.4;
-      color: #ffffff;
-      height: 50px; /* Ensures consistent height */
+      color: #d4af37;
+      margin-top: 0;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .advantage-card h3 .plus-sign {
-      color: #D4AF37;
-      font-weight: 700;
-      display: block;
-      margin: 4px 0;
+    .card ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      font-size: 14px;
+      color: #4a5568;
     }
 
-    .advantage-card p {
-      margin: 10px 0 0 0;
-      font-size: 15px;
-      font-weight: 400;
-      color: #b0c4de;
-      line-height: 1.5;
+    .card li {
+      margin-bottom: 8px;
+      padding-left: 22px;
+      position: relative;
+    }
+
+    .card li::before {
+      content: '✓';
+      color: #0a2540;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 1px;
+    }
+
+    .visual-container {
+        margin-top: auto;
+        padding-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        height: 50px;
+    }
+
+    /* CSS Visuals */
+    .icon-shield {
+        width: 16px;
+        height: 18px;
+        background: #d4af37;
+        position: relative;
+        display: inline-block;
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+
+    .branding-visual {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .branding-visual .logo-placeholder {
+      width: 30px;
+      height: 30px;
+      border: 2px solid #0a2540;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: #0a2540;
+    }
+    .branding-visual .color-swatch {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+    }
+
+    .chart-visual .bar {
+        width: 15px;
+        background: #0a2540;
+        margin: 0 2px;
+        border-radius: 3px 3px 0 0;
+        transition: height 0.5s ease-out;
+    }
+
+    .diagram-card {
+        grid-column: span 2;
+        background: #e9eef3;
+        border: 1px solid #d1d9e6;
     }
     
-    /* Decorative elements */
-    .slide::before, .slide::after {
-        content: '';
-        position: absolute;
-        border-radius: 50%;
-        opacity: 0.05;
-        z-index: 0;
+    .diagram-card h3 { color: #0a2540; }
+
+    .architecture-diagram {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        color: #0a2540;
     }
-    .slide::before {
-        width: 400px;
-        height: 400px;
-        background: #D4AF37;
-        top: -150px;
-        left: -150px;
-        filter: blur(80px);
+    .app-layer {
+        border: 2px solid #0a2540;
+        border-radius: 8px;
+        padding: 10px;
+        text-align: center;
+        width: 80%;
+        background: rgba(255,255,255,0.4);
     }
-    .slide::after {
-        width: 300px;
-        height: 300px;
-        background: #0077ff;
-        bottom: -120px;
-        right: -120px;
-        filter: blur(70px);
+    .app-layer p { margin: 0 0 10px 0; font-weight: 600; }
+    .tenants-container {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+    .tenant {
+        border: 1px solid #d4af37;
+        background: #fff;
+        padding: 8px;
+        border-radius: 4px;
+        text-align: center;
+        width: 30%;
+    }
+    .tenant p { margin: 0 0 5px 0; font-weight: 600; }
+    .db {
+        width: 80%;
+        margin: 0 auto;
+        padding: 2px 0;
+        background: #a0aec0;
+        border-radius: 2px;
+        color: white;
+        font-size: 10px;
     }
 
   </style>
 </head>
 <body>
-  <div class="slide">
-    <h1>The Launch Media Labs Advantage</h1>
-    <div class="advantages-container">
-      <div class="advantage-card">
-        <div class="card-icon"></div>
-        <h3>Technical Excellence <span class="plus-sign">+</span> Local Understanding</h3>
+
+  <div class="slide-container">
+    <header class="header">
+      <h1>CORE MULTI-TENANT SAAS FEATURES</h1>
+    </header>
+
+    <main class="content-grid">
+      
+      <div class="card">
+        <h3><span class="icon-shield"></span>DATA SEPARATION & SECURITY</h3>
+        <ul>
+          <li>Complete privacy between companies</li>
+          <li>Isolated databases per tenant</li>
+          <li>Row-level security implementation</li>
+          <li>Encrypted data storage</li>
+          <li>GDPR compliance built-in</li>
+        </ul>
       </div>
-      <div class="advantage-card">
-        <div class="card-icon"></div>
-        <h3>All-Inclusive Pricing <span class="plus-sign">+</span> Long-term Support</h3>
+
+      <div class="card">
+        <h3>WHITE-LABEL BRANDING</h3>
+        <ul>
+          <li>Custom logos per organization</li>
+          <li>Personalized domain names</li>
+          <li>Branded email templates</li>
+          <li>Custom color schemes</li>
+          <li>Company-specific terminology</li>
+        </ul>
+        <div class="visual-container branding-visual">
+            <div class="logo-placeholder">L</div>
+            <div class="color-swatch" style="background:#0a2540;"></div>
+            <div class="color-swatch" style="background:#d4af37;"></div>
+            <div class="color-swatch" style="background:#4a5568;"></div>
+            <span style="font-size: 14px; color: #4a5568;">YourBrand.com</span>
+        </div>
       </div>
-      <div class="advantage-card">
-        <div class="card-icon"></div>
-        <h3>Modern Architecture <span class="plus-sign">+</span> AI Integration</h3>
+      
+      <div class="card">
+        <h3>SCALABILITY FEATURES</h3>
+        <ul>
+          <li>System grows with customer base</li>
+          <li>Auto-scaling infrastructure</li>
+          <li>Performance optimization per tenant</li>
+          <li>Resource allocation management</li>
+          <li>Load balancing</li>
+        </ul>
+        <div class="visual-container chart-visual">
+            <div class="bar" style="height: 20%;"></div>
+            <div class="bar" style="height: 35%;"></div>
+            <div class="bar" style="height: 50%;"></div>
+            <div class="bar" style="height: 75%;"></div>
+            <div class="bar" style="height: 90%;"></div>
+        </div>
       </div>
-      <div class="advantage-card">
-        <div class="card-icon"></div>
-        <h3>Full Ownership <span class="plus-sign">+</span> No Lock-in</h3>
+
+      <div class="card">
+        <h3>BUSINESS MODEL SUPPORT</h3>
+        <ul>
+          <li>Usage-based billing capabilities</li>
+          <li>Tiered subscription management</li>
+          <li>Feature toggling per plan</li>
+          <li>Customer usage analytics</li>
+          <li>Revenue reporting per tenant</li>
+        </ul>
       </div>
-       <div class="advantage-card">
-        <div class="card-icon"></div>
-        <h3>Proven Methodology <span class="plus-sign">+</span> Risk Mitigation</h3>
+      
+      <div class="card">
+        <h3>RAPID DEPLOYMENT</h3>
+        <ul>
+          <li>Industry template quick setup</li>
+          <li>Automated onboarding workflows</li>
+          <li>Self-service customer portal</li>
+          <li>Guided setup wizards</li>
+        </ul>
       </div>
-    </div>
+      
+      <div class="card diagram-card">
+        <h3>Multi-Tenant Architecture Example</h3>
+        <div class="architecture-diagram">
+            <div class="app-layer">
+                <p>Shared Application Layer</p>
+                <div class="tenants-container">
+                    <div class="tenant">
+                        <p>Tenant A</p>
+                        <div class="db">DB</div>
+                    </div>
+                    <div class="tenant">
+                        <p>Tenant B</p>
+                        <div class="db">DB</div>
+                    </div>
+                    <div class="tenant">
+                        <p>Tenant C</p>
+                        <div class="db">DB</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+    </main>
   </div>
+
 </body>
 </html>
