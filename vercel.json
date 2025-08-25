@@ -10,12 +10,6 @@
     {
       "src": "/network-architects/(.*)",
       "dest": "/network-architects/$1"
-    },
-    {
-      "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot))$",
-      "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
-      }
     }
   ],
   "headers": [
