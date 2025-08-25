@@ -80,6 +80,39 @@
       align-items: center;
       transition: all 0.3s ease-in-out;
       box-shadow: 0 0 15px rgba(0, 191, 255, 0.1);
+      position: relative;
+    }
+    
+    .feature-card.future-feature {
+      background-color: rgba(13, 37, 63, 0.3);
+      border: 1px solid rgba(128, 128, 128, 0.3);
+      opacity: 0.7;
+    }
+    
+    .feature-card.future-feature h3 {
+      color: #A8B2D1;
+    }
+    
+    .feature-card.future-feature p {
+      color: #6B7280;
+    }
+    
+    .feature-badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background-color: #10B981;
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .future-badge {
+      background-color: #6B7280;
     }
     
     .feature-card:hover {
@@ -164,19 +197,21 @@
 <body>
   <div class="slide">
     <header class="header">
-      <h1>7 Powerful AI Features Included <span>($4,500 Value)</span></h1>
+      <h1>3 AI Features Included + 4 Future Features <span>($4,500 Value)</span></h1>
     </header>
 
     <main class="features-grid">
       <div class="features-row">
         <div class="feature-card">
+          <div class="feature-badge">Included</div>
           <div class="icon-container">
             <div class="icon-outer-ring"></div><div class="icon-inner-ring"></div><div class="icon-core"></div>
           </div>
           <h3>Smart Ticket Assignment</h3>
           <p>AI assigns tickets to the right person automatically. Skills matching & availability optimization.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card future-feature">
+          <div class="feature-badge future-badge">Future</div>
           <div class="icon-container">
             <div class="icon-outer-ring"></div><div class="icon-inner-ring"></div><div class="icon-core"></div>
           </div>
@@ -184,6 +219,7 @@
           <p>AI warns before equipment breakdowns occur. Predictive maintenance scheduling.</p>
         </div>
         <div class="feature-card">
+          <div class="feature-badge">Included</div>
           <div class="icon-container">
             <div class="icon-outer-ring"></div><div class="icon-inner-ring"></div><div class="icon-core"></div>
           </div>
@@ -191,6 +227,7 @@
           <p>AI optimizes routes and timing for maximum efficiency. Resource allocation optimization.</p>
         </div>
         <div class="feature-card">
+          <div class="feature-badge">Included</div>
           <div class="icon-container">
             <div class="icon-outer-ring"></div><div class="icon-inner-ring"></div><div class="icon-core"></div>
           </div>
@@ -199,21 +236,24 @@
         </div>
       </div>
       <div class="features-row">
-        <div class="feature-card">
+        <div class="feature-card future-feature">
+          <div class="feature-badge future-badge">Future</div>
           <div class="icon-container">
             <div class="icon-outer-ring"></div><div class="icon-inner-ring"></div><div class="icon-core"></div>
           </div>
           <h3>Knowledge Base Creation</h3>
           <p>AI turns solutions into reusable knowledge guides. Continuous learning system.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card future-feature">
+          <div class="feature-badge future-badge">Future</div>
           <div class="icon-container">
             <div class="icon-outer-ring"></div><div class="icon-inner-ring"></div><div class="icon-core"></div>
           </div>
           <h3>Customer Satisfaction Monitoring</h3>
           <p>AI tracks and analyzes customer happiness metrics. Proactive satisfaction management.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card future-feature">
+          <div class="feature-badge future-badge">Future</div>
           <div class="icon-container">
             <div class="icon-outer-ring"></div><div class="icon-inner-ring"></div><div class="icon-core"></div>
           </div>

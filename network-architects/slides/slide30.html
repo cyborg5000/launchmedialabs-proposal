@@ -37,37 +37,37 @@
     }
 
     .header {
-      padding: 30px 50px;
+      padding: 20px 40px;
       text-align: center;
       animation: fadeIn 0.8s ease-out forwards;
     }
 
     .header h1 {
       font-family: 'Poppins', sans-serif;
-      font-size: 40px;
+      font-size: 32px;
       font-weight: 700;
       margin: 0;
       color: #FFFFFF;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       border-bottom: 3px solid #D4AF37;
       display: inline-block;
-      padding-bottom: 10px;
+      padding-bottom: 8px;
     }
 
     .content-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-      gap: 25px;
+      gap: 18px;
       flex-grow: 1;
-      padding: 0 50px 40px 50px;
+      padding: 0 40px 30px 40px;
     }
 
     .metric-card {
       background-color: rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      padding: 20px;
+      border-radius: 10px;
+      padding: 15px;
       border: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
       flex-direction: column;
@@ -82,17 +82,17 @@
 
     .card-title {
       font-family: 'Poppins', sans-serif;
-      font-size: 20px;
+      font-size: 17px;
       font-weight: 600;
       color: #D4AF37;
-      margin: 0 0 15px 0;
+      margin: 0 0 12px 0;
       border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-      padding-bottom: 8px;
+      padding-bottom: 6px;
     }
     
     .card-content {
       display: flex;
-      gap: 20px;
+      gap: 15px;
       flex-grow: 1;
     }
 
@@ -102,31 +102,31 @@
     
     .sub-title {
       font-family: 'Poppins', sans-serif;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 600;
       color: #FFFFFF;
-      margin: 0 0 10px 0;
+      margin: 0 0 8px 0;
     }
 
     .metric-list {
       list-style: none;
       padding: 0;
       margin: 0;
-      font-size: 14px;
+      font-size: 12px;
     }
 
     .metric-list li {
       display: flex;
       align-items: center;
-      margin-bottom: 8px;
-      line-height: 1.5;
+      margin-bottom: 6px;
+      line-height: 1.4;
     }
 
     .checkmark {
       color: #D4AF37;
       font-weight: bold;
-      margin-right: 10px;
-      font-size: 16px;
+      margin-right: 8px;
+      font-size: 14px;
     }
     
     .metric-value {
@@ -145,22 +145,24 @@
       content: '';
       position: absolute;
       left: 4px;
-      top: 5px;
-      bottom: 5px;
+      top: 4px;
+      bottom: 4px;
       width: 2px;
       background: rgba(212, 175, 55, 0.4);
     }
     .timeline li {
-      padding-left: 20px;
+      padding-left: 18px;
       position: relative;
+      font-size: 12px;
+      margin-bottom: 4px;
     }
     .timeline li::before {
       content: '';
       position: absolute;
       left: 0;
-      top: 6px;
-      width: 10px;
-      height: 10px;
+      top: 5px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: #D4AF37;
       border: 2px solid #001f3f;
@@ -173,17 +175,17 @@
     .donut-chart-container {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 12px;
     }
     .donut-chart {
-      width: 50px;
-      height: 50px;
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
       background: conic-gradient(#D4AF37 0% 90%, rgba(255,255,255,0.2) 90% 100%);
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: bold;
       color: #FFFFFF;
     }
@@ -191,14 +193,14 @@
     .progress-bar-container {
       width: 100%;
       background: rgba(255, 255, 255, 0.1);
-      height: 10px;
-      border-radius: 5px;
-      margin-top: 4px;
+      height: 8px;
+      border-radius: 4px;
+      margin-top: 3px;
     }
     .progress-bar {
       height: 100%;
       background: #D4AF37;
-      border-radius: 5px;
+      border-radius: 4px;
     }
 
   </style>
@@ -250,9 +252,9 @@
               <li><span class="timeline-period">10 Mo:</span><span class="metric-value">100+</span> customers</li>
               <li><span class="timeline-period">12 Mo:</span><span class="metric-value">150+</span> customers</li>
             </ul>
-            <div class="donut-chart-container" style="margin-top:10px;">
+            <div class="donut-chart-container" style="margin-top:8px;">
               <div class="donut-chart">90%</div>
-              <div>Customer<br>Satisfaction</div>
+              <div style="font-size:11px;">Customer<br>Satisfaction</div>
             </div>
           </div>
           <div class="sub-section">
@@ -281,21 +283,21 @@
                   <div class="progress-bar-container"><div class="progress-bar" style="width: 80%;"></div></div>
                 </div>
               </li>
-              <li style="margin-top:15px;">
+              <li style="margin-top:12px;">
                 <span class="checkmark">✓</span>
                 <div>
                   Customer Portal Monthly Engagement:<span class="metric-value">&gt;60%</span>
                   <div class="progress-bar-container"><div class="progress-bar" style="width: 60%;"></div></div>
                 </div>
               </li>
-              <li style="margin-top:15px;">
+              <li style="margin-top:12px;">
                 <span class="checkmark">✓</span>
                 <div>
                   Onboarding Training Completion:<span class="metric-value">95%+</span>
                   <div class="progress-bar-container"><div class="progress-bar" style="width: 95%;"></div></div>
                 </div>
               </li>
-              <li style="margin-top:15px;">
+              <li style="margin-top:12px;">
                 <span class="checkmark">✓</span>
                 <div>
                   Core Feature Adoption:<span class="metric-value">85%+</span>
