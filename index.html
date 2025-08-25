@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Launch Media Labs - Proposals</title>
+    <title>Launch Media Labs</title>
     <style>
         :root {
             --text-color: #111111;
@@ -75,70 +75,52 @@
             font-weight: 400;
         }
         
-        .proposals-grid {
-            display: grid;
-            gap: 20px;
+        .content-section {
             margin-top: 32px;
         }
         
-        .proposal-card {
+        .description {
+            font-size: 16px;
+            color: var(--secondary-text);
+            line-height: 1.7;
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+        
+        .feature {
+            padding: 20px;
             background: white;
             border-radius: var(--card-radius);
-            padding: 24px;
             box-shadow: var(--shadow);
-            transition: all 0.2s ease;
             border: 1px solid var(--border-color);
-            text-decoration: none;
-            color: inherit;
-            display: block;
+            transition: all 0.2s ease;
         }
         
-        .proposal-card:hover {
+        .feature:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            border-color: var(--active-color);
         }
         
-        .proposal-title {
-            font-size: 20px;
+        .feature h3 {
+            font-size: 18px;
             font-weight: 600;
             margin-bottom: 8px;
             color: var(--text-color);
         }
         
-        .proposal-description {
-            color: var(--secondary-text);
+        .feature p {
             font-size: 14px;
-            margin-bottom: 16px;
-        }
-        
-        .proposal-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 12px;
             color: var(--secondary-text);
-        }
-        
-        .status-badge {
-            background: var(--light-bg);
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-weight: 500;
-        }
-        
-        .status-badge.ready {
-            background: #e8f5e8;
-            color: #2d5f3f;
-        }
-        
-        .arrow {
-            font-size: 16px;
-            transition: transform 0.2s ease;
-        }
-        
-        .proposal-card:hover .arrow {
-            transform: translateX(4px);
+            line-height: 1.5;
         }
         
         footer {
@@ -168,19 +150,28 @@
     <div class="container">
         <div class="logo">LML</div>
         <h1>Launch Media Labs</h1>
-        <p class="subtitle">Client Proposals & Presentations</p>
+        <p class="subtitle">Professional Digital Solutions</p>
         
-        <div class="proposals-grid">
-            <a href="/network-architects/" class="proposal-card">
-                <div class="proposal-title">Network Architects</div>
-                <div class="proposal-description">
-                    Comprehensive proposal presentation for network architecture services and solutions.
+        <div class="content-section">
+            <p class="description">
+                We create innovative digital experiences and strategic solutions for forward-thinking businesses. 
+                Our expertise spans web development, digital strategy, and creative technology solutions.
+            </p>
+            
+            <div class="features">
+                <div class="feature">
+                    <h3>Strategy</h3>
+                    <p>Digital transformation and strategic planning</p>
                 </div>
-                <div class="proposal-meta">
-                    <span class="status-badge ready">Ready</span>
-                    <span class="arrow">→</span>
+                <div class="feature">
+                    <h3>Development</h3>
+                    <p>Custom web applications and platforms</p>
                 </div>
-            </a>
+                <div class="feature">
+                    <h3>Innovation</h3>
+                    <p>Cutting-edge technology implementations</p>
+                </div>
+            </div>
         </div>
         
         <footer>
