@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Opportunity - Executive Summary</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #1a1a1a;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .slide {
+      width: 1280px;
+      height: 720px;
+      background: radial-gradient(circle at top left, #001e3c, #00529b 120%);
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 80px;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .slide::before {
+      content: '';
+      position: absolute;
+      bottom: -150px;
+      right: -150px;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    .slide::after {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: -100px;
+      width: 250px;
+      height: 250px;
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(255, 255, 255, 0.01));
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .title {
+      font-size: 52px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 50px;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 2;
+      animation: fadeInDown 0.8s ease-out forwards;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 30px;
+      width: 100%;
+      max-width: 1000px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .opportunity-item {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      padding: 25px;
+      display: flex;
+      align-items: flex-start;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 0.8s ease-out forwards;
+      opacity: 0;
+    }
+    
+    .opportunity-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    }
+    
+    .opportunity-item:nth-child(1) { animation-delay: 0.2s; }
+    .opportunity-item:nth-child(2) { animation-delay: 0.3s; }
+    .opportunity-item:nth-child(3) { animation-delay: 0.4s; }
+    .opportunity-item:nth-child(4) { animation-delay: 0.5s; }
+
+
+    .item-icon {
+      flex-shrink: 0;
+      margin-right: 20px;
+      width: 40px;
+      height: 40px;
+    }
+
+    .item-icon svg {
+      width: 100%;
+      height: 100%;
+      fill: #ffd700;
+    }
+    
+    .item-text {
+      font-size: 22px;
+      line-height: 1.5;
+      font-weight: 300;
+    }
+
+    .highlight {
+      font-weight: 600;
+      color: #ffd700;
+      text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+    }
+    
+    .arrow {
+        font-weight: 600;
+        color: #87cefa; /* Light Sky Blue */
+    }
+
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <h1 class="title">The Opportunity - Transform Your Business</h1>
+    <div class="content-grid">
+      
+      <div class="opportunity-item">
+        <div class="item-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 12.17l7.59-7.59L19 6l-9 9z"/></svg>
+        </div>
+        <p class="item-text">Transform slow internal tool <span class="arrow">→</span> Fast, profitable SaaS platform</p>
+      </div>
+
+      <div class="opportunity-item">
+        <div class="item-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 12.17l7.59-7.59L19 6l-9 9z"/></svg>
+        </div>
+        <p class="item-text"><span class="highlight">$40,000</span> investment <span class="arrow">→</span> <span class="highlight">$480,000</span> annual revenue potential (Year 3)</p>
+      </div>
+
+      <div class="opportunity-item">
+        <div class="item-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 12.17l7.59-7.59L19 6l-9 9z"/></svg>
+        </div>
+        <p class="item-text">Complete ownership of a modern, <span class="highlight">AI-powered</span> solution</p>
+      </div>
+
+      <div class="opportunity-item">
+        <div class="item-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 12.17l7.59-7.59L19 6l-9 9z"/></svg>
+        </div>
+        <p class="item-text"><span class="highlight">3-4 months</span> to a market-ready SaaS platform</p>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

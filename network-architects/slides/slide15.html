@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Success Factors</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f2f5;
+      font-family: 'Montserrat', 'Microsoft YaHei', 'SimHei', sans-serif;
+    }
+
+    .slide-container {
+      width: 1280px;
+      height: 720px;
+      background: linear-gradient(135deg, #0d213d 0%, #061221 100%);
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px;
+      box-sizing: border-box;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .slide-header {
+      animation: slideUp 0.8s ease-out forwards;
+      margin-bottom: 60px;
+    }
+
+    .slide-header h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin: 0;
+      padding: 0;
+      letter-spacing: 1px;
+      color: #ffffff;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .slide-header h1::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 5px;
+      background-color: #3498db;
+      border-radius: 2.5px;
+    }
+
+    .factors-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(3, 1fr);
+      gap: 45px 60px;
+      width: 100%;
+    }
+
+    .factor-item {
+      display: flex;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp 0.6s ease-out forwards;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    
+    .factor-item:hover {
+        transform: translateY(-5px);
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    /* Staggered animation delays */
+    .factor-item:nth-child(1) { animation-delay: 0.3s; }
+    .factor-item:nth-child(2) { animation-delay: 0.4s; }
+    .factor-item:nth-child(3) { animation-delay: 0.5s; }
+    .factor-item:nth-child(4) { animation-delay: 0.6s; }
+    .factor-item:nth-child(5) { animation-delay: 0.7s; }
+    .factor-item:nth-child(6) { animation-delay: 0.8s; }
+
+    .factor-icon {
+      flex-shrink: 0;
+      margin-right: 20px;
+    }
+
+    .factor-icon svg {
+      width: 48px;
+      height: 48px;
+    }
+
+    .factor-text {
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #e0e6f0;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="slide-container">
+    <header class="slide-header">
+      <h1>Client Success Factors</h1>
+    </header>
+    
+    <main class="factors-grid">
+      <div class="factor-item">
+        <div class="factor-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" stroke="#3498db" stroke-width="2"/><path d="M7.5 12.5L10.5 15.5L16.5 9.5" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p class="factor-text">Clear scope management process</p>
+      </div>
+
+      <div class="factor-item">
+        <div class="factor-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" stroke="#3498db" stroke-width="2"/><path d="M7.5 12.5L10.5 15.5L16.5 9.5" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p class="factor-text">Agile development methodology</p>
+      </div>
+
+      <div class="factor-item">
+        <div class="factor-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" stroke="#3498db" stroke-width="2"/><path d="M7.5 12.5L10.5 15.5L16.5 9.5" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p class="factor-text">Comprehensive training included</p>
+      </div>
+
+      <div class="factor-item">
+        <div class="factor-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" stroke="#3498db" stroke-width="2"/><path d="M7.5 12.5L10.5 15.5L16.5 9.5" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p class="factor-text">24-hour response for critical issues</p>
+      </div>
+
+      <div class="factor-item">
+        <div class="factor-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" stroke="#3498db" stroke-width="2"/><path d="M7.5 12.5L10.5 15.5L16.5 9.5" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p class="factor-text">Change management process</p>
+      </div>
+
+      <div class="factor-item">
+        <div class="factor-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" stroke="#3498db" stroke-width="2"/><path d="M7.5 12.5L10.5 15.5L16.5 9.5" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p class="factor-text">Knowledge transfer guarantee</p>
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>

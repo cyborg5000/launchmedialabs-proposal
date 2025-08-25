@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investment Summary</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      width: 1280px;
+      height: 720px;
+      background-color: #0D1117;
+      font-family: 'Poppins', sans-serif;
+      color: #F0F2F5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .slide-container {
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      padding: 60px 80px; /* Increased padding to avoid cramped look */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 44px;
+      font-weight: 600;
+      color: #FFFFFF;
+      width: 100%;
+      text-align: center;
+      margin: 0 0 40px 0;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      width: 100%;
+      height: 480px; /* Set a fixed height to ensure consistency */
+    }
+
+    .left-column {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .card {
+      background-color: #161B22;
+      border-radius: 16px;
+      border: 1px solid #30363D;
+      padding: 32px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-label {
+      font-size: 16px;
+      font-weight: 400;
+      color: #8B949E;
+      margin-bottom: 8px;
+    }
+
+    .card.investment {
+      flex-grow: 1;
+    }
+
+    .investment .price {
+      font-size: 80px;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.1;
+    }
+    
+    .investment .price span.currency {
+        font-size: 40px;
+        font-weight: 600;
+        color: #8B949E;
+        margin-left: 12px;
+    }
+
+    .investment .includes {
+      font-size: 15px;
+      color: #8B949E;
+      margin-top: 12px;
+    }
+
+    .card.break-even {
+      flex-grow: 1;
+      justify-content: space-between; /* Pushes content to top and bottom */
+    }
+
+    .break-even-main .value {
+        font-size: 48px;
+        font-weight: 600;
+        color: #FFFFFF;
+        line-height: 1.2;
+    }
+    
+    .break-even-main .context {
+        font-size: 18px;
+        color: #8B949E;
+    }
+
+    .infrastructure-cost {
+      font-size: 14px;
+      color: #8B949E;
+      text-align: right;
+      border-top: 1px solid #30363D;
+      padding-top: 16px;
+      margin-top: 16px;
+    }
+
+    .card.roi {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .roi .value {
+      font-size: 140px;
+      font-weight: 700;
+      line-height: 1.1;
+      color: #FFC93E;
+      text-shadow: 0 0 15px rgba(255, 201, 62, 0.4);
+    }
+    
+    .roi .value span.dash {
+        margin: 0 -15px;
+    }
+
+    .roi .description {
+      font-size: 20px;
+      font-weight: 500;
+      color: #8B949E;
+      margin-top: 20px;
+      letter-spacing: 1px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <h1>Investment Summary</h1>
+    <div class="content-grid">
+      <div class="left-column">
+        
+        <div class="card investment">
+          <div class="card-label">Total Investment</div>
+          <div class="price">$40,000<span class="currency">SGD</span></div>
+          <div class="includes">Includes: Complete development + 3-year maintenance</div>
+        </div>
+
+        <div class="card break-even">
+            <div>
+              <div class="card-label">Break-even Point</div>
+              <div class="break-even-main">
+                <span class="value">10 months</span>
+                <span class="context">(100 customers)</span>
+              </div>
+            </div>
+            <div class="infrastructure-cost">
+              Monthly Infrastructure Cost: $0 - $45 (you pay directly to provider)
+            </div>
+        </div>
+
+      </div>
+
+      <div class="card roi">
+        <div class="value">9x<span class="dash">-</span>24x</div>
+        <div class="description">3-Year ROI Return</div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revenue Model Presentation</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .slide {
+      width: 1280px;
+      height: 720px;
+      background: radial-gradient(circle at 80% 20%, #1c2b4a, #0d1424);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 60px 80px;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .title {
+      color: #FFFFFF;
+      font-size: 48px;
+      font-weight: 700;
+      text-align: center;
+      margin: 0 0 60px 0;
+      animation: fadeInDown 1s ease-out;
+    }
+    
+    .title span {
+      color: #FBBF24;
+    }
+
+    .chart-container {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      width: 100%;
+      height: 420px;
+      position: relative;
+    }
+
+    .path-arrow {
+      position: absolute;
+      bottom: -15%;
+      left: -10%;
+      width: 120%;
+      height: 300px;
+      background: linear-gradient(15deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 50%);
+      z-index: 1;
+      transform: translateY(0);
+    }
+    
+    .arrow-chevron {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      opacity: 0.1;
+      z-index: 1;
+    }
+
+    .arrow-chevron::before, .arrow-chevron::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 20px;
+      background-color: #fff;
+      transform: rotate(30deg);
+    }
+    .arrow-chevron::after {
+      transform: rotate(-30deg);
+      top: 35px;
+    }
+
+    .chevron-1 {
+      bottom: 220px;
+      left: 35%;
+    }
+
+    .chevron-2 {
+      bottom: 120px;
+      left: 55%;
+    }
+
+
+    .bar-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 20%;
+      z-index: 2;
+      position: relative;
+    }
+
+    .bar-label-top {
+      color: #FFFFFF;
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    .bar {
+      width: 100px;
+      background: linear-gradient(to top, #EAB308, #FBBF24);
+      border-radius: 8px 8px 0 0;
+      transform-origin: bottom;
+      animation: grow 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      box-shadow: 0 0 15px rgba(251, 191, 36, 0.3);
+    }
+
+    .bar-label-bottom {
+      color: #FFFFFF;
+      margin-top: 15px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    .bar-label-bottom .period {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .bar-label-bottom .description {
+      font-size: 14px;
+      color: #a0aec0;
+      margin-top: 2px;
+    }
+    
+    #bar-1 { height: 80px; animation-delay: 0.2s; }
+    #bar-2 { height: 180px; animation-delay: 0.4s; }
+    #bar-3 { height: 300px; animation-delay: 0.6s; }
+    #bar-4 { height: 400px; animation-delay: 0.8s; }
+    
+    .bar-wrapper:nth-of-type(1) .bar-label-top,
+    .bar-wrapper:nth-of-type(1) .bar-label-bottom { animation-delay: 1.2s; }
+    .bar-wrapper:nth-of-type(2) .bar-label-top,
+    .bar-wrapper:nth-of-type(2) .bar-label-bottom { animation-delay: 1.4s; }
+    .bar-wrapper:nth-of-type(3) .bar-label-top,
+    .bar-wrapper:nth-of-type(3) .bar-label-bottom { animation-delay: 1.6s; }
+    .bar-wrapper:nth-of-type(4) .bar-label-top,
+    .bar-wrapper:nth-of-type(4) .bar-label-bottom { animation-delay: 1.8s; }
+
+    .strategy-box {
+      margin-top: auto; /* Pushes to the bottom */
+      border: 1px solid #EAB308;
+      border-radius: 8px;
+      padding: 10px 20px;
+      color: #FFFFFF;
+      font-size: 18px;
+      font-weight: 500;
+      background-color: rgba(234, 179, 8, 0.1);
+      z-index: 2;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
+      animation-delay: 2s;
+    }
+    
+    @keyframes grow {
+      from { transform: scaleY(0); }
+      to { transform: scaleY(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <h1 class="title">Revenue Model – Path to <span>$480K Annual</span></h1>
+    
+    <div class="chart-container">
+      <div class="path-arrow"></div>
+      <div class="arrow-chevron chevron-1"></div>
+      <div class="arrow-chevron chevron-2"></div>
+      
+      <div class="bar-wrapper">
+        <div class="bar-label-top">Break-even</div>
+        <div class="bar" id="bar-1"></div>
+        <div class="bar-label-bottom">
+          <div class="period">Month 10</div>
+          <div class="description">100 customers × $40/mo</div>
+        </div>
+      </div>
+      
+      <div class="bar-wrapper">
+        <div class="bar-label-top">$72K - $144K</div>
+        <div class="bar" id="bar-2"></div>
+        <div class="bar-label-bottom">
+          <div class="period">Year 1</div>
+          <div class="description">Revenue</div>
+        </div>
+      </div>
+      
+      <div class="bar-wrapper">
+        <div class="bar-label-top">$240K - $336K</div>
+        <div class="bar" id="bar-3"></div>
+        <div class="bar-label-bottom">
+          <div class="period">Year 2</div>
+          <div class="description">Revenue</div>
+        </div>
+      </div>
+      
+      <div class="bar-wrapper">
+        <div class="bar-label-top">$480,000</div>
+        <div class="bar" id="bar-4"></div>
+        <div class="bar-label-bottom">
+          <div class="period">Year 3</div>
+          <div class="description">Revenue Potential</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="strategy-box">
+      Volume Strategy: 80-90% cheaper than competitors
+    </div>
+  </div>
+</body>
+</html>

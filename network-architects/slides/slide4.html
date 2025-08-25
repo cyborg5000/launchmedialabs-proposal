@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technical Superiority Comparison</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    :root {
+      --color-bg: #111827; /* Dark Slate Blue */
+      --color-surface: #1f2937; /* Lighter Slate */
+      --color-text-primary: #f9fafb; /* Off-white */
+      --color-text-secondary: #9ca3af; /* Gray */
+      --color-border: #374151;
+      
+      --color-success: #10b981; /* Emerald Green */
+      --color-success-bg: rgba(16, 185, 129, 0.1);
+      --color-success-text: #a7f3d0;
+
+      --color-warning: #f59e0b; /* Amber */
+      --color-warning-bg: rgba(245, 158, 11, 0.1);
+      --color-warning-text: #fde68a;
+
+      --color-danger: #ef4444; /* Red */
+      --color-danger-bg: rgba(239, 68, 68, 0.1);
+      --color-danger-text: #fecaca;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: var(--color-text-primary);
+    }
+
+    .slide {
+      width: 1280px;
+      height: 720px;
+      background-color: var(--color-bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 60px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    
+    .slide::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0) 30%);
+        pointer-events: none;
+    }
+
+    .slide-content {
+      width: 100%;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      text-align: center;
+      margin-bottom: 40px;
+      letter-spacing: -1px;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 1rem;
+      text-align: center;
+    }
+
+    .comparison-table thead th {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      padding-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid var(--color-border);
+    }
+
+    .comparison-table thead th:first-child {
+      text-align: left;
+    }
+
+    .comparison-table tbody tr {
+      background-color: var(--color-surface);
+      transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    }
+    
+    .comparison-table tbody tr:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .comparison-table tbody td, .comparison-table tbody th {
+      padding: 22px 20px;
+      vertical-align: middle;
+    }
+
+    .comparison-table tbody th {
+      text-align: left;
+      font-weight: 600;
+      font-size: 18px;
+      color: var(--color-text-primary);
+      width: 20%;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+
+    .comparison-table tbody td {
+      font-size: 17px;
+      color: var(--color-text-secondary);
+      border-top: 1px solid transparent; /* for layout consistency */
+      border-bottom: 1px solid transparent;
+    }
+
+    .comparison-table tbody tr td:last-child {
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+    
+    /* Column Styling */
+    .col-current td {
+        background-color: var(--color-danger-bg);
+        color: var(--color-danger-text);
+    }
+    
+    .col-lml td {
+        background-color: var(--color-success-bg);
+        color: var(--color-success-text);
+        font-weight: 600;
+    }
+    
+    .col-lml td::before {
+        content: '✔';
+        color: var(--color-success);
+        margin-right: 8px;
+        font-weight: 700;
+    }
+
+    .col-competitor td {
+        background-color: var(--color-warning-bg);
+        color: var(--color-warning-text);
+    }
+
+    /* Column Highlighting in Header */
+    .comparison-table thead .header-lml {
+        color: var(--color-success);
+    }
+
+    .comparison-table thead .header-competitor {
+        color: var(--color-warning);
+    }
+
+    .comparison-table thead .header-current {
+        color: var(--color-danger);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <div class="slide-content">
+      <h1>Technical Superiority Comparison</h1>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th class="header-current">Current System</th>
+            <th class="header-lml">Launch Media Labs Solution</th>
+            <th class="header-competitor">Competitor Solutions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Performance</th>
+            <td class="col-current">Slow response</td>
+            <td class="col-lml">&lt;200ms guaranteed</td>
+            <td class="col-competitor">Variable</td>
+          </tr>
+          <tr>
+            <th>Technology</th>
+            <td class="col-current">Legacy stack</td>
+            <td class="col-lml">Next.js + Supabase</td>
+            <td class="col-competitor">Mixed / Outdated</td>
+          </tr>
+          <tr>
+            <th>AI Capabilities</th>
+            <td class="col-current">None</td>
+            <td class="col-lml">GPT-5 integrated</td>
+            <td class="col-competitor">Extra cost add-on</td>
+          </tr>
+          <tr>
+            <th>Integration</th>
+            <td class="col-current">Limited</td>
+            <td class="col-lml">Xero/QB native</td>
+            <td class="col-competitor">Basic only</td>
+          </tr>
+          <tr>
+            <th>Scalability</th>
+            <td class="col-current">Single tenant</td>
+            <td class="col-lml">Multi-tenant cloud</td>
+            <td class="col-competitor">Limited</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
