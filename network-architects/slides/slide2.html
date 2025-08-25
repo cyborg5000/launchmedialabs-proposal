@@ -36,6 +36,9 @@
       padding-bottom: 15px;
       border-bottom: 3px solid #C5A04D;
       animation: fadeInDown 0.8s ease-out;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .header h1 {
@@ -43,6 +46,12 @@
       font-weight: 700;
       color: #0D2C4F;
       margin: 0;
+    }
+
+    .header .price {
+      font-size: 32px;
+      font-weight: 700;
+      color: #C5A04D;
     }
 
     .content-container {
@@ -119,33 +128,7 @@
       margin-right: 15px;
     }
     
-    .investment-box {
-      background-color: #FFF9E8;
-      border-left: 4px solid #C5A04D;
-      padding: 20px 25px;
-      margin-bottom: 35px;
-      border-radius: 0 8px 8px 0;
-    }
-    
-    .investment-box .investment-title {
-      font-size: 18px;
-      font-weight: 600;
-      color: #0D2C4F;
-      margin: 0 0 5px 0;
-    }
-    
-    .investment-box .investment-amount {
-      font-size: 36px;
-      font-weight: 700;
-      color: #C5A04D;
-      margin: 0 0 8px 0;
-    }
-    
-    .investment-box .investment-note {
-      font-size: 14px;
-      color: #6c757d;
-      margin: 0;
-    }
+
     
     .timeline-item {
       margin-bottom: 30px;
@@ -191,6 +174,7 @@
   <div class="slide">
     <div class="header">
       <h1>Executive Summary</h1>
+      <span class="price">$40,000</span>
     </div>
     
     <div class="content-container">
@@ -216,10 +200,9 @@
         <div class="section">
           <h2 class="section-title">Pricing & Timeline</h2>
           
-          <div class="investment-box">
-            <p class="investment-title">Total Price</p>
-            <p class="investment-amount">$40,000 SGD</p>
-            <p class="investment-note">Plus 3-year maintenance package: $333/month</p>
+          <div class="section">
+            <h2 class="section-title">Project Notes</h2>
+            <p style="font-size: 16px; color: #6c757d; margin: 0;">Plus 3-year maintenance package: $333/month</p>
           </div>
           
           <div class="timeline-item">

@@ -27,6 +27,15 @@
       font-size: 26px;
       font-weight: 600;
       flex-shrink: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header .price {
+      font-size: 32px;
+      font-weight: 700;
+      color: #ffd700;
     }
 
     .main-content {
@@ -89,7 +98,7 @@
 
     .bottom-section {
       display: grid;
-      grid-template-columns: 1fr 1fr 0.6fr;
+      grid-template-columns: 1fr 1fr;
       gap: 25px;
       padding: 0 50px 30px 50px;
       align-items: stretch;
@@ -143,36 +152,15 @@
         color: #38A169;
     }
 
-    .investment-card {
-      background-color: #FFFBF0;
-      border: 1px solid #F0EAD6;
-      border-radius: 8px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
 
-    .investment-card .title {
-      font-size: 15px;
-      color: #6C757D;
-      font-weight: 500;
-    }
-
-    .investment-card .price {
-      font-size: 36px;
-      font-weight: 700;
-      color: #D4AF37;
-      margin-top: 5px;
-    }
 
   </style>
 </head>
 <body>
 
   <div class="header">
-    Module 1 - Smart Dashboard
+    <span>Module 1 - Smart Dashboard</span>
+    <span class="price">$2,500</span>
   </div>
 
   <div class="main-content">
@@ -231,11 +219,6 @@
         <li><svg class="icon-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>Full mobile accessibility</li>
         <li><svg class="icon-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>Professional reporting tools</li>
       </ul>
-    </div>
-    <div class="investment-card">
-      <span class="title">Investment</span>
-      <span class="price">$2,500</span>
-    </div>
   </div>
 
 </body>

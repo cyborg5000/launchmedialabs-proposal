@@ -32,10 +32,12 @@
     .header {
       background-color: #001f3f; /* Navy Blue */
       color: white;
-      text-align: center;
-      padding: 18px 0;
+      padding: 18px 40px;
       flex-shrink: 0;
       z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .header h1 {
@@ -43,6 +45,12 @@
       font-size: 32px;
       font-weight: 600;
       letter-spacing: 1px;
+    }
+
+    .header .price {
+      font-size: 32px;
+      font-weight: 700;
+      color: #ffd700;
     }
     
     .content-wrapper {
@@ -180,22 +188,7 @@
     }
 
 
-    .footer {
-      text-align: right;
-      padding: 0 50px 25px 50px;
-      flex-shrink: 0;
-    }
 
-    .investment {
-      font-size: 34px;
-      font-weight: 700;
-      color: #001f3f;
-    }
-
-    .investment .price {
-      color: #D4AF37; /* Gold Accent */
-      margin-left: 15px;
-    }
     
     @keyframes fadeInUp {
         from {
@@ -213,6 +206,7 @@
   <div class="slide">
     <div class="header">
       <h1>Module 3 - Customer & Supplier Management</h1>
+      <span class="price">$3,000</span>
     </div>
 
     <div class="content-wrapper">
@@ -275,9 +269,7 @@
       
     </div>
 
-    <div class="footer">
-      <span class="investment">Investment: <span class="price">$3,000</span></span>
-    </div>
+
   </div>
 </body>
 </html>

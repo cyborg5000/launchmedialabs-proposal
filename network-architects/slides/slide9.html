@@ -34,7 +34,9 @@
       background-color: #001f3f; /* Navy Blue */
       color: white;
       padding: 20px 40px;
-      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .header h1 {
@@ -42,6 +44,12 @@
       font-size: 36px;
       font-weight: 700;
       letter-spacing: 1px;
+    }
+
+    .header .price {
+      font-size: 32px;
+      font-weight: 700;
+      color: #ffd700;
     }
 
     .main-content {
@@ -241,28 +249,7 @@
       color: #001f3f;
     }
 
-    .investment-box {
-      background: #001f3f;
-      color: white;
-      padding: 15px 20px;
-      border-radius: 8px;
-      text-align: center;
-      border-left: 10px solid #FFD700; /* Gold Accent */
-      box-shadow: 0 4px 15px rgba(0,31,63,0.2);
-    }
-    .investment-box p {
-      margin: 0;
-      font-size: 16px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      opacity: 0.8;
-    }
-    .investment-box .price {
-      margin: 5px 0 0 0;
-      font-size: 32px;
-      font-weight: 900;
-      color: #FFD700; /* Gold */
-    }
+
 
   </style>
 </head>
@@ -270,6 +257,7 @@
   <div class="slide">
     <div class="header">
       <h1>Module 6 - Invoice & Billing + Integrations</h1>
+      <span class="price">$4,500</span>
     </div>
     <div class="main-content">
       <div class="column">
@@ -353,10 +341,7 @@
                 Total: $500.00
             </div>
         </div>
-        <div class="investment-box">
-          <p>Investment</p>
-          <div class="price">$4,500</div>
-        </div>
+
       </div>
     </div>
   </div>

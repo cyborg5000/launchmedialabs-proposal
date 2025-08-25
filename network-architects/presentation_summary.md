@@ -52,7 +52,7 @@ A comprehensive 37-slide professional PowerPoint presentation has been created f
 - **Slide 26:** 4-Month Detailed Timeline - Complete project roadmap
 - **Slide 27:** Comprehensive Deliverables - All project outputs
 - **Slide 28:** Payment Terms & Risk Management - Structured payment schedule
-- **Slide 29:** 3-Year Maintenance Package - $12,000 value included
+- **Slide 29:** 3-Year Maintenance Package - $333/month professional support
 - **Slide 30:** Success Criteria & Metrics - Technical and business benchmarks
 
 ### 7. Risk Management & Strategic Analysis (Slides 31-35)
@@ -84,7 +84,7 @@ A comprehensive 37-slide professional PowerPoint presentation has been created f
 
 ### Competitive Advantages
 - All-inclusive $40,000 pricing (market rate: $60,000-$100,000+)
-- 3-year maintenance included ($12,000 value)
+- 3-year maintenance package available ($333/month)
 - Singapore expertise and local support
 - Risk-managed milestone payments
 - Comprehensive deliverables and training
